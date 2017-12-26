@@ -14,12 +14,19 @@
 	use App\User;
 	Route::group(['prefix'=>'admin','middleware' => 'is-admin']
 	,function(){
-	Route::get('/admin', 'Admin\AdminPagesController@Backend');
-	Route::get('/home', 'Admin\AdminPagesController@index');
-
+	Route::get('/admin', 'Admin\AdminPagesController@Backend')->name('adminBackend');	
 	});
 
-	Route::get('/', function () {    return view('welcome'); })->name('/');
+	Route::group(['prefix'=>'funder','middleware' => 'is-funder']
+	,function(){
+	Route::get('/funder', 'Funder\FunderPagesController@Backend')->name('funderBackend');
+		
+	});
+
+
+
+
+Route::get('/', function () {    return view('welcome'); })->name('/');
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 

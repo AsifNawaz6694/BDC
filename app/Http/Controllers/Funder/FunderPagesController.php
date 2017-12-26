@@ -1,8 +1,8 @@
 <?php
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Funder;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-class AdminPagesController extends Controller
+class FunderPagesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -11,7 +11,7 @@ class AdminPagesController extends Controller
     */
     public function Backend()
     {
-      return view('/admin');
+      return view('/funder');
     }
     public function index()
     {
