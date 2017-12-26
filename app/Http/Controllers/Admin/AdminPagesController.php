@@ -16,6 +16,7 @@ class AdminPagesController extends Controller
     public function index()
     {
         //
+        dd('this is access');
     }
 
     /**

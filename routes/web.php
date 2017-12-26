@@ -15,9 +15,13 @@
 	Route::group(['prefix'=>'admin','middleware' => 'is-admin']
 	,function(){
 	Route::get('/admin', 'Admin\AdminPagesController@Backend');
+	Route::get('/home', 'Admin\AdminPagesController@index');
+
 	});
 
-	Route::get('/', function () {    return view('welcome'); });
+	Route::get('/', function () {    return view('welcome'); })->name('/');
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
 
 	// Auth::routes();
 
@@ -34,6 +38,4 @@
 	// });
 
 	// Route::get('/irfan', 'HomeController@logi1n');
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
