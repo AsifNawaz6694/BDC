@@ -19,18 +19,21 @@
 
 	Route::get('/', function () {    return view('welcome'); });
 
-	Auth::routes();
+	// Auth::routes();
 
-	Route::get('/home', 'HomeController@index')->name('home');
+	// Route::get('/home', 'HomeController@index')->name('home');
 
 	// Auth::routes();
 
-	Route::get('/home', 'HomeController@index')->name('home');
+	// Route::get('/home', 'HomeController@index')->name('home');
 
-	Route::post('/sdsdsd', 'HomeController@login')->name('sdsdsd');
-	Route::get('/users', function(){
-		$users = User::all();
-		dd($users);
-	});
+	// Route::get('/login', 'Auth\LoginController@login')->name('login');
+	// Route::get('/users', function(){
+	// 	$users = User::all();
+	// 	dd($users);
+	// });
 
-Route::get('/irfan', 'HomeController@logi1n');
+	// Route::get('/irfan', 'HomeController@logi1n');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
