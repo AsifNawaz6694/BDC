@@ -23,33 +23,33 @@
 								<div class="portlet box green">
 									<div class="portlet-title">
 										<div class="caption">
-											<i class="fa fa-gift"></i>Edit User
+											<i class="fa fa-gift"></i>Create Category
 										</div>									
 									</div>
-									<div class="portlet-body form">
-					{!!Form::open(array('url' => url('admin/users/'.$user->id),'method' => 'put', 'files' => true )) !!}
+									<div class="portlet-body form">										
+										{!!Form::open(array( 'url'=>'admin/category' , 'files' => true ))!!}
 											<div class="form-body">
-												<h3 class="form-section">Person Info</h3>
+												<h3 class="form-section">Category Info</h3>
 												<div class="row">
 													<div class="col-md-6">
 														<div class="form-group">
 															<label class="control-label col-md-3">Name</label>
 															<div class="col-md-9">
-																{!! Form::text('name', $user->name, [ 'class' => 'form-control'] ) !!}
-
+																{!! Form::text('name', null, [ 'class' => 'form-control'] ) !!}
 																<span class="help-block">
 																	{{ $errors->first('name') }}
 																 </span>
 															</div>
 														</div>
-													</div>													
+													</div>
+													
 													<div class="col-md-6">
 														<div class="form-group">
-															<label class="control-label col-md-3">Email</label>
+															<label class="control-label col-md-3">Description</label>
 															<div class="col-md-9">
-																{!! Form::text('email', $user->email, [ 'class' => 'form-control'] ) !!}
+																{!! Form::text('description', null, [ 'class' => 'form-control'] ) !!}
 																<span class="help-block">
-																	{{ $errors->first('email') }}
+																	{{ $errors->first('description') }}
 																 </span>
 															</div>
 														</div>
@@ -58,28 +58,28 @@
 												<div class="row">
 													<div class="col-md-6">
 														<div class="form-group">
-															<label class="control-label col-md-3">Roles</label>
+															<label class="control-label col-md-3">Symbol</label>
 															<div class="col-md-9">
-															{{ Form::select('roles', $roles, $user->roles, [ 'class' => 'form-control', ] )}}
+																{!! Form::text('symbol', null, [ 'class' => 'form-control'] ) !!}
 																<span class="help-block">
-																	{{ $errors->first('roles') }}
+																	{{ $errors->first('symbol') }}
 																 </span>
 															</div>
 														</div>
 													</div>												
 													<div class="col-md-6">
 														<div class="form-group">
-															<label class="control-label col-md-3">Password</label>
+															<label class="control-label col-md-3">Color Code</label>
 															<div class="col-md-9">
-																{!! Form::text('password', NULL, [ 'class' => 'form-control'] ) !!}
+																{!! Form::text('color_code', null, [ 'class' => 'form-control'] ) !!}
 																<span class="help-block">
-																	{{ $errors->first('password') }}
+																	{{ $errors->first('color_code') }}
 																 </span>
 															</div>
 														</div>
 													</div>													
 												</div>												
-											</div>											
+											</div>
 											<div class="form-actions">
 												<div class="row">
 													<div class="col-md-6">
@@ -97,11 +97,12 @@
 										{!! Form::close() !!}										
 									</div>
 								</div>							
-							</div>							
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+			
 		</div>
 	</div>	
 </div>

@@ -10,41 +10,40 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+// <-----------------------------------------Admin Routes Started----------------------------------------------->
 
-	use App\User;
-	Route::group(['prefix'=>'admin','middleware' => 'is-admin']
-	,function(){
-	Route::get('/admin', 'Admin\AdminPagesController@Backend')->name('adminBackend');	
-	Route::resource('/users','Admin\UsersController');
+	Route::group(['prefix'=>'admin','middleware' => 'is-admin']	,function(){
+	Route::get('/admin', 'Admin\AdminPagesController@Backend')->name('adminBackend');
+
+// <-------------------------------User's Controller Routes Started--------------------------------------------->
+	Route::resource('/users','Admin\UsersController');	
 	Route::get('users/delete/{id}', ['as' => 'delete-user', 'uses' => 'Admin\UsersController@destroy']);	
 	Route::get('users/edit/{id}', ['as' => 'edit-user', 'uses' => 'Admin\UsersController@edit']);
+// <-----------------------------------User's Controller Routes Ended------------------------------------------>
+
+// <------------------------------Category's Controller Routes Started------------------------------------------->
+	Route::resource('/category','Admin\CategoryController');
+	Route::get('category/delete/{id}', ['as' => 'delete-category', 'uses' => 'Admin\CategoryController@destroy']);
+	Route::get('category/edit/{id}', ['as' => 'edit-category', 'uses' => 'Admin\CategoryController@edit']);
+// <------------------------------Category's Controller Routes Ended--------------------------------------------->
+
 	});
-	Route::group(['prefix'=>'funder','middleware' => 'is-funder']
-	,function(){
-	Route::get('/funder', 'Funder\FunderPagesController@Backend')->name('funderBackend');
-		
+// <----------------------------------------- Admin Routes Ended ------------------------------------------------>
+
+// <-----------------------------------------Funder Routes Started----------------------------------------------->
+
+	Route::group(['prefix'=>'funder','middleware' => 'is-funder']	,function(){
+	Route::get('/funder', 'Funder\FunderPagesController@Backend')->name('funderBackend');		
 	});
 
+// <-----------------------------------------Funder Routes Ended------------------------------------------------->
 
+// <-----------------------------------------Public Routes Started----------------------------------------------->
 
-
-Route::get('/', function () {    return view('welcome'); })->name('/');
+Route::get('/', function () {  return view('welcome'); })->name('/');
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
-	// Auth::routes();
+// <-----------------------------------------Public Routes Ended ------------------------------------------------>
 
-	// Route::get('/home', 'HomeController@index')->name('home');
-
-	// Auth::routes();
-
-	// Route::get('/home', 'HomeController@index')->name('home');
-
-	// Route::get('/login', 'Auth\LoginController@login')->name('login');
-	// Route::get('/users', function(){
-	// 	$users = User::all();
-	// 	dd($users);
-	// });
-
-	// Route::get('/irfan', 'HomeController@logi1n');
-
+	

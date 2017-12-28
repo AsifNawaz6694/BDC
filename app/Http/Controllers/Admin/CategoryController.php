@@ -7,15 +7,15 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Support\Facades\Validator;
 use Session;
 use Auth;
-use App\User;
-use App\Roles;
-class UsersController extends Controller
+use App\Category;
+
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
-     */   
+    */   
     public function __construct()
     {  
        ini_set('memory_limit', '-1');
@@ -24,10 +24,8 @@ class UsersController extends Controller
     public function index()
     {
         $args = array();
-        $args['users'] = User::leftJoin('roles','roles.id','=','users.roles')
-                        ->select('users.name','users.id','users.email','roles.role_name')
-                        ->get();     
-        return view('Admin_Panel.Users.index')->with($args);
+        $args['category'] = Category::all();                        
+        return view('  Admin_Panel.Category.index')->with($args);
     }
     /**
      * Show the form for creating a new resource.
@@ -36,7 +34,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        return view('Admin_Panel.Users.create');
+        return view('Admin_Panel.Category.create');
     }
     /**
      * Store a newly created resource in storage.
@@ -45,29 +43,33 @@ class UsersController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {    
-        $this->validate($request, [            
+    {
+        $this->validate($request,[
             'name' => 'required|max:20',
-            'email' => 'required',        
-            'password' => 'required',
-            'roles' => 'required|numeric'
+            'description' => 'required',        
+            'symbol' => 'required',
+            'color_code' => 'required'
         ]);
-        $u = new User;
-        $u->name = Input::get('name');                
-        $u->email = Input::get('email');        
-        $u->roles = Input::get('roles');        
-        $u->password = bcrypt(Input::get('password'));
-        $u->save();      
-        Session::flash('success','The User Was Successfully Added!');
-        return redirect('admin/users');
+        $c = new Category;                
+        $category_exist = Category::where('symbol', '=', Input::get('symbol'))->first();       
+        if (empty($category_exist) && $category_exist == '') {
+        $c->name = Input::get('name');  
+        $c->description = Input::get('description');
+        $c->symbol = Input::get('symbol'); 
+        $c->color_code = Input::get('color_code');
+        $c->save();
+        }else{
+           Session::flash('err_message','The Symbol Already Exist For Another Category!'); 
+        }        
+        Session::flash('success','The Category Was Successfully Added!');
+        return redirect('admin/category');
     }
-
     /**
      * Display the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
-     */
+    */
     public function show($id)
     {
         //
@@ -81,12 +83,12 @@ class UsersController extends Controller
      */
     public function edit($id)
     {   
+        
         $args=array();
-        $user = User::find($id);      
-        $args['roles'] = Roles::all()->pluck('role_name', 'id');  
-        if($user){
-            $args['user']=$user;
-            return View('Admin_Panel.Users.edit')->with($args);
+        $category = Category::find($id);        
+        if($category){
+            $args['category']=$category;
+            return View('Admin_Panel.Category.edit')->with($args);
         } 
     }
 
@@ -101,20 +103,19 @@ class UsersController extends Controller
     {
         $this->validate($request, [            
             'name' => 'required|max:20',
-            'email' => 'required',            
-            'roles' => 'required|numeric'
+            'description' => 'required',            
+            'symbol' => 'required',
+            'color_code' => 'required'
         ]);
-        $u = User::find($id);
+        $u = Category::find($id);
         if ($u!=null)
         {
         $u->name = Input::get('name');
-        $u->roles = Input::get('roles');
-        $u->email = Input::get('email');        
-        if(!empty(Input::get('password'))) {
-            $u->password = bcrypt(Input::get('password'));           
-        }        
+        $u->description = Input::get('description');
+        $u->symbol = Input::get('symbol');
+        $u->color_code = Input::get('color_code');
         $u->save();
-        return redirect('admin/users');
+        return redirect('admin/category');
         }        
     }
 
@@ -126,9 +127,8 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {        
-        $user_delete = User::destroy($id);
-        /*$user_delete->destroy();*/
-        Session::flash('success_msg','The User Was successfully Deleted');
+        $category_delete = Category::destroy($id);        
+        Session::flash('success_msg','The Category Was successfully Deleted');
         return back();
     }
 

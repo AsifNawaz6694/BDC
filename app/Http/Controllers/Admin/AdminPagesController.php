@@ -11,7 +11,7 @@ class AdminPagesController extends Controller
     */
     public function Backend()
     {
-      return view('/admin');
+      return view('Admin_Panel/admin');
     }
     public function index()
     {
