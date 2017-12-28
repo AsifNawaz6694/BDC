@@ -55,11 +55,22 @@
                             <i class="icon-graph"></i>
                             New Dashboard #2</a>
                         </li>
-                    </ul>
+                    </ul>                    
                 </li>
-               
-              
-              
+                <li class="start active open">                   
+                    <li>                    
+                        <a href="{{url('admin/users')}}">
+                        <i class="icon-graph"></i>
+                        <span class="title">Users</span></a>
+                    </li>                                      
+                </li>
+                <li class="start active open">                   
+                    <li>
+                        <a href="">
+                        <i class="icon-graph"></i>
+                        <span class="title">Categories</span></a>
+                    </li>                                      
+                </li>
             </ul>
             <!-- END SIDEBAR MENU -->
         </div>

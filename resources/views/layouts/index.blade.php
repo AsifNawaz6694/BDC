@@ -31,6 +31,8 @@ License: You must have a valid license purchased only from themeforest(the above
 <link href="{{ URL::asset('/assets/') }}/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/>
 <link href="{{ URL::asset('/assets/') }}/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css"/>
 <!-- END GLOBAL MANDATORY STYLES -->
+<link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/global/plugins/') }}/datatables/media/css/jquery.dataTables.min.css">
+<link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/global/plugins/') }}/datatables/media/css/dataTables.material.min.css">  
 <!-- BEGIN PAGE LEVEL PLUGIN STYLES -->
 <link href="{{ URL::asset('/assets/') }}/global/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css"/>
 <link href="{{ URL::asset('/assets/') }}/global/plugins/fullcalendar/fullcalendar.min.css" rel="stylesheet" type="text/css"/>
@@ -133,6 +135,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <script src="{{ URL::asset('assets/')}}/admin/layout/scripts/demo.js" type="text/javascript"></script>
 <script src="{{ URL::asset('assets/')}}/admin/pages/scripts/index.js" type="text/javascript"></script>
 <script src="{{ URL::asset('assets/')}}/admin/pages/scripts/tasks.js" type="text/javascript"></script>
+<script src="{{ URL::asset('assets/plugins/') }}/datatables/media/js/jquery.dataTables.min.js" type="text/javascript"></script>
 <!-- END PAGE LEVEL SCRIPTS -->
 <script>
 jQuery(document).ready(function() {    
@@ -150,6 +153,8 @@ Demo.init(); // init demo features
    Tasks.initDashboardWidget();
 });
 </script>
+
+<script src="{{ URL::asset('assets/')}}/admin/pages/scripts/js/mycustom.js" type="text/javascript"></script>
 <!-- END JAVASCRIPTS -->
 </body>
 <!-- END BODY -->

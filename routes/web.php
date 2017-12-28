@@ -15,8 +15,10 @@
 	Route::group(['prefix'=>'admin','middleware' => 'is-admin']
 	,function(){
 	Route::get('/admin', 'Admin\AdminPagesController@Backend')->name('adminBackend');	
+	Route::resource('/users','Admin\UsersController');
+	Route::get('users/delete/{id}', ['as' => 'delete-user', 'uses' => 'Admin\UsersController@destroy']);	
+	Route::get('users/edit/{id}', ['as' => 'edit-user', 'uses' => 'Admin\UsersController@edit']);
 	});
-
 	Route::group(['prefix'=>'funder','middleware' => 'is-funder']
 	,function(){
 	Route::get('/funder', 'Funder\FunderPagesController@Backend')->name('funderBackend');
