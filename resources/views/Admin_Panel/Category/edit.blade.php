@@ -23,7 +23,7 @@
 								<div class="portlet box green">
 									<div class="portlet-title">
 										<div class="caption">
-											<i class="fa fa-gift"></i>Edit User
+											<i class="fa fa-gift"></i>Edit Category
 										</div>									
 									</div>
 									<div class="portlet-body form">
@@ -85,7 +85,7 @@
 														<div class="row">
 															<div class="col-md-offset-3 col-md-9">
 																<button type="submit" class="btn green">Submit</button>
-																<a href="" type="button" class="btn default">Cancel</a>
+																<a href="{{URL::route('admin/category')}}" type="button" class="btn default">Cancel</a>
 															</div>
 														</div>
 													</div>

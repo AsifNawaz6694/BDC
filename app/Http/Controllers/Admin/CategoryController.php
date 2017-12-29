@@ -25,7 +25,7 @@ class CategoryController extends Controller
     {
         $args = array();
         $args['category'] = Category::all();                        
-        return view('  Admin_Panel.Category.index')->with($args);
+        return view('Admin_Panel.Category.index')->with($args);
     }
     /**
      * Show the form for creating a new resource.

@@ -19,7 +19,7 @@
 	Route::resource('/users','Admin\UsersController');	
 	Route::get('users/delete/{id}', ['as' => 'delete-user', 'uses' => 'Admin\UsersController@destroy']);	
 	Route::get('users/edit/{id}', ['as' => 'edit-user', 'uses' => 'Admin\UsersController@edit']);
-// <-----------------------------------User's Controller Routes Ended------------------------------------------>
+// <-----------------------------------User's Controller Routes Ended-------------------------------------------->
 
 // <------------------------------Category's Controller Routes Started------------------------------------------->
 	Route::resource('/category','Admin\CategoryController');

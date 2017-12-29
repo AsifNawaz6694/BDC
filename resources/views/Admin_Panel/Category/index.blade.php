@@ -22,7 +22,7 @@
 					<div class="portlet box yellow">
 						<div class="portlet-title">
 							<div class="caption">
-								<i class="fa fa-user"></i>Users
+								<i class="fa fa-user"></i>Categories
 							</div>	
 							<div class="actions">
 								<a href="{{ url('admin/category/create') }}" class="btn btn-sm btn-primary" >New</a>
