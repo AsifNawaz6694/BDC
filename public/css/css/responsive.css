@@ -1,0 +1,647 @@
+/*
+  ##Device = Tablets, Ipads (landscape)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    .container {
+        width: 90%;
+    }
+
+    .bdc_nav li a {
+        padding: 10px 9px !important;
+    }
+
+    .bdc_navigation .container .navbar-header .navbar-brand {
+        width: 100%;
+    }
+
+    .bdc_slider_caption {
+        width: 100%;
+        left: 0px;
+        right: 0px;
+        text-shadow: none;
+        padding-bottom: 100px !important;
+    }
+
+    .bdc_slider_caption {
+        width: 100%;
+        left: 0px;
+        right: 0px;
+        text-shadow: none;
+        padding-bottom: 23px;
+    }
+
+    .bdc_slider_caption h1 {
+        text-transform: uppercase;
+        font-family: 'Conv_ProximaNova-Bold';
+        color: #252525 !important;
+        font-size: 30px;
+    }
+
+    .bdc_slider_caption h4 {
+        font-family: 'Conv_ProximaNova-Semibold_0';
+        color: #383838;
+        font-size: 16px;
+        margin-top: 4px;
+    }
+
+    .bdc_slider_caption a {
+        font-family: 'Conv_ProximaNova-Semibold_0';
+        background-color: #e70e7e;
+        color: #ffffff;
+        border: none;
+        font-size: 16px;
+        text-shadow: none;
+        text-transform: uppercase;
+        margin-top: 22px;
+        margin-right: 10px;
+        border: 1px solid transparent;
+        padding: 12px 30px;
+    }
+
+    .featured_heading {
+        margin-top: 30px;
+        float: left;
+    }
+
+    .Featured_slider_btn {
+        margin-top: 36px;
+        float: right;
+    }
+
+    .featured_heading h1 {
+        text-transform: uppercase;
+        font-family: 'Conv_ProximaNova-Bold';
+        color: #292929;
+        font-size: 28px;
+    }
+
+    .button_groups a.Badge_tag {
+        font-family: 'Conv_ProximaNova-Extrabold_0';
+        font-size: 26px;
+        text-transform: uppercase;
+        padding: 0px 10px;
+    }
+
+    .button_groups a.fund_Price {
+        font-family: 'Conv_ProximaNova-Semibold_0';
+        font-size: 18px;
+        font-weight: 900;
+    }
+
+    .funding_description h2 {
+        font-family: 'Conv_ProximaNova-Regular';
+        text-transform: uppercase;
+        color: #000000;
+        font-size: 18px;
+        font-weight: 900;
+    }
+
+    .Funding_box_footer span {
+        display: block;
+        float: left;
+        width: 50%;
+    }
+
+    .Fund_contact a {
+        float: right;
+    }
+
+    .heading_one h1 {
+        text-transform: uppercase;
+        font-family: 'Conv_ProximaNova-Bold';
+        color: #292929;
+        font-size: 28px;
+        margin-bottom: 10px;
+    }
+
+}
+
+/*
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+@media (min-width: 768px) and (max-width: 1024px) {
+    .container {
+        width: 90%;
+    }
+
+    .bdc_navigation {
+        margin-bottom: 0px;
+    }
+
+    .bdc_navigation .container .navbar-header .navbar-brand {
+        width: 60%;
+
+    }
+
+    .bdc_nav {
+        margin-top: 30px;
+    }
+
+    .bdc_nav li a {
+        font-family: 'Conv_ProximaNova-Semibold_0';
+        color: #1e1e1e !important;
+        font-size: 14px;
+        text-transform: uppercase;
+        padding: 10px 9px !important;
+
+    }
+
+    .bdc_slider_caption h1 {
+        text-transform: uppercase;
+        font-family: 'Conv_ProximaNova-Bold';
+        color: #252525 !important;
+        font-size: 25px;
+    }
+
+    .bdc_slider_caption h4 {
+        font-family: 'Conv_ProximaNova-Semibold_0';
+        color: #383838;
+        font-size: 14px;
+        margin-top: 4px;
+    }
+
+    .bdc_slider_caption {
+        padding-bottom: 50px;
+    }
+
+    .bdc_slider_caption a {
+        font-family: 'Conv_ProximaNova-Semibold_0';
+        background-color: #e70e7e;
+        color: #ffffff;
+        border: none;
+        font-size: 18px;
+        text-shadow: none;
+        text-transform: uppercase;
+        margin-top: 22px;
+        margin-right: 10px;
+        border: 1px solid transparent;
+        padding: 6px 15px;
+    }
+
+    .featured_heading {
+        margin-top: 30px;
+        float: left;
+    }
+
+    .featured_heading h1 {
+        text-transform: uppercase;
+        font-family: 'Conv_ProximaNova-Bold';
+        color: #292929;
+        font-size: 20px;
+    }
+
+    .Featured_slider_btn {
+        margin-top: 10px;
+        float: right;
+    }
+
+    .Funding_box {
+        width: 100%;
+        border: 1px solid #f0f0f0;
+        padding: 10px 10px;
+        box-shadow: 0px 2px 0px 0px #a8a8a885;
+        transition: all 0.3s ease-in-out;
+        background: #ffffff;
+    }
+
+    .Funding_box h5 a {
+        color: #000000;
+        display: block;
+        font-size: 16px;
+        font-family: 'Conv_ProximaNova-Bold';
+        text-transform: uppercase;
+    }
+
+    .Funding_box h6 {
+        font-family: 'Conv_ProximaNova-Light';
+        color: #000000 !important;
+        font-size: 16px;
+        text-transform: uppercase;
+        font-weight: 900;
+        margin-top: 2px;
+    }
+
+    .button_groups {
+        padding: 8px 0px;
+    }
+
+    .button_groups a.Badge_tag {
+        font-family: 'Conv_ProximaNova-Extrabold_0';
+        font-size: 23px;
+        text-transform: uppercase;
+        padding: 0px 12px;
+    }
+
+    .button_groups a.fund_Price {
+        font-family: 'Conv_ProximaNova-Semibold_0';
+        font-size: 14px;
+        font-weight: 900;
+    }
+
+    .funding_description h2 {
+        font-family: 'Conv_ProximaNova-Regular';
+        text-transform: uppercase;
+        color: #000000;
+        font-size: 18px;
+        font-weight: 900;
+    }
+
+    .Funding_box_footer span {
+        display: block;
+        float: left;
+        width: 50%;
+    }
+
+    .Fund_contact a {
+        font-family: 'Conv_ProximaNova-Semibold_0';
+        font-size: 14px;
+        background-color: #7d7d7d;
+        color: #ffffff;
+        border-radius: 8px;
+        text-transform: uppercase;
+        border: none;
+        padding: 6px 20px;
+        float: right;
+    }
+
+    .heading_one h1 {
+        text-transform: uppercase;
+        font-family: 'Conv_ProximaNova-Bold';
+        color: #292929;
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+
+}
+
+/*
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+*/
+
+@media (min-width: 481px) and (max-width: 767px) {
+    nav.shrink .navbar-toggle {
+        padding: 12px 14px;
+        margin: 36px 15px 8px 0;
+    }
+
+    .navbar-toggle {
+        background-color: #fb2380;
+        margin-top: 30px;
+    }
+
+    .navbar-toggle .icon-bar {
+        background-color: black;
+    }
+
+    .container {
+        width: 95%;
+    }
+
+    .bdc_navigation .container .navbar-header .navbar-brand {
+        width: 20%;
+    }
+
+    .bdc_slider_caption {
+        padding-bottom: 56px;
+    }
+
+    .bdc_slider_caption h1 {
+        text-transform: uppercase;
+        font-family: 'Conv_ProximaNova-Bold';
+        color: #252525 !important;
+        font-size: 20px;
+    }
+
+    .bdc_slider_caption h4 {
+        font-family: 'Conv_ProximaNova-Semibold_0';
+        color: #383838;
+        font-size: 14px;
+        margin-top: 4px;
+    }
+
+    .bdc_slider_caption a {
+        font-family: 'Conv_ProximaNova-Semibold_0';
+        background-color: #e70e7e;
+        color: #ffffff;
+        border: none;
+        font-size: 14px;
+        text-shadow: none;
+        text-transform: uppercase;
+        margin-top: 22px;
+        margin-right: 10px;
+        border: 1px solid transparent;
+        padding: 6px 20px;
+    }
+
+    .featured_heading {
+        margin-top: 20px;
+        float: left;
+    }
+
+    .featured_heading h1 {
+        text-transform: uppercase;
+        font-family: 'Conv_ProximaNova-Bold';
+        color: #292929;
+        font-size: 16px;
+    }
+
+    .Featured_slider_btn {
+        margin-top: 4px;
+        float: right;
+    }
+
+    .Funding_box h5 a {
+        color: #000000;
+        display: block;
+        font-size: 16px;
+        font-family: 'Conv_ProximaNova-Bold';
+        text-transform: uppercase;
+    }
+
+    .Funding_box h6 {
+        font-family: 'Conv_ProximaNova-Light';
+        color: #000000 !important;
+        font-size: 16px;
+        text-transform: uppercase;
+        font-weight: 900;
+        margin-top: 2px;
+    }
+
+    .button_groups {
+        padding: 8px 0px;
+    }
+
+    .button_groups a.Badge_tag {
+        font-family: 'Conv_ProximaNova-Extrabold_0';
+        font-size: 22px;
+        text-transform: uppercase;
+        padding: 0px 10px;
+    }
+
+    .button_groups a.fund_Price {
+        font-family: 'Conv_ProximaNova-Semibold_0';
+        font-size: 14px;
+        font-weight: 900;
+    }
+
+    .funding_description h2 {
+        font-family: 'Conv_ProximaNova-Regular';
+        text-transform: uppercase;
+        color: #000000;
+        font-size: 16px;
+        font-weight: 900;
+    }
+
+    .funding_description p {
+        color: #626262;
+        font-family: 'Conv_ProximaNova-Regular';
+        font-size: 14px;
+        line-height: 22px;
+        text-align: justify;
+        margin-top: 4px;
+    }
+
+    .Funding_box_footer span {
+        width: 50%;
+    }
+
+    .Fund_contact a {
+        font-size: 14px;
+        padding: 6px 22px;
+        float: right;
+    }
+}
+
+/*
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+
+@media (min-width: 320px) and (max-width: 480px) {
+    /*.bdc_navigation {*/
+    /*position: inherit !important;*/
+    /*margin-bottom: 0px;*/
+    /*}*/
+    nav.shrink .navbar-toggle {
+        padding: 8px 10px;
+        margin: 18px 15px 8px 0;
+    }
+
+    .navbar-toggle {
+        background-color: #fb2380;
+        margin-top: 10px;
+    }
+
+    .navbar-toggle .icon-bar {
+        background-color: white;
+    }
+
+    .container {
+        width: 95%;
+    }
+
+    .bdc_navigation .container .navbar-header .navbar-brand {
+        width: 20%;
+    }
+
+    .bdc_slider_caption {
+        padding-bottom: 10px;
+    }
+
+    .bdc_slider_caption h1 {
+        text-transform: uppercase;
+        font-family: 'Conv_ProximaNova-Bold';
+        color: #252525 !important;
+        font-size: 16px;
+    }
+
+    .bdc_slider_caption h4 {
+        font-family: 'Conv_ProximaNova-Semibold_0';
+        color: #383838;
+        font-size: 12px;
+        margin-top: 4px;
+    }
+
+    .bdc_slider_caption a {
+        font-family: 'Conv_ProximaNova-Semibold_0';
+        background-color: #e70e7e;
+        color: #ffffff;
+        border: none;
+        font-size: 14px;
+        text-shadow: none;
+        text-transform: uppercase;
+        margin-top: 10px;
+        margin-right: 10px;
+        border: 1px solid transparent;
+        padding: 3px 6px;
+    }
+
+    .featured_heading {
+        margin-top: 20px;
+        float: left;
+    }
+
+    .featured_heading h1 {
+        text-transform: uppercase;
+        font-family: 'Conv_ProximaNova-Bold';
+        color: #292929;
+        font-size: 16px;
+    }
+
+    .Featured_slider_btn {
+        margin-top: 4px;
+        float: right;
+    }
+
+    .Funding_box h5 a {
+        color: #000000;
+        display: block;
+        font-size: 16px;
+        font-family: 'Conv_ProximaNova-Bold';
+        text-transform: uppercase;
+    }
+
+    .Funding_box h6 {
+        font-family: 'Conv_ProximaNova-Light';
+        color: #000000 !important;
+        font-size: 16px;
+        text-transform: uppercase;
+        font-weight: 900;
+        margin-top: 2px;
+    }
+
+    .button_groups {
+        padding: 8px 0px;
+    }
+
+    .button_groups a.Badge_tag {
+        font-family: 'Conv_ProximaNova-Extrabold_0';
+        font-size: 22px;
+        text-transform: uppercase;
+        padding: 0px 10px;
+    }
+
+    .button_groups a.fund_Price {
+        font-family: 'Conv_ProximaNova-Semibold_0';
+        font-size: 14px;
+        font-weight: 900;
+    }
+
+    .funding_description h2 {
+        font-family: 'Conv_ProximaNova-Regular';
+        text-transform: uppercase;
+        color: #000000;
+        font-size: 16px;
+        font-weight: 900;
+    }
+
+    .funding_description p {
+        color: #626262;
+        font-family: 'Conv_ProximaNova-Regular';
+        font-size: 14px;
+        line-height: 22px;
+        text-align: justify;
+        margin-top: 4px;
+    }
+
+    .Funding_box_footer span {
+        width: 50%;
+    }
+
+    .Fund_contact a {
+        font-size: 14px;
+        padding: 6px 22px;
+        float: right;
+    }
+
+    .heading_one h1 {
+        text-transform: uppercase;
+        font-family: 'Conv_ProximaNova-Bold';
+        color: #292929;
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    .poular_main_area .container .row .col-xs-6 {
+        width: 100%;
+    }
+
+    #upper_footer {
+        padding: 30px 0px;
+    }
+
+    .bdc_project_confirm h1 {
+        font-family: 'Conv_ProximaNova-Bold';
+        color: #292929;
+        font-size: 20px;
+        text-transform: uppercase;
+    }
+
+    .bdc_project_confirm p {
+        font-family: 'Conv_ProximaNova-Semibold_0';
+        color: #292929;
+        font-size: 16px;
+        font-weight: 900;
+        margin-top: 10px;
+    }
+
+    .bdc_project_confirm a {
+        font-family: 'Conv_ProximaNova-Semibold_0';
+        font-size: 14px;
+        text-transform: uppercase;
+        color: #e70e7e;
+        border-color: #e70e7e;
+        background-color: inherit;
+        margin-top: 10px;
+    }
+
+    #footer_area {
+        padding: 15px 0px;
+    }
+
+    .footer_logo {
+        width: 50%;
+        margin: 0px auto;
+    }
+
+    .footer_navigation ul {
+        display: inherit;
+        margin-top: 10px;
+    }
+
+    .footer_navigation ul li {
+        width: 100%;
+        float: none;
+    }
+
+    .footer_navigation ul li::after {
+        content: "";
+    }
+
+    .footer_navigation ul li a {
+        font-family: 'Conv_ProximaNova-Semibold_0';
+        color: #484747;
+        font-size: 16px;
+        text-transform: uppercase;
+        padding: 10px 6px;
+    }
+
+    .main_box_copy div {
+        float: none;
+        margin: 10px auto;
+        text-align: center;
+    }
+
+    /*=== Signup Form ===*/
+    .signup_form_box form div a {
+        width: 100%;
+        margin-bottom: 10px;
+        text-align: center;
+        padding: 10px 10px!important;
+    }
+
+}

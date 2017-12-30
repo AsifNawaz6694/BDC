@@ -1,77 +1,73 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
+    @include('partials/no-slider')
 
-                <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('register') }}">
-                        {{ csrf_field() }}
 
-                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Name</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
-
-                                @if ($errors->has('name'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
+    <div class="container-fluid">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 clearfix col-center signup_form">
+                    <div class="signup_form_text">
+                        <p>Sign up for your account</p>
+                    </div>
+                    <div class="signup_form_box">
+                        <form id="Sign_up_form" method="post" action="{{ route('register') }}">
+                            <div class="form-group">
+                                <label>Full Name *</label>
+                                <input type="text" class="form-control validate[required]"
+                                       data-errormessage-value-missing="Name of entity is required!" id="">
                             </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
+                            <div class="form-group">
+                                <label>Email Address *</label>
+                                <input type="email" class="form-control validate[required]"
+                                       data-errormessage-value-missing="Email of entity is required!">
                             </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
+                            <div class="form-group">
+                                <label>Phone *</label>
+                                <input type="text" class="form-control validate[required]"
+                                       data-errormessage-value-missing="Phone of entity is required!">
                             </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                            <div class="form-group">
+                                <label>DOB *</label>
+                                <input type="date" class="form-control validate[required]"
+                                       data-errormessage-value-missing="Date Of Birth of entity is required!">
                             </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Register
-                                </button>
+                            <div class="form-group">
+                                <label>I am a *</label>
+                                <select class="form-control validate[required]"
+                                        data-errormessage-value-missing="I am a of entity is required!">
+                                    <option>Select</option>
+                                    <option>Innovator</option>
+                                    <option>Funder</option>
+                                </select>
                             </div>
-                        </div>
-                    </form>
+                            <div class="form-group">
+                                <label>Password</label>
+                                <input type="password" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Confirm Password</label>
+                                <input type="password" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox"> I agree to the <a href="{{ route('publicPages', ['slug' => 'terms-and-conditions']) }}">Terms and Conditions</a> of the website
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <a href="login" class="btn btn-default all_r_login">Already Account / Login</a>
+                                <a href="#" class="btn btn-default sinup_btn">Sign up</a>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+
+
+
 @endsection

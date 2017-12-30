@@ -65,7 +65,7 @@
 										 {{$value->color_code}}
 									</td>	
 									<td>
-										<a href="{{ route('category.edit',[ 'category' => $value->id ]) }} " class="btn btn-sm btn-primary" >Edit</a>
+										<a href="{{ route('category.edit',[ 'category' => $value->id ]) }} " class="btn btn-sm btn-primary" >Edit</a>										
 										<form action="{{ route('category.destroy', ['category' => $value->id]) }}" method="POST" onsubmit="return confirm('Do you really want to delete?');">
 											{{ method_field('DELETE') }}
 											{{ csrf_field() }}
