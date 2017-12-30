@@ -28,7 +28,7 @@
 
 
 
-Route::get('/', function () {    return view('welcome'); })->name('/');
+/*Route::get('/', function () {    return view('welcome'); })->name('/');*/
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -47,4 +47,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 	// });
 
 	// Route::get('/irfan', 'HomeController@logi1n');
+Route::get('/', function(){
+    return view('home');
+});
 
+Route::get('/{slug}', 'HomeController@publicPages')->name('publicPages');
+//Route::get('/password/reset', 'HomeController@passwordReset')->name('passwordReset');
