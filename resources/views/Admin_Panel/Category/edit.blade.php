@@ -23,12 +23,11 @@
 								<div class="portlet box green">
 									<div class="portlet-title">
 										<div class="caption">
-											<i class="fa fa-gift"></i>Create User
+											<i class="fa fa-gift"></i>Edit Category
 										</div>									
 									</div>
 									<div class="portlet-body form">
-										
-										{!!Form::open(array( 'url'=>'admin/users' , 'files' => true ))!!}
+					{!!Form::open(array('url' => url('admin/category/'.$category->id),'method' => 'put', 'files' => true )) !!}
 											<div class="form-body">
 												<h3 class="form-section">Person Info</h3>
 												<div class="row">
@@ -36,68 +35,57 @@
 														<div class="form-group">
 															<label class="control-label col-md-3">Name</label>
 															<div class="col-md-9">
-																{!! Form::text('name', null, [ 'class' => 'form-control'] ) !!}
+																{!! Form::text('name', $category->name, [ 'class' => 'form-control'] ) !!}
 																<span class="help-block">
 																	{{ $errors->first('name') }}
 																 </span>
 															</div>
 														</div>
-													</div>
-													
+													</div>													
 													<div class="col-md-6">
 														<div class="form-group">
-															<label class="control-label col-md-3">Email</label>
+															<label class="control-label col-md-3">Decsription</label>
 															<div class="col-md-9">
-																{!! Form::text('email', null, [ 'class' => 'form-control'] ) !!}
+																{!! Form::text('description', $category->description, [ 'class' => 'form-control'] ) !!}
 																<span class="help-block">
-																	{{ $errors->first('email') }}
+																	{{ $errors->first('description') }}
 																 </span>
 															</div>
 														</div>
-													</div>
-													
-												</div>
-												
+													</div>													
+												</div>												
 												<div class="row">
 													<div class="col-md-6">
 														<div class="form-group">
-															<label class="control-label col-md-3">Roles</label>
+															<label class="control-label col-md-3">Symbol</label>
 															<div class="col-md-9">
-																<select class="form-control" name="roles">
-																	
-																	<option value="1">Admin</option>
-																	<option value="2">Funder</option>
-																	<option value="3">Innovator</option>
-																</select>
+																{!! Form::text('symbol', $category->symbol, [ 'class' => 'form-control'] ) !!}
 																<span class="help-block">
-																	{{ $errors->first('roles') }}
+																	{{ $errors->first('symbol') }}
 																 </span>
 															</div>
 														</div>
-													</div>
-												
-									<div class="col-md-6">
-										<div class="form-group">
-											<label class="control-label col-md-3">Password</label>
-											<div class="col-md-9">
-												{!! Form::text('password', null, [ 'class' => 'form-control'] ) !!}
-												<span class="help-block">
-													{{ $errors->first('password') }}
-												 </span>
-											</div>
-										</div>
-									</div>
-													
-												</div>
-												
-											</div>
+													</div>												
+													<div class="col-md-6">
+														<div class="form-group">
+															<label class="control-label col-md-3">Color Code</label>
+															<div class="col-md-9">
+																{!! Form::text('color_code', $category->color_code, [ 'class' => 'form-control'] ) !!}
+																<span class="help-block">
+																	{{ $errors->first('color_code') }}
+																 </span>
+															</div>
+														</div>
+													</div>													
+												</div>												
+											</div>											
 											<div class="form-actions">
 												<div class="row">
 													<div class="col-md-6">
 														<div class="row">
 															<div class="col-md-offset-3 col-md-9">
 																<button type="submit" class="btn green">Submit</button>
-																<a href="{{URL::route('admin/users')}}" type="button" class="btn default">Cancel</a>
+																<a href="{{URL::route('admin/category')}}" type="button" class="btn default">Cancel</a>
 															</div>
 														</div>
 													</div>
@@ -105,19 +93,14 @@
 													</div>
 												</div>
 											</div>
-										{!! Form::close() !!}
-										
+										{!! Form::close() !!}										
 									</div>
-								</div>
-							
+								</div>							
 							</div>							
-							
-						
 						</div>
 					</div>
 				</div>
 			</div>
-			
 		</div>
 	</div>	
 </div>

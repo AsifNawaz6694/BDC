@@ -1,27 +1,27 @@
 <?php
-namespace App\Http\Controllers\Admin;
+
+namespace App\Http\Controllers;
+
+use App\Profile;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-class AdminPagesController extends Controller
+
+class ProfileController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
-    */
-    public function Backend()
-    {
-      return view('Admin_Panel/admin');
-    }
+     */
     public function index()
     {
+        //
     }
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
-    */
+     */
     public function create()
     {
         //
@@ -32,7 +32,7 @@ class AdminPagesController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
-    */
+     */
     public function store(Request $request)
     {
         //
@@ -41,10 +41,10 @@ class AdminPagesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Profile  $profile
      * @return \Illuminate\Http\Response
-    */
-    public function show($id)
+     */
+    public function show(Profile $profile)
     {
         //
     }
@@ -52,10 +52,10 @@ class AdminPagesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Profile  $profile
      * @return \Illuminate\Http\Response
-    */
-    public function edit($id)
+     */
+    public function edit(Profile $profile)
     {
         //
     }
@@ -64,10 +64,10 @@ class AdminPagesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Profile  $profile
      * @return \Illuminate\Http\Response
-    */
-    public function update(Request $request, $id)
+     */
+    public function update(Request $request, Profile $profile)
     {
         //
     }
@@ -75,10 +75,10 @@ class AdminPagesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Profile  $profile
      * @return \Illuminate\Http\Response
-    */
-    public function destroy($id)
+     */
+    public function destroy(Profile $profile)
     {
         //
     }

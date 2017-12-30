@@ -32,7 +32,7 @@
                     </form>
                     <!-- END RESPONSIVE QUICK SEARCH FORM -->
                 </li>
-                <li class="start active open">
+               <!--  <li class="start active open">
                     <a href="javascript:;">
                     <i class="icon-home"></i>
                     <span class="title">Dashboard</span>
@@ -56,21 +56,21 @@
                             New Dashboard #2</a>
                         </li>
                     </ul>                    
+                </li> -->
+                <li class="start active open">                   
+                    <li>
+                        <a href="{{url('admin/category')}}">
+                        <i class="fa    fa-list"></i>
+                        <span class="title">Categories</span></a>
+                    </li>                                      
                 </li>
                 <li class="start active open">                   
                     <li>                    
                         <a href="{{url('admin/users')}}">
-                        <i class="icon-graph"></i>
+                        <i class="fa fa-user"></i>
                         <span class="title">Users</span></a>
                     </li>                                      
-                </li>
-                <li class="start active open">                   
-                    <li>
-                        <a href="">
-                        <i class="icon-graph"></i>
-                        <span class="title">Categories</span></a>
-                    </li>                                      
-                </li>
+                </li>                
             </ul>
             <!-- END SIDEBAR MENU -->
         </div>

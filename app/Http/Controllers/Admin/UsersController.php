@@ -8,7 +8,9 @@ use Illuminate\Support\Facades\Validator;
 use Session;
 use Auth;
 use App\User;
+use App\Profile;
 use App\Roles;
+use DB;
 class UsersController extends Controller
 {
     /**
@@ -36,11 +38,8 @@ class UsersController extends Controller
      */
     public function create()
     {
-        $args = array();
-        $args['users'] = User::all();  
-        return view('Admin_Panel.Users.create')->with($args);
+        return view('Admin_Panel.Users.create');
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -48,7 +47,7 @@ class UsersController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {    
+    {
         $this->validate($request, [            
             'name' => 'required|max:20',
             'email' => 'required',        
@@ -59,9 +58,20 @@ class UsersController extends Controller
         $u->name = Input::get('name');                
         $u->email = Input::get('email');        
         $u->roles = Input::get('roles');        
-        $u->password = bcrypt(Input::get('password'));
-        $u->save();      
-        Session::flash('success','The User Was Successfully Added!');
+        $u->password = bcrypt(Input::get('password'));        
+        $u->save();
+
+        $user_email = $u->email;    
+        $userid = $u->id;       
+        $p = new Profile;
+        DB::table('profile')->insert(
+                [
+                    'userid' => $userid,
+                    'username' => $user_email
+            ]);
+
+
+        Session::flash('success_msg','The User Was Successfully Added!');
         return redirect('admin/users');
     }
 
@@ -102,23 +112,23 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-       $this->validate($request, [            
+        $this->validate($request, [            
             'name' => 'required|max:20',
-            'email' => 'required',        
-            'password' => 'required',
+            'email' => 'required',            
             'roles' => 'required|numeric'
         ]);
-       $u = User::find($id);
-       if ($u!=null)
-       {
+        $u = User::find($id);
+        if ($u!=null)
+        {
         $u->name = Input::get('name');
         $u->roles = Input::get('roles');
         $u->email = Input::get('email');        
-        $u->password = Input::get('password');        
+        if(!empty(Input::get('password'))) {
+            $u->password = bcrypt(Input::get('password'));           
+        }        
         $u->save();
         return redirect('admin/users');
-    }
-        
+        }        
     }
 
     /**
@@ -129,8 +139,9 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {        
+
         $user_delete = User::destroy($id);
-        /*$user_delete->destroy();*/
+        $user_profile_delete = Profile::where('profile.userid','=',$id)->delete();      
         Session::flash('success_msg','The User Was successfully Deleted');
         return back();
     }

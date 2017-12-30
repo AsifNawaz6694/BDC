@@ -3,7 +3,7 @@
     <div class="page-header-inner">
         <!-- BEGIN LOGO -->
         <div class="page-logo">
-            <a href="index.html">
+            <a href="{{URL::route('adminBackend')}}">
             <img src="../../assets/admin/layout/img/2017-12-20.png" alt="logo" class="logo-default"/>
             </a>
             <div class="menu-toggler sidebar-toggler hide">

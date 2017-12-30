@@ -86,7 +86,7 @@
 														<div class="row">
 															<div class="col-md-offset-3 col-md-9">
 																<button type="submit" class="btn green">Submit</button>
-																<a href="" type="button" class="btn default">Cancel</a>
+																<a href="{{URL::route('admin/users')}}" type="button" class="btn default">Cancel</a>
 															</div>
 														</div>
 													</div>
@@ -105,13 +105,4 @@
 		</div>
 	</div>	
 </div>
-<script>
-jQuery(document).ready(function(){
-Metronic.init();
-Layout.init();
-QuickSidebar.init();
-Demo.init();
-   FormSamples.init();
-});
-</script>
 @endsection

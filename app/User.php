@@ -29,7 +29,7 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-     public $rules = array(
+    public $rules = array(
         'name' => 'required',
         'email' => 'required',
         'password' => 'required',
