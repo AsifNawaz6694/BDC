@@ -34,7 +34,7 @@
 
                     <div class="form-group" role="group" aria-label="...">
                         <a href="{{ route('login') }}" class="btn btn-default_signup">NO ACCOUNT? SIGN UP NOW</a>
-                        <!--<a  href="#" class="btn btn-default_login">LOGIN NOW</a>-->
+
                         <button type="submit" class="btn login_now">LOGIN NOW</button>
                         {{ csrf_field() }}
                     </div>

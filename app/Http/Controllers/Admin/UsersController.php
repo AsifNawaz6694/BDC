@@ -100,7 +100,9 @@ class UsersController extends Controller
         if($user){
             $args['user']=$user;
             return View('Admin_Panel.Users.edit')->with($args);
-        } 
+        }
+        Session::flash('error_msg','Sorry no user found');
+        return redirect()->back();
     }
 
     /**

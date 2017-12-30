@@ -12,7 +12,7 @@
                         <p>Sign up for your account</p>
                     </div>
                     <div class="signup_form_box">
-                        <form id="Sign_up_form">
+                        <form id="Sign_up_form" method="post" action="{{ route('register') }}">
                             <div class="form-group">
                                 <label>Full Name *</label>
                                 <input type="text" class="form-control validate[required]"

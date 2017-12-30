@@ -28,7 +28,7 @@ Route::group(['prefix'=>'admin','middleware' => 'is-admin']	,function(){
 
 
 // Public Pages
-Route::get('/', function () {  return view('home'); })->name('/');
+Route::get('/', 'HomeController@index')->name('/');
 Route::get('/{slug}', 'HomeController@publicPages')->name('publicPages');
 
 // Auth Routes
