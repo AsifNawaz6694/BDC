@@ -27,7 +27,8 @@
 										</div>									
 									</div>
 									<div class="portlet-body form">
-					{!!Form::open(array('url' => url('admin/users/'.$user->id),'method' => 'put', 'files' => true )) !!}
+					
+					{!! Form::open(['route' => ['users.update', $user->id], 'method' => 'PUT']) !!}
 											<div class="form-body">
 												<h3 class="form-section">Person Info</h3>
 												<div class="row">
@@ -86,7 +87,7 @@
 														<div class="row">
 															<div class="col-md-offset-3 col-md-9">
 																<button type="submit" class="btn green">Submit</button>
-																<a href="{{URL::route('admin/users')}}" type="button" class="btn default">Cancel</a>
+																<a href="{{url('admin/users')}}" type="button" class="btn default">Cancel</a>
 															</div>
 														</div>
 													</div>

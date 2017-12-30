@@ -69,8 +69,6 @@ class UsersController extends Controller
                     'userid' => $userid,
                     'username' => $user_email
             ]);
-
-
         Session::flash('success_msg','The User Was Successfully Added!');
         return redirect('admin/users');
     }
@@ -94,6 +92,7 @@ class UsersController extends Controller
      */
     public function edit($id)
     {   
+
         $args=array();
         $user = User::find($id);      
         $args['roles'] = Roles::all()->pluck('role_name', 'id');  
@@ -112,6 +111,7 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         $this->validate($request, [            
             'name' => 'required|max:20',
             'email' => 'required',            
@@ -139,7 +139,7 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {        
-
+        // dd($id);
         $user_delete = User::destroy($id);
         $user_profile_delete = Profile::where('profile.userid','=',$id)->delete();      
         Session::flash('success_msg','The User Was successfully Deleted');

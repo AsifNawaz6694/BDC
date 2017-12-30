@@ -17,14 +17,14 @@
 
 // <-------------------------------User's Controller Routes Started--------------------------------------------->
 	Route::resource('/users','Admin\UsersController');	
-	Route::get('users/delete/{id}', ['as' => 'delete-user', 'uses' => 'Admin\UsersController@destroy']);	
-	Route::get('users/edit/{id}', ['as' => 'edit-user', 'uses' => 'Admin\UsersController@edit']);
+	// Route::get('users/delete/{id}', ['as' => 'delete-user', 'uses' => 'Admin\UsersController@destroy']);	
+	// Route::get('users/edit/{id}', ['as' => 'edit-user', 'uses' => 'Admin\UsersController@edit']);
 // <-----------------------------------User's Controller Routes Ended-------------------------------------------->
 
 // <------------------------------Category's Controller Routes Started------------------------------------------->
 	Route::resource('/category','Admin\CategoryController');
-	Route::get('category/delete/{id}', ['as' => 'delete-category', 'uses' => 'Admin\CategoryController@destroy']);
-	Route::get('category/edit/{id}', ['as' => 'edit-category', 'uses' => 'Admin\CategoryController@edit']);
+	// Route::get('category/delete/{id}', ['as' => 'delete-category', 'uses' => 'Admin\CategoryController@destroy']);
+	// Route::get('category/edit/{id}', ['as' => 'edit-category', 'uses' => 'Admin\CategoryController@edit']);
 // <------------------------------Category's Controller Routes Ended--------------------------------------------->
 
 	});
