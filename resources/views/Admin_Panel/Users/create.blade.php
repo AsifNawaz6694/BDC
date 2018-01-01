@@ -26,9 +26,8 @@
 											<i class="fa fa-gift"></i>Create User
 										</div>									
 									</div>
-									<div class="portlet-body form">
-										
-										{!!Form::open(array( 'url'=>'admin/users' , 'files' => true ))!!}
+									<div class="portlet-body form">										
+										{!!Form::open(['route' => ['users.store'], 'method' => 'post']) !!}
 											<div class="form-body">
 												<h3 class="form-section">Person Info</h3>
 												<div class="row">
@@ -42,8 +41,7 @@
 																 </span>
 															</div>
 														</div>
-													</div>
-													
+													</div>													
 													<div class="col-md-6">
 														<div class="form-group">
 															<label class="control-label col-md-3">Email</label>
@@ -64,7 +62,6 @@
 															<label class="control-label col-md-3">Roles</label>
 															<div class="col-md-9">
 																<select class="form-control" name="roles">
-																	
 																	<option value="1">Admin</option>
 																	<option value="2">Funder</option>
 																	<option value="3">Innovator</option>
@@ -75,7 +72,6 @@
 															</div>
 														</div>
 													</div>
-												
 									<div class="col-md-6">
 										<div class="form-group">
 											<label class="control-label col-md-3">Password</label>
@@ -97,7 +93,7 @@
 														<div class="row">
 															<div class="col-md-offset-3 col-md-9">
 																<button type="submit" class="btn green">Submit</button>
-																<a href="{{URL::route('admin/users')}}" type="button" class="btn default">Cancel</a>
+																<a href="{{url('admin/users')}}" type="button" class="btn default">Cancel</a>
 															</div>
 														</div>
 													</div>
