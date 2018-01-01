@@ -16,7 +16,7 @@ Route::group(['prefix'=>'admin','middleware' => 'is-admin']	,function(){
 	Route::get('/admin', 'Admin\AdminPagesController@Backend')->name('adminBackend');
 
 	// Users Cotroller full resource
-	Route::resource('/users','Admin\UsersController.');	
+	Route::resource('/users','Admin\UsersController');
 
 	// Category Controller Full resource 
 	Route::resource('/category','Admin\CategoryController');
