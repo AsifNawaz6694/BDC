@@ -42,23 +42,23 @@
                             </div>
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox"> <img src="../assets/images/r_img.png"
+                                    <input type="checkbox"> <img src="{{ asset('panel_assets/images/r_img.png') }}"
                                                                  class="img-responsive sheld_img"/>
                                 </label>
                                 <label>
-                                    <input type="checkbox"> <img src="../assets/images/image-e.png"
+                                    <input type="checkbox"> <img src="{{ asset('panel_assets/images/image-e.png') }}"
                                                                  class="img-responsive sheld_img"/>
                                 </label>
                                 <label>
-                                    <input type="checkbox"> <img src="../assets/images/image-a.png"
+                                    <input type="checkbox"> <img src="{{ asset('panel_assets/images/image-a.png') }}"
                                                                  class="img-responsive sheld_img"/>
                                 </label>
                                 <label>
-                                    <input type="checkbox"> <img src="../assets/images/image-d.png"
+                                    <input type="checkbox"> <img src="{{ asset('panel_assets/images/image-d.png') }}"
                                                                  class="img-responsive sheld_img"/>
                                 </label>
                                 <label>
-                                    <input type="checkbox"> <img src="../assets/images/image-y.png"
+                                    <input type="checkbox"> <img src="{{ asset('panel_assets/images/image-y.png') }}"
                                                                  class="img-responsive sheld_img"/>
                                 </label>
                                 <label class="form_error">
@@ -78,7 +78,7 @@
                                     </span>
                                     <input id="fileEdit" class="hidden" type="file" name="addImg"
                                            ng-file-change="onImageChange( $files )" ng-multiple="false"
-                                           accept="{{ contentType }}"/>
+                                           />
                                 </label>
                             </div>
                             <div class="form-group">

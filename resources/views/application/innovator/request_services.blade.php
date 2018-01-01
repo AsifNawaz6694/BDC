@@ -28,7 +28,7 @@
                                 </td>
                                 <td>
                                     <a href="#">
-                                        <img src="../assets/images/paypal_btn.png" class="img-responsive center-block"/>
+                                        <img src="{{ asset('panel_assets/images/paypal_btn.png') }}" class="img-responsive center-block"/>
                                     </a>
                                 </td>
                             </tr>
@@ -43,7 +43,7 @@
                                <span class="price_dolar">$39</span></td>
                          <td>
                                     <a href="#">
-                                        <img src="../assets/images/paypal_btn.png" class="img-responsive center-block"/>
+                                        <img src="{{ asset('panel_assets/images/paypal_btn.png') }}" class="img-responsive center-block"/>
                                     </a>
                                 </td>
                 
@@ -57,7 +57,7 @@
                 
                  <td>
                                     <a href="#">
-                                        <img src="../assets/images/paypal_btn.png" class="img-responsive center-block"/>
+                                        <img src="{{ asset('panel_assets/images/paypal_btn.png') }}" class="img-responsive center-block"/>
                                     </a>
                                 </td>
             </tr>
@@ -69,7 +69,7 @@
                 <td><span class="price_dolar">$69</span></td>
                  <td>
                                     <a href="#">
-                                        <img src="../assets/images/paypal_btn.png" class="img-responsive center-block"/>
+                                        <img src="{{ asset('panel_assets/images/paypal_btn.png') }}" class="img-responsive center-block"/>
                                     </a>
                                 </td>
                 
@@ -81,7 +81,7 @@
                     <td><span class="price_dolar">$29</span></td>
                     <td>
                                     <a href="#">
-                                        <img src="../assets/images/paypal_btn.png" class="img-responsive center-block"/>
+                                        <img src="{{ asset('panel_assets/images/paypal_btn.png') }}" class="img-responsive center-block"/>
                                     </a>
                                 </td>
                                       
@@ -93,7 +93,7 @@
                     <td><span class="price_dolar">$49</span></td>
                       <td>
                                     <a href="#">
-                                        <img src="../assets/images/paypal_btn.png" class="img-responsive center-block"/>
+                                        <img src="{{ asset('panel_assets/images/paypal_btn.png') }}" class="img-responsive center-block"/>
                                     </a>
                                 </td>
                                       

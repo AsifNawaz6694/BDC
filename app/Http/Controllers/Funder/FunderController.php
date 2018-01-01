@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class FunderController extends Controller
 {
+
+    public function __construct()
+    {
+        $data = array();
+    }
+
 	//Funder Panel Index Page
     public function index(){
     	return view('application.funder.index');

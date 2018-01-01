@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class InnovatorController extends Controller
 {   
+
+    public function __construct()
+    {
+        $data = array();
+    }
+
     //Innovator Index page
     public function index(){
     	return view('application.innovator.index');

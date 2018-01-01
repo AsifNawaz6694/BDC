@@ -82,7 +82,6 @@ Route::group(['prefix'=>'innovator'], function(){
 Route::get('/', 'HomeController@index')->name('/');
 Route::get('/{slug}', 'HomeController@publicPages')->name('publicPages');
 
-
 // Auth Routes
 Auth::routes();
 

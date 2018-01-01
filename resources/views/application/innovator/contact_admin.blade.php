@@ -28,7 +28,7 @@
                                     </span>
                                     <input id="fileEdit" class="hidden" type="file" name="addImg"
                                            ng-file-change="onImageChange( $files )" ng-multiple="false"
-                                           accept="{{ contentType }}"/>
+                                           />
                                 </label>
                             </div>
                             <div class="form-group">
