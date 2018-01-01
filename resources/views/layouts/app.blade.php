@@ -34,6 +34,8 @@
     <![endif]-->
 </head>
 <body>
+<!-- Public Frontend Generic Layout -->
+
 <nav class="navbar  navbar-fixed-top bdc_navigation">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -64,17 +66,7 @@
 </nav>
 
 
-
 @yield('content')
-
-
-
-
-
-
-
-
-
 
 
 {{--footer--}}

@@ -2,6 +2,7 @@
 namespace App\Http\Controllers\Funder;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+
 class FunderPagesController extends Controller
 {
     /**
@@ -13,6 +14,7 @@ class FunderPagesController extends Controller
     {
       return view('/funder');
     }
+    
     public function index()
     {
     }
