@@ -47,8 +47,12 @@
 										 {{$value->role_name}}
 									</td>	
 									<td>
-										<a href="{{ route('edit-user',[ 'id' => $value->id ]) }}" class="btn btn-sm btn-primary" >Edit</a>
-										<a href="{{ route('delete-user',[ 'id' => $value->id ]) }}" class="btn btn-sm btn-danger" >Delete</a>
+										<a href="{{ route('users.edit',[ 'user' => $value->id ]) }}" class="btn btn-sm btn-primary" >Edit</a>
+										<form action="{{ route('users.destroy', ['user' => $value->id]) }}" method="POST" onsubmit="return confirm('Do you really want to delete?');">
+											{{ method_field('DELETE') }}
+											{{ csrf_field() }}
+											<button type="submit" class="btn btn-sm btn-danger">Delte</button>
+										</form>										
 									</td>								
 								</tr>
 							@endforeach						

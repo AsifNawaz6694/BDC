@@ -26,8 +26,8 @@
 											<i class="fa fa-gift"></i>Create Category
 										</div>									
 									</div>
-									<div class="portlet-body form">										
-										{!!Form::open(array( 'url'=>'admin/category' , 'files' => true ))!!}
+									<div class="portlet-body form">
+										{!!Form::open(['route' => ['category.store'], 'method' => 'post']) !!}
 											<div class="form-body">
 												<h3 class="form-section">Category Info</h3>
 												<div class="row">
@@ -86,7 +86,7 @@
 														<div class="row">
 															<div class="col-md-offset-3 col-md-9">
 																<button type="submit" class="btn green">Submit</button>
-																<a href="{{URL::route('admin/category')}}" type="button" class="btn default">Cancel</a>
+																<a href="{{url('admin/category')}}" type="button" class="btn default">Cancel</a>
 															</div>
 														</div>
 													</div>
