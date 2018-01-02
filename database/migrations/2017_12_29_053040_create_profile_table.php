@@ -20,8 +20,8 @@ class CreateProfileTable extends Migration
 
         Schema::create('profile', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('userid');
-            $table->string('username');            
+            $table->integer('user_id');
+            $table->string('user_name');            
             $table->string('phone')->nullable();            
             $table->string('image')->default('default.jpg');             
             $table->timestamps();

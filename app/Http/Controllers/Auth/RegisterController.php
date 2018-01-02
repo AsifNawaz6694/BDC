@@ -71,17 +71,16 @@ class RegisterController extends Controller
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'roles' => $data['user_role'],
             'password' => bcrypt($data['password']),
         ]);
 
-        $user_email = $data['email'];
-        $userid = User::select('users.id')->where('users.email','=',$data['email'])->first();        
-        $p = new Profile;
-        DB::table('profile')->insert(
-                [
-                    'userid' => $userid['id'],
-                    'username' => $user_email
-            ]);
+
+        $profile = Profile::create([
+            'user_id' => $user->id,
+            'user_name' => $user->email,
+        ]);       
+        
         return $user;
     }
 

@@ -58,5 +58,6 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'is-admin' => \App\Http\Middleware\IsAdminMiddleware::class,
         'is-funder' => \App\Http\Middleware\IsFunderMiddleware::class,
+        'is-innovator' => \App\Http\Middleware\IsInnovatorMiddleware::class,
     ];
 }

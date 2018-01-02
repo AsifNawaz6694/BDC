@@ -26,7 +26,7 @@ Route::group(['prefix'=>'admin','middleware' => 'is-admin']	,function(){
 
 
 /* Funder Routes */
-Route::group(['prefix'=>'funder'], function(){
+Route::group(['prefix'=>'funder', 'middleware' => 'is-funder'], function(){
 
 	//Funder Home page
 	Route::get('/', 'Funder\FunderController@index')->name('funder_home');
@@ -50,7 +50,7 @@ Route::group(['prefix'=>'funder'], function(){
 
 /* Innovator Routes */
 
-Route::group(['prefix'=>'innovator'], function(){
+Route::group(['prefix'=>'innovator', 'middleware' => 'is-innovator'], function(){
 
 	//Innovator home page
 	Route::get('/', 'Innovator\InnovatorController@index')->name('innovator_home');
@@ -68,7 +68,7 @@ Route::group(['prefix'=>'innovator'], function(){
 	Route::get('/submit_listing', 'Innovator\InnovatorController@submit_listing_page')->name('submit_listing_page');
 	
 	//Innovator Contact Admin page
-	Route::get('/contactadmin', 'Innovator\InnovatorController@contact_admin_page')->name('contact_admin_page');
+	Route::get('/contact_admin', 'Innovator\InnovatorController@contact_admin_page')->name('contact_admin_page');
 
 	//Innovator request services page
 	Route::get('/request_services', 'Innovator\InnovatorController@request_services_page')->name('request_services_page');

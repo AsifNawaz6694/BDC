@@ -251,7 +251,7 @@ footer, header, hgroup, menu, nav, section {
     border-left: 12px transparent solid;
 }
 
-.dashboard_navigation ul li a:hover {
+.dashboard_navigation ul li a:hover, .dashboard_navigation ul li.active a {
     color: #292929;
     border-left: 12px solid #e70e7e;
     background-color: #e7e7e7 !important;
