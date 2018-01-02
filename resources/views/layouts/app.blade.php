@@ -34,6 +34,8 @@
     <![endif]-->
 </head>
 <body>
+<!-- Public Frontend Generic Layout -->
+
 <nav class="navbar  navbar-fixed-top bdc_navigation">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -57,24 +59,35 @@
                 <li><a href="{{ route('publicPages', ['slug' => 'how-it-works']) }}">How It Works</a></li>
                 <li><a href="{{ route('publicPages', ['slug' => 'get-ready']) }}">Get Ready</a></li>
                 <li><a href="{{ route('publicPages', ['slug' => 'contact']) }}">Contact</a></li>
-                <li><a href="{{ route('register') }}">signup</a></li>
+
+                @if(Auth::check())
+
+                    @if(Auth::user()->roles==1)
+                        <!-- Admin -->
+                        <li><a href="{{ route('adminBackend') }}">{{Auth::user()->name}}</a></li>
+                    @elseif(Auth::user()->roles==2)
+                        <!-- Funder -->
+                        <li><a href="{{ route('funder_home') }}">{{Auth::user()->name}}</a></li>                    
+                    @elseif(Auth::user()->roles==3)
+                        <!-- Innovator -->
+                        <li><a href="{{ route('innovator_home') }}">{{Auth::user()->name}}</a></li>
+                    @endif
+                    
+                      <form action="{{route('logout')}}" method="post">
+                        <!--<li><a href="{{ route('register') }}">Logout</a></li> -->
+                        <input type="hidden" name="_token" value="{{Session::token()}}">
+                        <input type="submit" name="logout" value="Logout">
+                     </form>
+                @else
+                    <li><a href="{{ route('register') }}">signup</a></li>
+                @endif
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
 
 
-
 @yield('content')
-
-
-
-
-
-
-
-
-
 
 
 {{--footer--}}

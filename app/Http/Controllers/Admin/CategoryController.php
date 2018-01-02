@@ -82,7 +82,11 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {   
+   
+
+    {
+        
+
         $args=array();
         $category = Category::find($id);
         if($category){
