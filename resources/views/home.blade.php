@@ -1,9 +1,6 @@
 @extends('layouts.app')
-
 @section('content')
-
     @include('partials/slider')
-
     <div class="container-fluid featured_slider_main">
         <div class="container">
             <div class="row">

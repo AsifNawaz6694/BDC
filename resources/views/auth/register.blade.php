@@ -2,8 +2,6 @@
 
 @section('content')
     @include('partials/no-slider')
-
-
     <div class="container-fluid">
         <div class="container">
             <div class="row">
@@ -12,6 +10,7 @@
                         <p>Sign up for your account</p>
                     </div>
                     <div class="signup_form_box">
+
                         <form id="Sign_up_form" method="post" action="{{ route('register') }}">
                             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                 <label>Full Name *</label>
@@ -93,6 +92,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
+
                                 {{ csrf_field() }}
                                 <a href="login" class="btn btn-default all_r_login">Already Account / Login</a>
                                 <button type="sbumit" class="btn login_now">Submit</button>

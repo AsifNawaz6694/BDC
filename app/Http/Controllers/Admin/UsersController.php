@@ -3,13 +3,14 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Validation\ValidatesRequests;
+use App\Events\UserProfile;
 use Illuminate\Support\Facades\Validator;
-use Session;
-use Auth;
+use Illuminate\Foundation\Validation\ValidatesRequests;
 use App\User;
 use App\Profile;
 use App\Roles;
+use Session;
+use Auth;
 use DB;
 class UsersController extends Controller
 {
@@ -54,21 +55,15 @@ class UsersController extends Controller
             'password' => 'required',
             'roles' => 'required|numeric'
         ]);
-        $u = new User;
-        $u->name = Input::get('name');                
-        $u->email = Input::get('email');        
-        $u->roles = Input::get('roles');        
-        $u->password = bcrypt(Input::get('password'));        
-        $u->save();
+        $user = new User;
+        $user->name = Input::get('name');                
+        $user->email = Input::get('email');        
+        $user->roles = Input::get('roles');        
+        $user->password = bcrypt(Input::get('password'));        
+        $user->save();
 
-        $user_email = $u->email;    
-        $userid = $u->id;       
-        $p = new Profile;
-        DB::table('profile')->insert(
-                [
-                    'userid' => $userid,
-                    'username' => $user_email
-            ]);
+        $abc = event(new  UserProfile($user));
+
         Session::flash('success_msg','The User Was Successfully Added!');
         return redirect('admin/users');
     }
@@ -91,8 +86,7 @@ class UsersController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {   
-
+    {
         $args=array();
         $user = User::find($id);      
         $args['roles'] = Roles::all()->pluck('role_name', 'id');  

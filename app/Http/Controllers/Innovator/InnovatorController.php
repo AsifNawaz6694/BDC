@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Innovator;
 use App\Http\Controllers\Controller;
-
 use Illuminate\Http\Request;
 
 class InnovatorController extends Controller

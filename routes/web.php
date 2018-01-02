@@ -15,13 +15,17 @@
 
 Route::group(['prefix'=>'admin','middleware' => 'is-admin']	,function(){
 
-	Route::get('/admin', 'Admin\AdminPagesController@Backend')->name('adminBackend');
+Route::get('/admin', 'Admin\AdminPagesController@Backend')->name('adminBackend');
 
-	// Users Cotroller full resource
+// <-------------------------------User's Controller Routes Started--------------------------------------------->
 	Route::resource('/users','Admin\UsersController');	
+// <-----------------------------------User's Controller Routes Ended-------------------------------------------->
 
-	// Category Controller Full resource 
-	Route::resource('/category','Admin\CategoryController');
+// <-------------------------------Category's Controller Routes Started------------------------------------------>
+	Route::resource('/category','Admin\CategoryController');	
+// <------------------------------Category's Controller Routes Ended--------------------------------------------->
+
+
 });
 
 
@@ -40,12 +44,16 @@ Route::group(['prefix'=>'funder', 'middleware' => 'is-funder'], function(){
 	//Funder listing views
 	Route::get('/view_listings', 'Funder\FunderController@view_listings')->name('funder_view_listings');
 
+
 	//Funder requested listings
 	Route::get('/request_listing', 'Funder\FunderController@request_listing')->name('funder_request_listing');
 	
 	//Funder funding details
 	Route::get('/fund_details', 'Funder\FunderController@fund_details')->name('funder_fund_details');	
 });
+
+
+Auth::routes();
 
 
 /* Innovator Routes */
@@ -78,10 +86,10 @@ Route::group(['prefix'=>'innovator', 'middleware' => 'is-innovator'], function()
 
 });
 
+
 // Public Pages
 Route::get('/', 'HomeController@index')->name('/');
 Route::get('/{slug}', 'HomeController@publicPages')->name('publicPages');
-
+Route::post('/registration', 'Auth\RegisterController@create')->name('registration');
 // Auth Routes
-Auth::routes();
 

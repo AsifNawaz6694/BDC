@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Profile;
+use App\Events\UserProfile;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -67,6 +68,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+         //dd($data);
        
         $user = User::create([
             'name' => $data['name'],
@@ -74,12 +76,11 @@ class RegisterController extends Controller
             'roles' => $data['user_role'],
             'password' => bcrypt($data['password']),
         ]);
+       
+        
 
+         event(new  UserProfile($user));
 
-        $profile = Profile::create([
-            'user_id' => $user->id,
-            'user_name' => $user->email,
-        ]);       
         
         return $user;
     }
