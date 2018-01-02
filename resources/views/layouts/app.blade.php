@@ -51,7 +51,7 @@
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right bdc_nav">
+            <ul class="nav navbar-nav navbar-right bdc_nav">                
                 <li><a href="{{ route('publicPages', ['slug' => 'home']) }}">Home</a></li>
                 <li><a href="{{ route('publicPages', ['slug' => 'about']) }}">About Us</a></li>
                 <li><a href="{{ route('publicPages', ['slug' => 'how-it-works']) }}">How It Works</a></li>

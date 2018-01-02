@@ -1,7 +1,5 @@
 @extends ('layouts.index')
 @section('content')
-<div class="page-container">	
-	<div class="page-content-wrapper">
 		<div class="page-content">		
 			<div class="row">
 				<div class="col-md-12">
@@ -41,8 +39,7 @@
 																 </span>
 															</div>
 														</div>
-													</div>
-													
+													</div>	
 													<div class="col-md-6">
 														<div class="form-group">
 															<label class="control-label col-md-3">Description</label>
@@ -101,9 +98,6 @@
 						</div>
 					</div>
 				</div>
-			</div>
-			
+			</div>			
 		</div>
-	</div>	
-</div>
 @endsection

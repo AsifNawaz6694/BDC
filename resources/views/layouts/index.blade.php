@@ -36,7 +36,6 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- BEGIN PAGE LEVEL PLUGIN STYLES -->
 <link href="{{ URL::asset('/assets/') }}/global/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css"/>
 <link href="{{ URL::asset('/assets/') }}/global/plugins/fullcalendar/fullcalendar.min.css" rel="stylesheet" type="text/css"/>
-<link href="{{ URL::asset('/assets/') }}/global/plugins/jqvmap/jqvmap/jqvmap.css" rel="stylesheet" type="text/css"/>
 <!-- END PAGE LEVEL PLUGIN STYLES -->
 <!-- BEGIN PAGE STYLES -->
 <link href="{{ URL::asset('/assets/') }}/admin/pages/css/tasks.css" rel="stylesheet" type="text/css"/>
@@ -110,13 +109,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <script src="{{ URL::asset('assets/')}}/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
 <!-- END CORE PLUGINS -->
 <!-- BEGIN PAGE LEVEL PLUGINS -->
-<script src="{{ URL::asset('assets/')}}/global/plugins/jqvmap/jqvmap/jquery.vmap.js" type="text/javascript"></script>
-<script src="{{ URL::asset('assets/')}}/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.russia.js" type="text/javascript"></script>
-<script src="{{ URL::asset('assets/')}}/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.world.js" type="text/javascript"></script>
-<script src="{{ URL::asset('assets/')}}/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.europe.js" type="text/javascript"></script>
-<script src="{{ URL::asset('assets/')}}/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.germany.js" type="text/javascript"></script>
-<script src="{{ URL::asset('assets/')}}/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.usa.js" type="text/javascript"></script>
-<script src="{{ URL::asset('assets/')}}/global/plugins/jqvmap/jqvmap/data/jquery.vmap.sampledata.js" type="text/javascript"></script>
+
 <script src="{{ URL::asset('assets/')}}/global/plugins/flot/jquery.flot.min.js" type="text/javascript"></script>
 <script src="{{ URL::asset('assets/')}}/global/plugins/flot/jquery.flot.resize.min.js" type="text/javascript"></script>
 <script src="{{ URL::asset('assets/')}}/global/plugins/flot/jquery.flot.categories.min.js" type="text/javascript"></script>
@@ -144,13 +137,9 @@ jQuery(document).ready(function() {
    QuickSidebar.init(); // init quick sidebar
 Demo.init(); // init demo features
    Index.init();   
-   Index.initDashboardDaterange();
-   Index.initJQVMAP(); // init index page's custom scripts
-   Index.initCalendar(); // init index page's custom scripts
-   Index.initCharts(); // init index page's custom scripts
-   Index.initChat();
-   Index.initMiniCharts();
-   Tasks.initDashboardWidget();
+ 
+   
+ 
 });
 </script>
 

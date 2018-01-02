@@ -63,12 +63,15 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        // dd($data);
        
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+
+        // event(new  UserProfile($user));
 
         $user_email = $data['email'];
         $userid = User::select('users.id')->where('users.email','=',$data['email'])->first();        

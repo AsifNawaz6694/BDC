@@ -1,7 +1,5 @@
 @extends ('layouts.index')
 @section('content')
-<div class="page-container">	
-	<div class="page-content-wrapper">
 		<div class="page-content">		
 			<div class="row">
 				<div class="col-md-12">
@@ -52,10 +50,8 @@
 																 </span>
 															</div>
 														</div>
-													</div>
-													
-												</div>
-												
+													</div>													
+												</div>												
 												<div class="row">
 													<div class="col-md-6">
 														<div class="form-group">
@@ -72,20 +68,18 @@
 															</div>
 														</div>
 													</div>
-									<div class="col-md-6">
-										<div class="form-group">
-											<label class="control-label col-md-3">Password</label>
-											<div class="col-md-9">
-												{!! Form::text('password', null, [ 'class' => 'form-control'] ) !!}
-												<span class="help-block">
-													{{ $errors->first('password') }}
-												 </span>
-											</div>
-										</div>
-									</div>
-													
-												</div>
-												
+													<div class="col-md-6">
+														<div class="form-group">
+															<label class="control-label col-md-3">Password</label>
+															<div class="col-md-9">
+																{!! Form::text('password', null, [ 'class' => 'form-control'] ) !!}
+																<span class="help-block">
+																	{{ $errors->first('password') }}
+																 </span>
+															</div>
+														</div>
+													</div>													
+												</div>												
 											</div>
 											<div class="form-actions">
 												<div class="row">
@@ -102,19 +96,12 @@
 												</div>
 											</div>
 										{!! Form::close() !!}
-										
 									</div>
 								</div>
-							
-							</div>							
-							
-						
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-			
+			</div>		
 		</div>
-	</div>	
-</div>
 @endsection

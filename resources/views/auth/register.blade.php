@@ -2,8 +2,6 @@
 
 @section('content')
     @include('partials/no-slider')
-
-
     <div class="container-fluid">
         <div class="container">
             <div class="row">
@@ -12,7 +10,7 @@
                         <p>Sign up for your account</p>
                     </div>
                     <div class="signup_form_box">
-                        <form id="Sign_up_form" method="post" action="{{ route('register') }}">
+                        <form id="Sign_up_form" method="post" action="  ">
                             <div class="form-group">
                                 <label>Full Name *</label>
                                 <input type="text" class="form-control validate[required]"
@@ -58,8 +56,9 @@
                                 </div>
                             </div>
                             <div class="form-group">
+                                {{csrf_field()}}
                                 <a href="login" class="btn btn-default all_r_login">Already Account / Login</a>
-                                <a href="#" class="btn btn-default sinup_btn">Sign up</a>
+                                <button type="submit">Submit</button> 
                             </div>
                         </form>
                     </div>

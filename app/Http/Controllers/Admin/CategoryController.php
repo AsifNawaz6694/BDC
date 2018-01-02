@@ -83,9 +83,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {   
-        
         $args=array();
-        $category = Category::find($id);        
+        $category = Category::find($id);
         if($category){
             $args['category']=$category;
             return View('Admin_Panel.Category.edit')->with($args);

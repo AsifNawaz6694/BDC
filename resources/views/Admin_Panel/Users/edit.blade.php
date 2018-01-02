@@ -1,7 +1,5 @@
 @extends ('layouts.index')
 @section('content')
-<div class="page-container">	
-	<div class="page-content-wrapper">
 		<div class="page-content">		
 			<div class="row">
 				<div class="col-md-12">
@@ -26,8 +24,7 @@
 											<i class="fa fa-gift"></i>Edit User
 										</div>									
 									</div>
-									<div class="portlet-body form">
-					
+									<div class="portlet-body form">					
 					{!! Form::open(['route' => ['users.update', $user->id], 'method' => 'PUT']) !!}
 											<div class="form-body">
 												<h3 class="form-section">Person Info</h3>
@@ -104,6 +101,4 @@
 				</div>
 			</div>
 		</div>
-	</div>	
-</div>
 @endsection
