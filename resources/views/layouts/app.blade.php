@@ -72,12 +72,6 @@
                         <!-- Innovator -->
                         <li><a href="{{ route('innovator_home') }}">{{Auth::user()->name}}</a></li>
                     @endif
-                    
-                      <form action="{{route('logout')}}" method="post">
-                        <!--<li><a href="{{ route('register') }}">Logout</a></li> -->
-                        <input type="hidden" name="_token" value="{{Session::token()}}">
-                        <input type="submit" name="logout" value="Logout">
-                     </form>
                 @else
                     <li><a href="{{ route('register') }}">signup</a></li>
                 @endif
@@ -165,7 +159,7 @@
             <hr>
 
             <div class="signup_form_box1">
-                <form id="Sign_up_form">
+                <form id="Sign_up_form" action="{{ route('login') }}" method="POST">
 
                     <div class="form-group">
                         <label>Email Address</label>
@@ -190,6 +184,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="button-popup-last">
+                                {{ csrf_field() }}
                                 <button type="submit" class="btn login_now">LOGIN NOW</button>
                             </div>
 
@@ -220,5 +215,6 @@
 <script src="{{ asset('js/custom1.js') }}"></script>
 
 <script src="{{ asset('app/js/custom.js') }}"></script>
+
 </body>
 </html>

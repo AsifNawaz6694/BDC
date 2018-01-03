@@ -32,6 +32,41 @@ $(document).ready(function () {
         $('.navbar-form').addClass('clearfix');
     }
 
+
+    //if image is select trigger submit form
+    $('.camera_image').change(function(){
+        if($('input#image_upload').val()){
+            $(this).parent('form').trigger( "submit" );
+        }
+    });
+
+
+    //on form submit change picture
+    $('#change_profile').submit(function(e){
+        e.preventDefault();
+
+        console.log($(this).attr('action'));
+        var form = new FormData(this);
+
+        $.ajax({
+            type: $(this).attr('method'),
+            url: $(this).attr('action'),
+            data: form,
+            processData: false,
+            contentType: false,
+            success: function(response){
+                if(response.code === 200){
+                    $('.avatar_box > img').attr('src', 'storage/'+response.img);
+                    alertify.success(response.success);
+                }
+                if(response.code === 202){
+                    alertify.error(response.error);
+                }
+            },
+            error: function(){
+                alertify.error('Image uploading failed');
+            }
+        });
+    });
+
 });
-
-

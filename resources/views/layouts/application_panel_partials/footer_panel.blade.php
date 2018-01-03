@@ -22,6 +22,8 @@
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="{{ asset('panel_assets/js/jquery-3.1.1.min.js') }}"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
+<!-- Alertify -->
+<script src="{{ asset('plugins/alertify/alertify.min.js') }}"></script>
 <!-- Bootstrap -->
 <script src="{{ asset('panel_assets/js/bootstrap.min.js') }}"></script>
 <!-- Validation -->

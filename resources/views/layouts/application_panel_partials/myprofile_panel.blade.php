@@ -7,29 +7,29 @@
                 <!-- Form -->
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 r-m-p">
                     <div class="Form_main">
-                        <form>
+                        <form action="{{ route('ajaxProfileUpdate') }} method="post">
                             <div class="form-group">
                                 <label>Full Name <span>*</span></label>
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" name="name">
                             </div>
                             <div class="form-group">
                                 <label>Email address <span>*</span></label>
-                                <input type="email" class="form-control">
+                                <input type="email" class="form-control" name="email">
                             </div>
                             <div class="form-group">
                                 <label>Phone <span>*</span></label>
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" name="phone">
                             </div>
                             <div class="form-group">
                                 <label>DOB <span>*</span></label>
-                                <input type="date" class="form-control">
+                                <input type="date" class="form-control" name="birth_date">
                             </div>
                             <div class="form-group">
                                 <label>I am a <span>*</span></label>
-                                <select class="form-control">
+                                <select class="form-control" name="gender">
                                     <option>Select</option>
-                                    <option>Female</option>
-                                    <option>Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="male">Male</option>
                                 </select>
                             </div>
                             <div class="form-group">

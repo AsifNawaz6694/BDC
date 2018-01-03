@@ -18,12 +18,13 @@ class CreateProfileTable extends Migration
      });
 
 
-        Schema::create('profile', function (Blueprint $table) {
+        Schema::create('profiles', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('userid');
-            $table->string('username');            
-            $table->string('phone')->nullable();            
-            $table->string('image')->default('default.jpg');             
+            $table->integer('user_id');
+            $table->string('user_name');
+            $table->string('gender')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('image')->default('public/profile_pictures/default.jpg');
             $table->timestamps();
         });
     }

@@ -26,7 +26,7 @@ Route::group(['prefix'=>'admin','middleware' => 'is-admin']	,function(){
 
 
 /* Funder Routes */
-Route::group(['prefix'=>'funder'], function(){
+Route::group(['prefix'=>'funder', 'middleware' => 'is-funder'], function(){
 
 	//Funder Home page
 	Route::get('/', 'Funder\FunderController@index')->name('funder_home');
@@ -50,7 +50,7 @@ Route::group(['prefix'=>'funder'], function(){
 
 /* Innovator Routes */
 
-Route::group(['prefix'=>'innovator'], function(){
+Route::group(['prefix'=>'innovator', 'middleware' => 'is-innovator'], function(){
 
 	//Innovator home page
 	Route::get('/', 'Innovator\InnovatorController@index')->name('innovator_home');
@@ -85,3 +85,12 @@ Route::get('/{slug}', 'HomeController@publicPages')->name('publicPages');
 // Auth Routes
 Auth::routes();
 
+
+
+
+//Ajax routes for logged in users
+
+Route::group(['prefix' => 'ajax', 'middleware' => 'is-innovator'], function(){
+    Route::post('profile_picture', 'GeneralController@profile_picture')->name('ajaxProfilePicture');
+    Route::post('profile_update', 'GeneralController@profile_update')->name('ajaxProfileUpdate');
+});
