@@ -15,13 +15,17 @@
 
 Route::group(['prefix'=>'admin','middleware' => 'is-admin']	,function(){
 
-	Route::get('/admin', 'Admin\AdminPagesController@Backend')->name('adminBackend');
+Route::get('/admin', 'Admin\AdminPagesController@Backend')->name('adminBackend');
 
-	// Users Cotroller full resource
+// <-------------------------------User's Controller Routes Started--------------------------------------------->
 	Route::resource('/users','Admin\UsersController');	
+// <-----------------------------------User's Controller Routes Ended-------------------------------------------->
 
-	// Category Controller Full resource 
-	Route::resource('/category','Admin\CategoryController');
+// <-------------------------------Category's Controller Routes Started------------------------------------------>
+	Route::resource('/category','Admin\CategoryController');	
+// <------------------------------Category's Controller Routes Ended--------------------------------------------->
+
+
 });
 
 
@@ -40,12 +44,16 @@ Route::group(['prefix'=>'funder', 'middleware' => 'is-funder'], function(){
 	//Funder listing views
 	Route::get('/view_listings', 'Funder\FunderController@view_listings')->name('funder_view_listings');
 
+
 	//Funder requested listings
 	Route::get('/request_listing', 'Funder\FunderController@request_listing')->name('funder_request_listing');
 	
 	//Funder funding details
 	Route::get('/fund_details', 'Funder\FunderController@fund_details')->name('funder_fund_details');	
 });
+
+
+
 
 
 /* Innovator Routes */
@@ -68,7 +76,7 @@ Route::group(['prefix'=>'innovator', 'middleware' => 'is-innovator'], function()
 	Route::get('/submit_listing', 'Innovator\InnovatorController@submit_listing_page')->name('submit_listing_page');
 	
 	//Innovator Contact Admin page
-	Route::get('/contactadmin', 'Innovator\InnovatorController@contact_admin_page')->name('contact_admin_page');
+	Route::get('/contact_admin', 'Innovator\InnovatorController@contact_admin_page')->name('contact_admin_page');
 
 	//Innovator request services page
 	Route::get('/request_services', 'Innovator\InnovatorController@request_services_page')->name('request_services_page');
@@ -78,13 +86,13 @@ Route::group(['prefix'=>'innovator', 'middleware' => 'is-innovator'], function()
 
 });
 
+
 // Public Pages
 Route::get('/', 'HomeController@index')->name('/');
 Route::get('/{slug}', 'HomeController@publicPages')->name('publicPages');
-
+Route::post('/registration', 'Auth\RegisterController@create')->name('registration');
 // Auth Routes
 Auth::routes();
-
 
 
 
@@ -93,4 +101,5 @@ Auth::routes();
 Route::group(['prefix' => 'ajax', 'middleware' => 'is-innovator'], function(){
     Route::post('profile_picture', 'GeneralController@profile_picture')->name('ajaxProfilePicture');
     Route::post('profile_update', 'GeneralController@profile_update')->name('ajaxProfileUpdate');
+    Route::post('password_update', 'GeneralController@password_update')->name('ajaxPasswordUpdate');
 });

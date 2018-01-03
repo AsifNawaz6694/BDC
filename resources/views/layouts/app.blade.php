@@ -53,7 +53,7 @@
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right bdc_nav">
+            <ul class="nav navbar-nav navbar-right bdc_nav">                
                 <li><a href="{{ route('publicPages', ['slug' => 'home']) }}">Home</a></li>
                 <li><a href="{{ route('publicPages', ['slug' => 'about']) }}">About Us</a></li>
                 <li><a href="{{ route('publicPages', ['slug' => 'how-it-works']) }}">How It Works</a></li>
@@ -72,6 +72,7 @@
                         <!-- Innovator -->
                         <li><a href="{{ route('innovator_home') }}">{{Auth::user()->name}}</a></li>
                     @endif
+
                 @else
                     <li><a href="{{ route('register') }}">signup</a></li>
                 @endif
@@ -159,7 +160,8 @@
             <hr>
 
             <div class="signup_form_box1">
-                <form id="Sign_up_form" action="{{ route('login') }}" method="POST">
+
+                <form id="Sign_up_form" method="post" action="{{ route('login') }}">
 
                     <div class="form-group">
                         <label>Email Address</label>
@@ -186,6 +188,7 @@
                             <div class="button-popup-last">
                                 {{ csrf_field() }}
                                 <button type="submit" class="btn login_now">LOGIN NOW</button>
+                                
                             </div>
 
                         </div>

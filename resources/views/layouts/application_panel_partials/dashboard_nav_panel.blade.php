@@ -71,10 +71,18 @@
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                        <!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                            aria-haspopup="true" aria-expanded="false">
                             <i class="fa fa-sign-out" aria-hidden="true"></i>
-                        </a>
+                        </a> -->
+                        <form action="{{route('logout')}}" method="post">
+                        <!--<li><a href="{{ route('register') }}">Logout</a></li> -->
+                            <input type="hidden" name="_token" value="{{Session::token()}}">
+                            <!-- <input type="submit" name="logout" value="Logout"> -->
+                            <button class="btn btn-default" type="submit" name="logout">
+                                <i class="fa fa-sign-out" aria-hidden="true"></i>
+                            </button>
+                        </form>
                     </li>
                 </ul>
                 <form class="navbar-form navbar-right">

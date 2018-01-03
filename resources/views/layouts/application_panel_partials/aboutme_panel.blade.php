@@ -10,31 +10,31 @@
                         <tr>
                             <td>
                                 <label>Full Name <span>*</span></label>
-                                <p>Andrew Noueman</p>
+                                <p>{{ Auth::user()->name }}</p>
                             </td>
                             <td>
                                 <label>Phone <span>*</span></label>
-                                <p>021 345 6789 0</p>
+                                <p>{{ Auth::user()->profile->phone }}</p>
                             </td>
                         </tr>
                         <tr>
                             <td>
                                 <label>Email Address <span>*</span></label>
-                                <p>andrew123@gmail.com</p>
+                                <p>{{ Auth::user()->email }}</p>
                             </td>
                             <td>
                                 <label>DOB <span>*</span></label>
-                                <p>030-11-1985</p>
+                                <p>{{ Auth::user()->profile->birth_date }}</p>
                             </td>
                         </tr>
                         <tr>
                             <td>
                                 <label>Password <span>*</span></label>
-                                <p>123456</p>
+                                <p>******</p>
                             </td>
                             <td>
                                 <label>I am a <span>*</span></label>
-                                <p>Innovator</p>
+                                <p>{{{ Auth::user()->roles == 2 ? "Funder" : (Auth::user()->roles == 3 ? "Innovator" : '') }}}</p>
                             </td>
                         </tr>
                     </table>

@@ -44,8 +44,6 @@ $(document).ready(function () {
     //on form submit change picture
     $('#change_profile').submit(function(e){
         e.preventDefault();
-
-        console.log($(this).attr('action'));
         var form = new FormData(this);
 
         $.ajax({
@@ -56,7 +54,7 @@ $(document).ready(function () {
             contentType: false,
             success: function(response){
                 if(response.code === 200){
-                    $('.avatar_box > img').attr('src', 'storage/'+response.img);
+                    $('.avatar_box > img').attr('src', '/storage/'+response.img);
                     alertify.success(response.success);
                 }
                 if(response.code === 202){
@@ -67,6 +65,73 @@ $(document).ready(function () {
                 alertify.error('Image uploading failed');
             }
         });
+    });
+
+
+
+    //ajax profile update
+    $('#ajaxFormUpdate').submit(function(e){
+       e.preventDefault();
+
+       var form = $(this).serialize();
+        console.log(form);
+       $.ajax({
+           type: $(this).attr('method'),
+           url: $(this).attr('action'),
+           data: form,
+           success: function(response){
+               if(response.code === 200){
+                   alertify.success(response.success);
+               }
+               if(response.code == 202){
+                   alertify.error(response.error);
+               }
+           },
+           error: function(){
+               alertify.error('Update got error please try again');
+           }
+       });
+
+    });
+
+
+
+    //ajax password update
+    $('#ajaxPasswordUpdate').submit(function(e){
+       e.preventDefault();
+
+
+       var pass = $('#password').val();
+       var con_pass = $('#password_confirmation').val();
+
+        if(pass === con_pass){
+
+           var form = $(this).serialize();
+
+           $.ajax({
+               type: $(this).attr('method'),
+               url: $(this).attr('action'),
+               data: form,
+               success: function(response){
+                   console.log(response);
+                   if(response.code === 200){
+                       alertify.success(response.success);
+                   }
+                   if(response.code == 202){
+                       alertify.error(response.error);
+                   }
+                   if(response.code == 401){
+                       alertify.error(response.error);
+                   }
+               },
+               error: function(){
+                   alertify.error('Update got error please try again');
+               }
+           });
+        }
+        else{
+            alertify.error('Password does not match with confirmation password');
+        }
     });
 
 });

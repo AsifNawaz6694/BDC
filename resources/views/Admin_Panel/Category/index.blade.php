@@ -1,7 +1,6 @@
 @extends('layouts.index')
 @section('content')
-	<!-- BEGIN CONTENT -->
-	<div class="page-content-wrapper">
+	<!-- BEGIN CONTENT -->	
 		<div class="page-content">
 			<!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->			
 			<div class="row">				
@@ -83,6 +82,6 @@
 			</div>
 			<!-- END PAGE CONTENT-->
 		</div>
-	</div>
+	
 	<!-- END CONTENT -->
 @endsection()

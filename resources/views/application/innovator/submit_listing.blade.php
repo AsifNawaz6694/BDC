@@ -25,16 +25,16 @@
                             </div>
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox"> <span class="badge blue_check">A</span>
+                                    <input type="radio" name="product"> <span class="badge blue_check">A</span>
                                 </label>
                                 <label>
-                                    <input type="checkbox"> <span class="badge green_check">F</span>
+                                    <input type="radio" name="product"> <span class="badge green_check">F</span>
                                 </label>
                                 <label>
-                                    <input type="checkbox"> <span class="badge red_check">P</span>
+                                    <input type="radio" name="product"> <span class="badge red_check">P</span>
                                 </label>
                                 <label>
-                                    <input type="checkbox"> <span class="badge orange_check">S</span>
+                                    <input type="radio" name="product"> <span class="badge orange_check">S</span>
                                 </label>
                             </div>
                             <div class="form-group">

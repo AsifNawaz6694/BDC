@@ -1,7 +1,6 @@
 @extends('layouts.index')
 @section('content')
 	<!-- BEGIN CONTENT -->
-	<div class="page-content-wrapper">
 		<div class="page-content">
 			<!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->			
 			<div class="row">				
@@ -51,7 +50,7 @@
 										<form action="{{ route('users.destroy', ['user' => $value->id]) }}" method="POST" onsubmit="return confirm('Do you really want to delete?');">
 											{{ method_field('DELETE') }}
 											{{ csrf_field() }}
-											<button type="submit" class="btn btn-sm btn-danger">Delte</button>
+											<button type="submit" class="btn btn-sm btn-danger">Delete</button>
 										</form>										
 									</td>								
 								</tr>
@@ -65,6 +64,6 @@
 			</div>
 			<!-- END PAGE CONTENT-->
 		</div>
-	</div>
+	
 	<!-- END CONTENT -->
 @endsection()
