@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers\Innovator;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ListingRequest;
 use Illuminate\Http\Request;
+use App\Listing;
+use Auth;
 
 class InnovatorController extends Controller
 {   
@@ -29,6 +32,8 @@ class InnovatorController extends Controller
 
     //Innovator listings
     public function listings(){
+        $listings = Listing::where('user_id', Auth::user()->id)->get();
+        dd($listings->user);
     	return view('application.innovator.listing');
     }
 
@@ -50,5 +55,38 @@ class InnovatorController extends Controller
     //Innovator Transactions page.
     public function transaction_page(){
         return view('application.innovator.transactions');       
-    }          
+    }
+
+
+
+    //ajax post route submit new listing
+    public function submit_listing_post(ListingRequest $request){
+
+        $listing = Listing::create([
+            'user_id' => Auth::user()->id,
+            'category_id' => $request->product,
+            'title' => $request->title,
+            'funding' => $request->funding,
+            'description' => $request->description,
+            'status' => 0,
+        ]);
+        if($request->hasFile('file')){
+            $path = $request->file('file')->store('public/files');
+            $update = Listing::where('id', $listing->id)->update([
+                'document' => $path,
+            ]);
+            if(!$update){
+                return \Response()->json(['warning' => "Listing successfully created, but file was unable to upload", 'code' => 205]);
+            }
+            else{
+                return \Response()->json(['success' => "Listing successfully created, and pending for approval", 'code' => 200]);
+            }
+        }
+        elseif ($listing){
+            return \Response()->json(['success' => "Listing successfully created, and pending for approval", 'code' => 200]);
+        }
+        else{
+            return \Response()->json(['warning' => "Failed to create new listing.", 'code' => 202]);
+        }
+    }
 }

@@ -74,11 +74,11 @@ class GeneralController extends Controller
                 }
             }
             else{
-                return \Response()->json(['Password does not match with confirmation password', 'code' => 202]);
+                return \Response()->json(['error' => 'Password does not match with confirmation password', 'code' => 202]);
             }
         }
         else{
-            return \Response()->json(['Old password is incorrect, please enter valid password', 'code' => 401]);
+            return \Response()->json(['error' => 'Old password is incorrect, please enter valid password', 'code' => 401]);
         }
     }
 }

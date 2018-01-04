@@ -34,7 +34,7 @@
                             </td>
                             <td>
                                 <label>I am a <span>*</span></label>
-                                <p>{{{ Auth::user()->roles == 2 ? "Funder" : (Auth::user()->roles == 3 ? "Innovator" : '') }}}</p>
+                                <p>{{ Auth::user()->role->role_name }}</p>
                             </td>
                         </tr>
                     </table>

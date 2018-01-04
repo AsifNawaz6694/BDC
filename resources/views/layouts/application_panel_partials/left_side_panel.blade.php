@@ -23,13 +23,7 @@
                 <h3><a href="">{{Auth::user()->name}}</a></h3>
             @endif
 
-            @if(Auth::user()->roles == 2)
-            <!-- Funder -->
-                <p>Funder</p>
-            @elseif(Auth::user()->roles == 3)
-            <!-- Innovator -->
-                <p>Innovator</p>
-            @endif
+                <p>{{ Auth::user()->role->role_name }}</p>
 
         </div><!--./End user details-->
         <div class="dashboard_navigation">

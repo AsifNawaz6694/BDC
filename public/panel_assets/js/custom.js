@@ -74,7 +74,6 @@ $(document).ready(function () {
        e.preventDefault();
 
        var form = $(this).serialize();
-        console.log(form);
        $.ajax({
            type: $(this).attr('method'),
            url: $(this).attr('action'),
@@ -113,7 +112,6 @@ $(document).ready(function () {
                url: $(this).attr('action'),
                data: form,
                success: function(response){
-                   console.log(response);
                    if(response.code === 200){
                        alertify.success(response.success);
                    }
@@ -132,6 +130,53 @@ $(document).ready(function () {
         else{
             alertify.error('Password does not match with confirmation password');
         }
+    });
+
+
+
+    //submit listing
+    $('#ajaxFormListing').submit(function(e){
+        e.preventDefault();
+
+        var form = new FormData(this);
+
+        $.ajax({
+            type: $(this).attr('method'),
+            url: $(this).attr('action'),
+            data: form,
+            processData: false,
+            contentType: false,
+            beforeSend: function() {
+                $('#errors').html('');
+                $('#errors').hide();
+            },
+            success: function(response){
+                if(response.code === 200){
+                    alertify.success(response.success);
+                }
+                if(response.code == 202){
+                    alertify.error(response.error);
+                }
+                if(response.code == 205){
+                    alertify.warning(response.error);
+                }
+                // window.location
+            },
+            error: function(response){
+                console.log(response.responseJSON);
+                var errors = response.responseJSON;
+                console.log(errors);
+                var err = '';
+                Object.keys(errors).forEach(display_errors);
+                function display_errors(item) {
+                    err = '<p>' + errors[item] + '</p>';
+                    $('#errors').append(err);
+                    $('#errors').show();
+                }
+            }
+
+
+        });
     });
 
 });

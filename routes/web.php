@@ -74,7 +74,8 @@ Route::group(['prefix'=>'innovator', 'middleware' => 'is-innovator'], function()
 
 	//Innovator submit listing page
 	Route::get('/submit_listing', 'Innovator\InnovatorController@submit_listing_page')->name('submit_listing_page');
-	
+	Route::post('/submit_listing', 'Innovator\InnovatorController@submit_listing_post')->name('submit_listing_post');
+
 	//Innovator Contact Admin page
 	Route::get('/contact_admin', 'Innovator\InnovatorController@contact_admin_page')->name('contact_admin_page');
 
@@ -98,7 +99,7 @@ Auth::routes();
 
 //Ajax routes for logged in users
 
-Route::group(['prefix' => 'ajax', 'middleware' => 'is-innovator'], function(){
+Route::group(['prefix' => 'ajax', 'middleware' => 'auth'], function(){
     Route::post('profile_picture', 'GeneralController@profile_picture')->name('ajaxProfilePicture');
     Route::post('profile_update', 'GeneralController@profile_update')->name('ajaxProfileUpdate');
     Route::post('password_update', 'GeneralController@password_update')->name('ajaxPasswordUpdate');

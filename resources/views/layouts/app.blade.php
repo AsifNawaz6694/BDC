@@ -166,13 +166,13 @@
                     <div class="form-group">
                         <label>Email Address</label>
                         <input type="email" class="form-control validate[required]"
-                               data-errormessage-value-missing="Email of entity is required!">
+                               data-errormessage-value-missing="Email of entity is required!" name="email">
                     </div>
 
 
                     <div class="form-group">
                         <label>Password</label>
-                        <input type="password" class="form-control">
+                        <input type="password" class="form-control" name="password">
                         <div class="pass">
                             <a href="{{ route('password.request') }}">Forgot your password ?</a>
                         </div>
