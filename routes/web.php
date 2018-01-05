@@ -104,3 +104,6 @@ Route::group(['prefix' => 'ajax', 'middleware' => 'auth'], function(){
     Route::post('profile_update', 'GeneralController@profile_update')->name('ajaxProfileUpdate');
     Route::post('password_update', 'GeneralController@password_update')->name('ajaxPasswordUpdate');
 });
+
+
+//commiting
