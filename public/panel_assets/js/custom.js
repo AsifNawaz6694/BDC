@@ -153,12 +153,16 @@ $(document).ready(function () {
             success: function(response){
                 if(response.code === 200){
                     alertify.success(response.success);
+                    console.log(response.url);
+                    // window.location.href = response.url;
                 }
                 if(response.code == 202){
                     alertify.error(response.error);
                 }
                 if(response.code == 205){
                     alertify.warning(response.error);
+                    console.log(response.url);
+                    // window.location.href = response.url;
                 }
                 // window.location
             },

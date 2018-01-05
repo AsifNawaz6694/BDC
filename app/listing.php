@@ -12,7 +12,11 @@ class listing extends Model
     ];
 
 
-    public function user(){
-        return $this->hasOne('App\User', 'user_id');
+    public function innovator(){
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function category(){
+        return $this->belongsTo(Category::class, 'category_id');
     }
 }

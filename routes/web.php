@@ -15,7 +15,10 @@
 
 Route::group(['prefix'=>'admin','middleware' => 'is-admin']	,function(){
 
-Route::get('/admin', 'Admin\AdminPagesController@Backend')->name('adminBackend');
+    Route::get('/admin', 'Admin\AdminPagesController@Backend')->name('adminBackend');
+    Route::get('/logout', function (){
+        return view('Admin_panel\logout');
+    });
 
 // <-------------------------------User's Controller Routes Started--------------------------------------------->
 	Route::resource('/users','Admin\UsersController');	

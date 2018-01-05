@@ -22,6 +22,8 @@ class CreateListingsTable extends Migration
             $table->float('funding');
             $table->string('document')->nullable();
             $table->text('description');
+            $table->boolean('status')->default(0);
+            $table->boolean('featured')->default(0);
             $table->timestamps();
 
 

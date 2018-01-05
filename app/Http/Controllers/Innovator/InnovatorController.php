@@ -17,7 +17,8 @@ class InnovatorController extends Controller
 
     //Innovator Index page
     public function index(){
-    	return view('application.innovator.index');
+        $listings = Listing::where('user_id', Auth::user()->id)->orderBy('id')->take(3)->get();
+    	return view('application.innovator.index', compact('listings'));
     }
 
     //Innovator Profile page
@@ -25,16 +26,16 @@ class InnovatorController extends Controller
        return view('application.innovator.profile');
     }
 
-    //Innovator nitifications page
+    //Innovator notifications page
     public function notifications_index(){
     	return view('application.innovator.notification');
     }
 
     //Innovator listings
     public function listings(){
+
         $listings = Listing::where('user_id', Auth::user()->id)->get();
-        dd($listings->user);
-    	return view('application.innovator.listing');
+    	return view('application.innovator.listing', compact('listings'));
     }
 
     //Innovator submit listings page
@@ -67,8 +68,7 @@ class InnovatorController extends Controller
             'category_id' => $request->product,
             'title' => $request->title,
             'funding' => $request->funding,
-            'description' => $request->description,
-            'status' => 0,
+            'description' => $request->description
         ]);
         if($request->hasFile('file')){
             $path = $request->file('file')->store('public/files');
@@ -76,7 +76,7 @@ class InnovatorController extends Controller
                 'document' => $path,
             ]);
             if(!$update){
-                return \Response()->json(['warning' => "Listing successfully created, but file was unable to upload", 'code' => 205]);
+                return \Response()->json(['warning' => "Listing successfully created, but file was unable to upload", 'code' => 205, 'url' => route('innovator_listings')]);
             }
             else{
                 return \Response()->json(['success' => "Listing successfully created, and pending for approval", 'code' => 200]);
