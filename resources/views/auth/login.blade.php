@@ -11,6 +11,7 @@
                 <form method="POST" action="{{ route('login') }}">
                     <div class="form-group {{ $errors->has('email') ? ' has-error' : '' }}">
                         <label for="exampleInputEmail1">Email address</label>
+                        <input type="hidden" name="_token" value="{{Session::token()}}">
                         <input type="email" class="form-control" name="email" id="exampleInputEmail1" value="{{ old('email') }}">
                         @if ($errors->has('email'))
                             <span class="help-block">
@@ -36,7 +37,7 @@
                         <a href="{{ route('login') }}" class="btn btn-default_signup">NO ACCOUNT? SIGN UP NOW</a>
 
                         <button type="submit" class="btn login_now">LOGIN NOW</button>
-                        {{ csrf_field() }}
+                        
                     </div>
                 </form>
 
