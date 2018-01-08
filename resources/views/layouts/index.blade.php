@@ -79,9 +79,9 @@ License: You must have a valid license purchased only from themeforest(the above
     <!-- END SIDEBAR -->
     <!-- BEGIN CONTENT -->
     <div class="page-content-wrapper">
-    <dir class="page-content">
+    
          @yield('content')
-    </dir>         
+    
       
     </div>
     <!-- END CONTENT -->

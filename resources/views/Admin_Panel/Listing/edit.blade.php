@@ -1,4 +1,4 @@
-@extends ('layouts.index')
+@extends('layouts.index')
 @section('content')
 		<div class="page-content">		
 			<div class="row">
@@ -21,33 +21,32 @@
 								<div class="portlet box green">
 									<div class="portlet-title">
 										<div class="caption">
-											<i class="fa fa-gift"></i>Edit User
+											<i class="fa fa-gift"></i>Edit Listing
 										</div>									
 									</div>
 									<div class="portlet-body form">					
-					{!! Form::open(['route' => ['users.update', $user->id], 'method' => 'PUT']) !!}
+					{!! Form::open(['route' => ['listing.update', $listing->id], 'method' => 'PUT']) !!}
 											<div class="form-body">
-												<h3 class="form-section">Person Info</h3>
+												<h3 class="form-section">Listing Info</h3>
 												<div class="row">
 													<div class="col-md-6">
 														<div class="form-group">
-															<label class="control-label col-md-3">Name</label>
+															<label class="control-label col-md-3">Title</label>
 															<div class="col-md-9">
-																{!! Form::text('name', $user->name, [ 'class' => 'form-control'] ) !!}
-
+																{!! Form::text('title', $listing->title, [ 'class' => 'form-control'] ) !!}
 																<span class="help-block">
-																	{{ $errors->first('name') }}
+																	{{ $errors->first('title') }}
 																 </span>
 															</div>
 														</div>
 													</div>													
 													<div class="col-md-6">
 														<div class="form-group">
-															<label class="control-label col-md-3">Email</label>
+															<label class="control-label col-md-3">Category</label>
 															<div class="col-md-9">
-																{!! Form::text('email', $user->email, [ 'class' => 'form-control'] ) !!}
+															{{ Form::select('category_id', $category, $listing->category_id, [ 'class' => 'form-control', ] )}}
 																<span class="help-block">
-																	{{ $errors->first('email') }}
+																	{{ $errors->first('category_id') }}
 																 </span>
 															</div>
 														</div>
@@ -56,22 +55,22 @@
 												<div class="row">
 													<div class="col-md-6">
 														<div class="form-group">
-															<label class="control-label col-md-3">Roles</label>
+															<label class="control-label col-md-3">Service</label>
 															<div class="col-md-9">
-															{{ Form::select('roles', $roles, $user->roles, [ 'class' => 'form-control', ] )}}
+															{{ Form::select('service_id', $service, $listing->service_id, [ 'class' => 'form-control', ] )}}
 																<span class="help-block">
-																	{{ $errors->first('roles') }}
+																	{{ $errors->first('service_id') }}
 																 </span>
 															</div>
 														</div>
 													</div>												
 													<div class="col-md-6">
 														<div class="form-group">
-															<label class="control-label col-md-3">Password</label>
+															<label class="control-label col-md-3">Funding</label>
 															<div class="col-md-9">
-																{!! Form::text('password', NULL, [ 'class' => 'form-control'] ) !!}
+																{!! Form::text('funding', $listing->funding, [ 'class' => 'form-control'] ) !!}
 																<span class="help-block">
-																	{{ $errors->first('password') }}
+																	{{ $errors->first('funding') }}
 																 </span>
 															</div>
 														</div>

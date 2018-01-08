@@ -15,4 +15,12 @@ class listing extends Model
     public function user(){
         return $this->hasOne('App\User', 'user_id');
     }
+
+    public function category(){
+		return $this->belongsTo(Category::class, 'category_id');
+	}
+
+	public function service(){
+		return $this->belongsTo(service::class, 'service_id');
+	}
 }

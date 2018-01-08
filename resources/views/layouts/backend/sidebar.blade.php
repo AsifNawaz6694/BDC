@@ -73,8 +73,8 @@
                 </li> 
                  <li class="start active open">                   
                     <li>                    
-                        <!-- <a href="{{url('admin/users')}}"> -->
-                        <a href="">
+                        
+                        <a href="{{url('admin/listing')}}">
                         <i class="fa fa-list"></i>
                         <span class="title">Listings</span></a>
                     </li>                                      

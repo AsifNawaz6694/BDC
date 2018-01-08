@@ -14,34 +14,38 @@
 // Admin Routes
 
 Route::group(['prefix'=>'admin','middleware' => 'is-admin']	,function(){
-
+	//Admin Panel Routes Started
 Route::get('/admin', 'Admin\AdminPagesController@Backend')->name('adminBackend');
-
-
-	// Profile Controller 
+//Admin Profile Route
 	Route::get('/profile','Admin\AdminProfileController@index')->name('admin_profile');
+//Admin Logout Route
+	Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@admin_logout')->name('admin_logout');	
+
 	// Update Admin Profile Image
 	Route::any('/updateInfo/{id}/',["as" => "admin-update-info", "uses" => "Admin\AdminProfileController@update"]);
 	Route::any('/updatePassword/',["as" => "update-password", "uses" => "Admin\AdminProfileController@Updatepasword"]);
 	Route::post('/updateImage/{id}/',["as" => "admin-update-image", "uses" => "Admin\AdminProfileController@ChangeProfileImage"]);
+// <------------------------------Profile's Controller Routes Ended-------------------------------------------->
 
-
-	// Users Cotroller full resource
-	Route::resource('/users','Admin\UsersController');
-
-	// Category Controller Full resource 
-	Route::resource('/category','Admin\CategoryController');
-
-
-
-// <-------------------------------User's Controller Routes Started--------------------------------------------->
+// <-------------------------------User's Controller Routes Started-------------------------------------------->
 	Route::resource('/users','Admin\UsersController');	
-// <-----------------------------------User's Controller Routes Ended-------------------------------------------->
+// <-----------------------------------User's Controller Routes Ended------------------------------------------>
 
-// <-------------------------------Category's Controller Routes Started------------------------------------------>
+// <-------------------------------Category's Controller Routes Started---------------------------------------->
 	Route::resource('/category','Admin\CategoryController');	
-// <------------------------------Category's Controller Routes Ended--------------------------------------------->
+// <------------------------------Category's Controller Routes Ended------------------------------------------->
 
+// <------------------------------Listing's Controller Routes Started------------------------------------------>
+	Route::resource('/listing','Admin\ListingController');
+	// DisApprove/Approve Listing Status
+	Route::get('/approve_status/{id}/',["as" => "approve-status", "uses" => "Admin\ListingController@approve_status"]);
+	Route::get('/disapprove_status/{id}/',["as" => "disapprove-status", "uses" => "Admin\ListingController@disapprove_status"]);
+	// Disapprove/Approve Listing Featured
+	Route::get('/approve_featured/{id}/',["as" => "approve-featured", "uses" => "Admin\ListingController@approve_featured"]);
+	Route::get('/disapprove_featured/{id}/',["as" => "disapprove-featured", "uses" => "Admin\ListingController@disapprove_featured"]);
+// <------------------------------Listing's Controller Routes Ended-------------------------------------------->
+
+//Admin Panel Routes Ended
 
 });
 
@@ -72,13 +76,9 @@ Route::group(['prefix'=>'funder', 'middleware' => 'is-funder'], function(){
 });
 
 
-
-
-
 /* Innovator Routes */
 
 Route::group(['prefix'=>'innovator', 'middleware' => 'is-innovator'], function(){
-
 
 	//Innovator home page
 	Route::get('/', 'Innovator\InnovatorController@index')->name('innovator_home');
