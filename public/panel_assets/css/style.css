@@ -502,7 +502,7 @@ footer, header, hgroup, menu, nav, section {
     background: #ffffff;
 }
 
-.Funding_box h5 a {
+.Funding_box h5 > a {
     color: #000000;
     display: block;
     font-size: 18px;
@@ -622,9 +622,9 @@ footer, header, hgroup, menu, nav, section {
     margin-bottom: 25px;
 }
 
-.Funding_box_small h5 a {
+.Funding_box_small h5 > a {
     color: #000000;
-    display: block;
+    display: inline-block;
     font-size: 16px;
     font-family: 'Conv_ProximaNova-Bold';
     text-transform: uppercase;

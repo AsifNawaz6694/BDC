@@ -154,7 +154,9 @@ $(document).ready(function () {
                 if(response.code === 200){
                     alertify.success(response.success);
                     console.log(response.url);
-                    // window.location.href = response.url;
+                    setTimeout(function(){
+                        window.location.href = response.url;
+                    }, 1000);
                 }
                 if(response.code == 202){
                     alertify.error(response.error);
@@ -162,9 +164,10 @@ $(document).ready(function () {
                 if(response.code == 205){
                     alertify.warning(response.error);
                     console.log(response.url);
-                    // window.location.href = response.url;
+                    setTimeout(function(){
+                        window.location.href = response.url;
+                    }, 1000);
                 }
-                // window.location
             },
             error: function(response){
                 console.log(response.responseJSON);
