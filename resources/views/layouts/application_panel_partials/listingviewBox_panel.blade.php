@@ -1,4 +1,4 @@
-                                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+                                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 listing_item">
                                     <div class="Funding_box Funding_box_small {{ $listings->category->color_code }}_box">
                                         <h5><a href="#">{{ $listings->title }}</a></h5>
                                         {{--<h6>exercitationem ullam</h6>--}}

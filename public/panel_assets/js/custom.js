@@ -184,3 +184,13 @@ $(document).ready(function () {
     });
 
 });
+
+//masonry function
+$(function(){
+    $('.masonry_listing').masonry({
+        // options
+        itemSelector : '.listing_item',
+        columnWidth : '.listing_item',
+        percentPosition: true
+    });
+});

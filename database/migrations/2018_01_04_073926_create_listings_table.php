@@ -17,7 +17,7 @@ class CreateListingsTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->integer('category_id')->unsigned();
-            $table->integer('service_id')->unsigned()->nullable();
+            $table->integer('service_id')->unsigned()->default(1);
             $table->string('title');
             $table->float('funding');
             $table->string('document')->nullable();

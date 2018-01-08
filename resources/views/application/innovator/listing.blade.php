@@ -13,7 +13,7 @@
                         <h4 class="float-left text-left">my Listing</h4>
                         {{--<h4 class="float-right text-right"><a href="#">View All</a></h4>--}}
                         <div class="list_border clearfix"></div>
-                        <div class="row">
+                        <div class="row masonry_listing">
                             @each('layouts.application_panel_partials.listingviewBox_panel', $listings, 'listings', 'layouts.application_panel_partials.no_listingviewBox_panel')
                             {{--@include('layouts.application_panel_partials.listingviewBox_panel')--}}
                         </div>
