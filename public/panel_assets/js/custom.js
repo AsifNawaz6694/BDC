@@ -153,12 +153,22 @@ $(document).ready(function () {
             success: function(response){
                 if(response.code === 200){
                     alertify.success(response.success);
+<<<<<<< HEAD
+=======
+                    console.log(response.url);
+                    // window.location.href = response.url;
+>>>>>>> b2d6698b0b67dba81b129942f31611adf9d08f84
                 }
                 if(response.code == 202){
                     alertify.error(response.error);
                 }
                 if(response.code == 205){
                     alertify.warning(response.error);
+<<<<<<< HEAD
+=======
+                    console.log(response.url);
+                    // window.location.href = response.url;
+>>>>>>> b2d6698b0b67dba81b129942f31611adf9d08f84
                 }
                 // window.location
             },
@@ -179,4 +189,18 @@ $(document).ready(function () {
         });
     });
 
+<<<<<<< HEAD
 });
+=======
+});
+
+//masonry function
+$(function(){
+    $('.masonry_listing').masonry({
+        // options
+        itemSelector : '.listing_item',
+        columnWidth : '.listing_item',
+        percentPosition: true
+    });
+});
+>>>>>>> b2d6698b0b67dba81b129942f31611adf9d08f84

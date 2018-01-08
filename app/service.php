@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class service extends Model
 {
+
 	protected $fillable = [
         'service', 'cost'
     ];
@@ -13,4 +14,6 @@ class service extends Model
      public function listings(){
         return $this->hasMany('App\Listing');
     }
+
+   
 }

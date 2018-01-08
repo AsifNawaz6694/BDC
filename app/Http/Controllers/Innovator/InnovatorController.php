@@ -17,7 +17,12 @@ class InnovatorController extends Controller
 
     //Innovator Index page
     public function index(){
+<<<<<<< HEAD
     	return view('application.innovator.index');
+=======
+        $listings = Listing::where('user_id', Auth::user()->id)->orderBy('id')->take(3)->get();
+    	return view('application.innovator.index', compact('listings'));
+>>>>>>> b2d6698b0b67dba81b129942f31611adf9d08f84
     }
 
     //Innovator Profile page
@@ -25,16 +30,26 @@ class InnovatorController extends Controller
        return view('application.innovator.profile');
     }
 
+<<<<<<< HEAD
     //Innovator nitifications page
+=======
+    //Innovator notifications page
+>>>>>>> b2d6698b0b67dba81b129942f31611adf9d08f84
     public function notifications_index(){
     	return view('application.innovator.notification');
     }
 
     //Innovator listings
     public function listings(){
+<<<<<<< HEAD
         $listings = Listing::where('user_id', Auth::user()->id)->get();
         dd($listings->user);
     	return view('application.innovator.listing');
+=======
+
+        $listings = Listing::where('user_id', Auth::user()->id)->get();
+    	return view('application.innovator.listing', compact('listings'));
+>>>>>>> b2d6698b0b67dba81b129942f31611adf9d08f84
     }
 
     //Innovator submit listings page
@@ -67,8 +82,12 @@ class InnovatorController extends Controller
             'category_id' => $request->product,
             'title' => $request->title,
             'funding' => $request->funding,
+<<<<<<< HEAD
             'description' => $request->description,
             'status' => 0,
+=======
+            'description' => $request->description
+>>>>>>> b2d6698b0b67dba81b129942f31611adf9d08f84
         ]);
         if($request->hasFile('file')){
             $path = $request->file('file')->store('public/files');
@@ -76,7 +95,11 @@ class InnovatorController extends Controller
                 'document' => $path,
             ]);
             if(!$update){
+<<<<<<< HEAD
                 return \Response()->json(['warning' => "Listing successfully created, but file was unable to upload", 'code' => 205]);
+=======
+                return \Response()->json(['warning' => "Listing successfully created, but file was unable to upload", 'code' => 205, 'url' => route('innovator_listings')]);
+>>>>>>> b2d6698b0b67dba81b129942f31611adf9d08f84
             }
             else{
                 return \Response()->json(['success' => "Listing successfully created, and pending for approval", 'code' => 200]);

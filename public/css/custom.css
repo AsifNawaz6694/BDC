@@ -786,7 +786,10 @@ td.mint1 {
 
 td.dollor1 {
     text-align: center;
+<<<<<<< HEAD
     padding-right: !important;
+=======
+>>>>>>> b2d6698b0b67dba81b129942f31611adf9d08f84
 }
 
 td.name {
@@ -1892,3 +1895,38 @@ hr {
         width: 100%;
     }
 }
+<<<<<<< HEAD
+=======
+
+
+@media (max-width: 480px) and (min-width: 320px){
+    .listing_item {
+        width: 100%;
+        float: left;
+    }
+}
+@media (min-width: 480px){
+    .listing_item {
+        width: 50%;
+        float: left;
+    }
+}
+@media (min-width: 768px){
+    .listing_item {
+        width: 50%;
+        float: left;
+    }
+}
+@media (min-width: 992px){
+    .listing_item {
+        width: 33.33333333%;
+        float: left;
+    }
+}
+@media (min-width: 1200px){
+    .listing_item {
+        width: 25%;
+        float: left;
+    }
+}
+>>>>>>> b2d6698b0b67dba81b129942f31611adf9d08f84

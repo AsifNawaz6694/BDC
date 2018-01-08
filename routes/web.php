@@ -14,6 +14,7 @@
 // Admin Routes
 
 Route::group(['prefix'=>'admin','middleware' => 'is-admin']	,function(){
+
 	//Admin Panel Routes Started
 Route::get('/admin', 'Admin\AdminPagesController@Backend')->name('adminBackend');
 //Admin Profile Route
@@ -47,6 +48,37 @@ Route::get('/admin', 'Admin\AdminPagesController@Backend')->name('adminBackend')
 
 //Admin Panel Routes Ended
 
+    Route::get('/admin', 'Admin\AdminPagesController@Backend')->name('adminBackend');
+    Route::get('/logout', function (){
+        return view('Admin_panel\logout');
+    });
+
+
+	// Profile Controller 
+	Route::get('/profile','Admin\AdminProfileController@index')->name('admin_profile');
+	// Update Admin Profile Image
+	Route::any('/updateInfo/{id}/',["as" => "admin-update-info", "uses" => "Admin\AdminProfileController@update"]);
+	// Route::any('/updatePassword/',["as" => "update-password", "uses" => "Admin\AdminProfileController@Updatepasword"]);
+	Route::post('/updateImage/{id}/',["as" => "admin-update-image", "uses" => "Admin\AdminProfileController@ChangeProfileImage"]);
+
+
+	// Users Cotroller full resource
+	Route::resource('/users','Admin\UsersController');
+
+	// Category Controller Full resource 
+	Route::resource('/category','Admin\CategoryController');
+
+
+
+// <-------------------------------User's Controller Routes Started--------------------------------------------->
+	Route::resource('/users','Admin\UsersController');	
+// <-----------------------------------User's Controller Routes Ended-------------------------------------------->
+
+// <-------------------------------Category's Controller Routes Started------------------------------------------>
+	Route::resource('/category','Admin\CategoryController');	
+// <------------------------------Category's Controller Routes Ended--------------------------------------------->
+
+
 });
 
 
@@ -74,6 +106,11 @@ Route::group(['prefix'=>'funder', 'middleware' => 'is-funder'], function(){
 	//Funder funding details
 	Route::get('/fund_details', 'Funder\FunderController@fund_details')->name('funder_fund_details');	
 });
+
+
+
+
+
 
 
 /* Innovator Routes */
@@ -117,12 +154,7 @@ Route::post('/registration', 'Auth\RegisterController@create')->name('registrati
 // Auth Routes
 Auth::routes();
 
-
-
 //Ajax routes for logged in users
-
-
-
 Route::group(['prefix' => 'ajax', 'middleware' => 'auth'], function(){
     Route::post('profile_picture', 'GeneralController@profile_picture')->name('ajaxProfilePicture');
     Route::post('profile_update', 'GeneralController@profile_update')->name('ajaxProfileUpdate');
