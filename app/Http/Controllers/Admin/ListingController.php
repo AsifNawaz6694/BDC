@@ -66,8 +66,6 @@ class ListingController extends Controller
 
         $file = Listing::find($file_name);
         $path = str_replace('/', '\\', $file->document);
-        // dd($path);
-        // $path = explode("/", $file->document);
         $file_path = storage_path('app\public\\'.$path) ;
      
 

@@ -18,9 +18,7 @@ class InnovatorController extends Controller
     //Innovator Index page
     public function index(){
 
-    	return view('application.innovator.index');
-
-        $listings = Listing::where('user_id', Auth::user()->id)->orderBy('id')->take(3)->get();
+        $listings = Listing::where('user_id', Auth::user()->id)->orderBy('id', 'desc')->take(3)->get();
     	return view('application.innovator.index', compact('listings'));
 
     }
@@ -31,7 +29,11 @@ class InnovatorController extends Controller
     }
 
 
+
     //Innovator nitifications page
+
+    //Innovator notifications page
+
 
     //Innovator notifications page
 
@@ -42,19 +44,22 @@ class InnovatorController extends Controller
     //Innovator listings
     public function listings(){
 
-        $listings = Listing::where('user_id', Auth::user()->id)->get();
-        dd($listings->user);
-    	return view('application.innovator.listing');
+        $listings = Listing::where('user_id', Auth::user()->id)->orderBy('id', 'desc')->get();
 
-
-        $listings = Listing::where('user_id', Auth::user()->id)->get();
-    	return view('application.innovator.listing', compact('listings'));
+        return view('application.innovator.listing', compact('listings'));
 
     }
 
     //Innovator submit listings page
     public function submit_listing_page(){
      	return view('application.innovator.submit_listing');   	
+    }
+
+    //Innovator submit listings page
+    public function edit_listing_page($id){
+        $listing = Listing::find($id);
+//        dd($listing);
+        return view('application.innovator.edit_listing', compact('listing'));
     }
 
     //Innovator contact admin page.
@@ -86,8 +91,6 @@ class InnovatorController extends Controller
             'description' => $request->description,
             'status' => 0,
 
-            'description' => $request->description
-
         ]);
         if($request->hasFile('file')){
             $path = $request->file('file')->store('public/files');
@@ -96,19 +99,17 @@ class InnovatorController extends Controller
             ]);
             if(!$update){
 
-                return \Response()->json(['warning' => "Listing successfully created, but file was unable to upload", 'code' => 205]);
-
                 return \Response()->json(['warning' => "Listing successfully created, but file was unable to upload", 'code' => 205, 'url' => route('innovator_listings')]);
             }
             else{
-                return \Response()->json(['success' => "Listing successfully created, and pending for approval", 'code' => 200]);
+                return \Response()->json(['success' => "Listing successfully created, and pending for approval", 'code' => 200, 'url' => route('innovator_listings')]);
             }
         }
         elseif ($listing){
-            return \Response()->json(['success' => "Listing successfully created, and pending for approval", 'code' => 200]);
+            return \Response()->json(['success' => "Listing successfully created, and pending for approval", 'code' => 200, 'url' => route('innovator_listings')]);
         }
         else{
-            return \Response()->json(['warning' => "Failed to create new listing.", 'code' => 202]);
+            return \Response()->json(['error' => "Failed to create new listing.", 'code' => 202]);
         }
     }
 }

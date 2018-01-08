@@ -136,8 +136,14 @@ Route::group(['prefix'=>'innovator', 'middleware' => 'is-innovator'], function()
 	//Innovator submit listing page
 	Route::get('/submit_listing', 'Innovator\InnovatorController@submit_listing_page')->name('submit_listing_page');
 
+    //Innovator edit listing page
+    Route::get('/edit_listing/{id}', 'Innovator\InnovatorController@edit_listing_page')->name('edit_listing_page');
+
+	//Innovator submit listing form post
 	Route::post('/submit_listing', 'Innovator\InnovatorController@submit_listing_post')->name('submit_listing_post');
 
+    //Innovator submit listing form post
+    Route::post('/edit_listing', 'Innovator\InnovatorController@edit_listing_post')->name('edit_listing_post');
 
 	//Innovator Contact Admin page
 	Route::get('/contact_admin', 'Innovator\InnovatorController@contact_admin_page')->name('contact_admin_page');

@@ -1,8 +1,5 @@
-<<<<<<< HEAD
 <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
-=======
 <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3 listing_item">
->>>>>>> b2d6698b0b67dba81b129942f31611adf9d08f84
     <div class="Funding_box Funding_box_small {{ $color[$a] }}">
         <h5><a href="#">perspiciatis unde omnis</a></h5>
         <h6>exercitationem ullam</h6>

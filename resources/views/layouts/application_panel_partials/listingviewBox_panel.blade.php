@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
                                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
                                     <div class="Funding_box Funding_box_small <?php echo $color[$a]; ?>">
                                         <h5><a href="#">perspiciatis unde omnis</a></h5>
@@ -6,29 +6,32 @@
                                         <div class="button_groups">
                                             <a class="btn btn-default Badge_tag">p</a>
                                             <a class="btn btn-default fund_Price">Funding needs: $21,000</a>
-=======
+
                                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 listing_item">
                                     <div class="Funding_box Funding_box_small {{ $listings->category->color_code }}_box">
-                                        <h5><a href="#">{{ $listings->title }}</a></h5>
+                                        <h5>
+
+                                            <a href="#">{{ $listings->title }}</a>
+                                            @if($listings->innovator->id === Auth::user()->id)
+                                                <small><a href="{{ route('edit_listing_page', ['id' => $listings->id]) }}">edit</a></small>
+                                            @endif
+                                        </h5>
                                         {{--<h6>exercitationem ullam</h6>--}}
                                         <div class="button_groups">
                                             <a class="btn btn-default Badge_tag">{{ $listings->category->symbol }}</a>
                                             <a class="btn btn-default fund_Price">Funding needs: ${{ $listings->funding }}</a>
->>>>>>> b2d6698b0b67dba81b129942f31611adf9d08f84
+
                                         </div>
                                         <div class="funding_description">
                                             <h2>Problem it solves:</h2>
                                             <p>
-<<<<<<< HEAD
                                                 Dignissimos ducimus qui blandit pruiis praesentium
                                                 voluptatum
                                                 deleniti atque
                                                 corrupti
                                                 quos
                                                 dolores et quastert
-=======
                                                 {{ $listings->description }}
->>>>>>> b2d6698b0b67dba81b129942f31611adf9d08f84
                                             </p>
                                         </div>
                                         <div class="Funding_box_footer clearfix">

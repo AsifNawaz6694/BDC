@@ -34,11 +34,10 @@
 <script src="{{ asset('panel_assets/js/owl.carousel.min.js') }}"></script>
 <!-- Wow-min-js -->
 <script src="{{ asset('panel_assets/js/wow.min.js') }}"></script>
-<<<<<<< HEAD
-=======
+
 <!-- masonry-min-js -->
 <script src="{{ asset('app/js/masonry.pkgd.min.js') }}"></script>
->>>>>>> b2d6698b0b67dba81b129942f31611adf9d08f84
+
 <!-- Custom-js -->
 <script src="{{ asset('panel_assets/js/custom.js') }}"></script>
 </body>

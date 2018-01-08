@@ -1,9 +1,5 @@
 @extends('layouts.index')
-@section('content')	
-<<<<<<< HEAD
-
-=======
->>>>>>> b2d6698b0b67dba81b129942f31611adf9d08f84
+@section('content')
 			<div class="page-bar">
 				<ul class="page-breadcrumb">
 					<li>
@@ -127,12 +123,8 @@
 												<form id="form1" method="post" action="{{route('admin-update-image',['id'=>$admin_profile->user->id])}}" enctype="multipart/form-data" >
 													<div class="form-group">
 														<div class="fileinput fileinput-new" data-provides="fileinput">
-<<<<<<< HEAD
-														
-=======
 															<div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;">
 															</div>
->>>>>>> b2d6698b0b67dba81b129942f31611adf9d08f84
 															<div>			
 																	<input type="hidden" name="_token" value="{{ csrf_token()}}"/>						
 																	<label class="fileContainer" for="file">

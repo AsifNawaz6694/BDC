@@ -49,16 +49,14 @@
                         <h4 class="float-right text-right"><a href="#">View All</a></h4>
                         <div class="list_border clearfix"></div>
                         <div class="row">
-<<<<<<< HEAD
                             <?php
                             $color = array('green_box', 'red_box', 'blue_box', 'orange_box', 'green_box', 'red_box', 'blue_box', 'orange_box', 'green_box', 'red_box', 'blue_box', 'orange_box');
                             for ($a = 1; $a <= 3; $a++) {
                                 ?>
-                            @include('layouts.application_panel_partials.listingviewBox_panel')                            
+                            @include('layouts.application_panel_partials.listingviewBox_panel')
                             <?php } ?>
-=======
                             @each('layouts.application_panel_partials.listingviewBox_panel', $listings, 'listings', 'layouts.application_panel_partials.no_listingviewBox_panel')
->>>>>>> b2d6698b0b67dba81b129942f31611adf9d08f84
+
                         </div>
                     </div>
                 </div>
@@ -102,7 +100,6 @@
                     <div class="panel panel-default panel-min">
                         <!-- Default panel contents -->
                         <div class="panel-body">
-<<<<<<< HEAD
                             <h4 class="float-left text-left">Submit Idea</h4>
                             <h4 class="float-right text-right"><a href="#">View All</a></h4>
                         </div>
@@ -137,18 +134,13 @@
                     <div class="panel panel-default panel-min">
                         <!-- Default panel contents -->
                         <div class="panel-body">
-=======
->>>>>>> b2d6698b0b67dba81b129942f31611adf9d08f84
                             <h4 class="float-left text-left">Request Services</h4>
                             <h4 class="float-right text-right"><a href="#">View All</a></h4>
                         </div>
                         <!-- List group -->
                         <ul class="list-group">
-<<<<<<< HEAD
                             <?php for ($a = 1; $a <= 1; $a++) { ?>
-=======
                             <?php for ($a = 1; $a <= 3; $a++) { ?>
->>>>>>> b2d6698b0b67dba81b129942f31611adf9d08f84
                                 <li class="list-group-item">
                                     <div class="media">
                                         <div class="media-body">
