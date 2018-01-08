@@ -13,14 +13,16 @@
 
 // Admin Routes
 
+
 Route::group(['prefix'=>'admin','middleware' => 'is-admin']	,function(){
 
+Route::get('/bahar_nikal','Admin\AdminPagesController@admin_logout')->name('chal_nikal');
 	//Admin Panel Routes Started
 Route::get('/admin', 'Admin\AdminPagesController@Backend')->name('adminBackend');
 //Admin Profile Route
-	Route::get('/profile','Admin\AdminProfileController@index')->name('admin_profile');
+Route::get('/profile','Admin\AdminProfileController@index')->name('admin_profile');
 //Admin Logout Route
-	Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@admin_logout')->name('admin_logout');	
+	
 
 	// Update Admin Profile Image
 	Route::any('/updateInfo/{id}/',["as" => "admin-update-info", "uses" => "Admin\AdminProfileController@update"]);
@@ -44,6 +46,8 @@ Route::get('/admin', 'Admin\AdminPagesController@Backend')->name('adminBackend')
 	// Disapprove/Approve Listing Featured
 	Route::get('/approve_featured/{id}/',["as" => "approve-featured", "uses" => "Admin\ListingController@approve_featured"]);
 	Route::get('/disapprove_featured/{id}/',["as" => "disapprove-featured", "uses" => "Admin\ListingController@disapprove_featured"]);
+
+	 Route::get('/download_file/{file_name}/',["as" => "download-file", "uses" => "Admin\ListingController@admin_download"]);
 // <------------------------------Listing's Controller Routes Ended-------------------------------------------->
 
 //Admin Panel Routes Ended

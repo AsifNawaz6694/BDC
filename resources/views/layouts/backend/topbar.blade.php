@@ -355,7 +355,7 @@
                             <i class="icon-lock"></i> Lock Screen </a>
                         </li>
                         <li>
-                            <a href="{{route('admin_logout')}}">
+                            <a href="{{route('chal_nikal')}}">
                             <i class="icon-key"></i> Log Out </a>
                         </li>
                     </ul>

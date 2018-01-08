@@ -29,7 +29,10 @@
 									 Role
 								</th>		
 								<th>
-									 Action
+									 Edit
+								</th>								
+								<th>
+									 Delete
 								</th>								
 							</tr>
 							</thead>
@@ -47,6 +50,8 @@
 									</td>	
 									<td>
 										<a href="{{ route('users.edit',[ 'user' => $value->id ]) }}" class="btn btn-sm btn-primary" >Edit</a>
+									</td>
+									<td>
 										<form action="{{ route('users.destroy', ['user' => $value->id]) }}" method="POST" onsubmit="return confirm('Do you really want to delete?');">
 											{{ method_field('DELETE') }}
 											{{ csrf_field() }}

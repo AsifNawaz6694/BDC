@@ -35,7 +35,9 @@
 								<th>Funding</th>
 								<th>Status</th>		
 								<th>Featured</th>								
-								<th>Action</th>								
+								<th>Download</th>								
+								<th>Edit</th>								
+								<th>Delete</th>								
 							</tr>
 							</thead>
 							<tbody>
@@ -54,6 +56,13 @@
 										{{$value->funding}}
 									</td>
 									<td>
+										@if($value->document && !empty($value->document))
+										<a href="{{route('download-file',['file_name'=>$value->id])}}" class="btn btn-sm btn-primary" >Download</a>
+										@else
+										{{ 'No Document Uploaded'}}
+										@endif
+									</td>
+									<td>
 										@if($value->status == '1')
 										<a href="{{route('disapprove-status',['id'=>$value->id])}}" class="btn btn-sm btn-primary" >Approve</a>
 										@else
@@ -69,6 +78,8 @@
 									</td>	
 									<td>
 										<a href="{{ route('listing.edit',[ 'listing' => $value->id ]) }}" class="btn btn-sm btn-primary" >Edit</a>
+									</td>
+									<td>
 										<form action="{{ route('listing.destroy', ['listing' => $value->id]) }}" method="POST" onsubmit="return confirm('Do you really want to delete?');">
 											{{ method_field('DELETE') }}
 											{{ csrf_field() }}
