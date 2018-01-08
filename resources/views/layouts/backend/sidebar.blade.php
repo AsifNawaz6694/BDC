@@ -57,12 +57,16 @@
                         </li>
                     </ul>                    
                 </li> -->
+
                 <li class="start active open">                   
+
                     <li>
                         <a href="{{url('admin/category')}}">
                         <i class="fa    fa-list"></i>
                         <span class="title">Categories</span></a>
+
                     </li>                                      
+
                 </li>
                 <li class="start active open">                   
                     <li>                    
@@ -70,6 +74,16 @@
                         <i class="fa fa-user"></i>
                         <span class="title">Users</span></a>
                     </li>                                      
+
+                </li> 
+                 <li class="start active open">                   
+                    <li>                    
+                        
+                        <a href="{{url('admin/listing')}}">
+                        <i class="fa fa-list"></i>
+                        <span class="title">Listings</span></a>
+                    </li>                                      
+
                 </li>                
             </ul>
             <!-- END SIDEBAR MENU -->

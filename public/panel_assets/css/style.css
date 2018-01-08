@@ -1036,6 +1036,8 @@ label.form_error p {
 .paid_unpaid span:hover {
     cursor: pointer;
     color: #cc0000 !important;
+<<<<<<< HEAD
+=======
 }
 
 @media (max-width: 480px) and (min-width: 320px){
@@ -1067,4 +1069,5 @@ label.form_error p {
         width: 33.33333333%;
         float: left;
     }
+>>>>>>> b2d6698b0b67dba81b129942f31611adf9d08f84
 }

@@ -25,8 +25,6 @@ class CreateListingsTable extends Migration
             $table->boolean('status')->default(0);
             $table->boolean('featured')->default(0);
             $table->timestamps();
-
-
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('category_id')->references('id')->on('categories');
             $table->foreign('service_id')->references('id')->on('services');

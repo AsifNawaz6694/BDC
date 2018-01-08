@@ -213,10 +213,17 @@
 <script src="{{ asset('app/js/owl.carousel.min.js') }}"></script>
 <!-- Wow-min-js -->
 <script src="{{ asset('app/js/wow.min.js') }}"></script>
+<<<<<<< HEAD
+<!-- Custom-js -->
+
+<script src="{{ asset('js/custom1.js') }}"></script>
+
+=======
 <!-- masonry-min-js -->
 <script src="{{ asset('app/js/masonry.pkgd.min.js') }}"></script>
 <!-- Custom-js -->
 <script src="{{ asset('js/custom1.js') }}"></script>
+>>>>>>> b2d6698b0b67dba81b129942f31611adf9d08f84
 <script src="{{ asset('app/js/custom.js') }}"></script>
 
 </body>

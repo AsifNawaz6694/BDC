@@ -1,6 +1,21 @@
 @extends('layouts.panal_layout')
 @section('content')
 
+<<<<<<< HEAD
+<div class="wrapper">
+    <div class="heading_one">
+        <h1>listing</h1>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="dashboard_box">
+            <div class="panel panel-default">
+                <!-- Default panel contents -->
+            @include('layouts.application_panel_partials.listingpage_box_panel')                    
+            </div>
+        </div>
+    </div><!--./End My Listing Here -->
+</div>
+=======
     <div class="wrapper">
         <div class="heading_one">
             <h1>listing</h1>
@@ -22,5 +37,6 @@
             </div>
         </div><!--./End My Listing Here -->
     </div>
+>>>>>>> b2d6698b0b67dba81b129942f31611adf9d08f84
 
 @endsection

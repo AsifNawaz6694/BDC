@@ -325,7 +325,11 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-default">
                         <li>
+
+                            <a href="{{route('admin_profile')}}">
+
                             <a href="extra_profile.html">
+
                             <i class="icon-user"></i> My Profile </a>
                         </li>
                         <li>
@@ -351,7 +355,7 @@
                             <i class="icon-lock"></i> Lock Screen </a>
                         </li>
                         <li>
-                            <a href="login.html">
+                            <a href="{{route('admin_logout')}}">
                             <i class="icon-key"></i> Log Out </a>
                         </li>
                     </ul>

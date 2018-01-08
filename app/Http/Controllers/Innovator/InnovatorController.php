@@ -17,6 +17,8 @@ class InnovatorController extends Controller
 
     //Innovator Index page
     public function index(){
+
+
         $listings = Listing::where('user_id', Auth::user()->id)->orderBy('id', 'desc')->take(3)->get();
     	return view('application.innovator.index', compact('listings'));
     }
@@ -76,7 +78,9 @@ class InnovatorController extends Controller
             'category_id' => $request->product,
             'title' => $request->title,
             'funding' => $request->funding,
-            'description' => $request->description
+
+            'description' => $request->description,
+            'status' => 0,
         ]);
         if($request->hasFile('file')){
             $path = $request->file('file')->store('public/files');
@@ -84,6 +88,7 @@ class InnovatorController extends Controller
                 'document' => $path,
             ]);
             if(!$update){
+
                 return \Response()->json(['warning' => "Listing successfully created, but file was unable to upload", 'code' => 205, 'url' => route('innovator_listings')]);
             }
             else{

@@ -79,7 +79,6 @@ License: You must have a valid license purchased only from themeforest(the above
     <!-- END SIDEBAR -->
     <!-- BEGIN CONTENT -->
     <div class="page-content-wrapper">
-         
          @yield('content')
     </div>
     <!-- END CONTENT -->
@@ -134,14 +133,11 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- END PAGE LEVEL SCRIPTS -->
 <script>
 jQuery(document).ready(function() {    
-   Metronic.init(); // init metronic core componets
-   Layout.init(); // init layout
-   QuickSidebar.init(); // init quick sidebar
-Demo.init(); // init demo features
-   Index.init();   
- 
-   
- 
+  Metronic.init(); // init metronic core componets
+  Layout.init(); // init layout
+  QuickSidebar.init(); // init quick sidebar
+  Demo.init(); // init demo features
+  Index.init();
 });
 </script>
 

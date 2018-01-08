@@ -153,20 +153,22 @@ $(document).ready(function () {
             success: function(response){
                 if(response.code === 200){
                     alertify.success(response.success);
-                    console.log(response.url);
+
                     setTimeout(function(){
                         window.location.href = response.url;
                     }, 1000);
+
                 }
                 if(response.code == 202){
                     alertify.error(response.error);
                 }
                 if(response.code == 205){
                     alertify.warning(response.error);
-                    console.log(response.url);
+
                     setTimeout(function(){
                         window.location.href = response.url;
                     }, 1000);
+
                 }
             },
             error: function(response){
@@ -186,7 +188,9 @@ $(document).ready(function () {
         });
     });
 
+
 });
+
 
 //masonry function
 $(function(){
@@ -197,3 +201,5 @@ $(function(){
         percentPosition: true
     });
 });
+
+
