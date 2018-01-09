@@ -1,7 +1,8 @@
 <?php
 namespace App\Http\Controllers\Admin;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Auth;
 class AdminPagesController extends Controller
 {
     /**
@@ -12,6 +13,10 @@ class AdminPagesController extends Controller
     public function Backend()
     {
       return view('Admin_Panel/admin');
+    }
+    public function admin_logout(Request $request) {     
+      Auth::logout();
+      return redirect('/login');
     }
     public function index()
     {

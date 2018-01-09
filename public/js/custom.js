@@ -35,7 +35,6 @@ $(document).ready(function () {
 });
 
 
-
 //masonry function
 $(function(){
     $('#masonry_listing').masonry({
@@ -45,4 +44,3 @@ $(function(){
         percentPosition: true
     });
 });
-

@@ -75,7 +75,54 @@
 															</div>
 														</div>
 													</div>													
-												</div>												
+												</div>	
+												<br>
+											<div class="row">
+													<div class="col-md-6">
+														<div class="form-group">
+															<label class="control-label col-md-3">Description</label>
+															<div class="col-md-9">
+																{!! Form::textarea('description', $listing->description, [ 'class' => 'form-control'] ) !!}
+																<span class="help-block">
+																	{{ $errors->first('description') }}
+																 </span>
+															</div>
+														</div>
+													</div>
+													<div class="col-md-6">
+														<label class="control-label col-md-3">Document</label>
+														<div class="form-group">
+															@if($listing->document && !empty($listing->document))
+															<a href="{{route('download-file',['file_name'=>$listing->id])}}" class="btn btn-sm btn-primary" >Download</a>
+															@else
+															{{ 'No Document Uploaded'}}
+															@endif
+														</div>
+													</div>											
+											</div>
+											<br>
+												<div class="row">
+												<div class="col-md-6">
+														<label class="control-label col-md-3">Approve Status</label>
+														<div class="form-group">
+															@if($listing->status == '1')
+															<a href="{{route('disapprove-status',['id'=>$listing->id])}}" class="btn btn-sm btn-primary" >Approve</a>
+															@else
+															<a href="{{route('approve-status',['id'=>$listing->id])}}" class="btn btn-sm btn-danger" >DisApprove</a>
+															@endif
+														</div>
+													</div>
+													<div class="col-md-6">
+														<label class="control-label col-md-3">Featured</label>
+														<div class="form-group">
+															@if($listing->featured == '1')
+															<a href="{{route('disapprove-featured',['id'=>$listing->id])}}" class="btn btn-sm btn-primary" >Featured</a>
+															@else
+															<a href="{{route('approve-featured',['id'=>$listing->id])}}" class="btn btn-sm btn-danger" >Not Featured</a>
+															@endif
+														</div>
+													</div>											
+											</div>												
 											</div>											
 											<div class="form-actions">
 												<div class="row">
@@ -83,7 +130,7 @@
 														<div class="row">
 															<div class="col-md-offset-3 col-md-9">
 																<button type="submit" class="btn green">Submit</button>
-																<a href="{{url('admin/users')}}" type="button" class="btn default">Cancel</a>
+																<a href="{{url('admin/listing')}}" type="button" class="btn default">Cancel</a>
 															</div>
 														</div>
 													</div>

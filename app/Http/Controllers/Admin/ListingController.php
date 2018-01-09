@@ -62,6 +62,17 @@ class ListingController extends Controller
             return redirect()->back();
     }
 
+    public function admin_download($file_name) {
+
+        $file = Listing::find($file_name);
+        $path = str_replace('/', '\\', $file->document);
+        $file_path = storage_path('app\public\\'.$path) ;
+     
+
+        return response()->download($file_path);
+
+      }
+
     /**
      * Show the form for creating a new resource.
      *

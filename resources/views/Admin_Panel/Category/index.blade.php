@@ -44,7 +44,10 @@
 										 Color Code
 									</th>
 									<th>
-										 Action
+										 Edit
+									</th>
+									<th>
+										 Delete
 									</th>								
 								</tr>
 							</thead>
@@ -65,6 +68,8 @@
 									</td>	
 									<td>									
 										<a href="{{ route('category.edit',[ 'category' => $value->id ]) }} " class="btn btn-sm btn-primary" >Edit</a>
+									</td>
+									<td>
 										<form action="{{ route('category.destroy', ['category' => $value->id]) }}" method="POST" onsubmit="return confirm('Do you really want to delete?');">
 												{{ method_field('DELETE') }}
 												{{ csrf_field() }}

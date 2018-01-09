@@ -18,9 +18,9 @@ class InnovatorController extends Controller
     //Innovator Index page
     public function index(){
 
-
         $listings = Listing::where('user_id', Auth::user()->id)->orderBy('id', 'desc')->take(3)->get();
     	return view('application.innovator.index', compact('listings'));
+
     }
 
     //Innovator Profile page
@@ -28,7 +28,15 @@ class InnovatorController extends Controller
        return view('application.innovator.profile');
     }
 
+
+
+    //Innovator nitifications page
+
     //Innovator notifications page
+
+
+    //Innovator notifications page
+
     public function notifications_index(){
     	return view('application.innovator.notification');
     }
@@ -39,6 +47,7 @@ class InnovatorController extends Controller
         $listings = Listing::where('user_id', Auth::user()->id)->orderBy('id', 'desc')->get();
 
         return view('application.innovator.listing', compact('listings'));
+
     }
 
     //Innovator submit listings page
@@ -81,6 +90,7 @@ class InnovatorController extends Controller
 
             'description' => $request->description,
             'status' => 0,
+
         ]);
         if($request->hasFile('file')){
             $path = $request->file('file')->store('public/files');
