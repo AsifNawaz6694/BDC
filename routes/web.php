@@ -160,6 +160,7 @@ Route::group(['prefix'=>'innovator', 'middleware' => 'is-innovator'], function()
 // Public Pages
 Route::get('/', 'HomeController@index')->name('/');
 Route::get('/{slug}', 'HomeController@publicPages')->name('publicPages');
+Route::get('/email/email', 'HomeController@email')->name('email');
 Route::post('/registration', 'Auth\RegisterController@create')->name('registration');
 // Auth Routes
 Auth::routes();
@@ -169,6 +170,10 @@ Route::group(['prefix' => 'ajax', 'middleware' => 'auth'], function(){
     Route::post('profile_picture', 'GeneralController@profile_picture')->name('ajaxProfilePicture');
     Route::post('profile_update', 'GeneralController@profile_update')->name('ajaxProfileUpdate');
     Route::post('password_update', 'GeneralController@password_update')->name('ajaxPasswordUpdate');
-
 });
+
+
+Route::get('/paypal/checkout/{id}', 'PaymentController@checkout')->name('checkout');
+Route::get('/paypal/paypalReturn', 'PaymentController@getDone')->name('getDone');
+Route::get('/paypal/paypalCancel', 'PaymentController@getCancel')->name('getCancel');
 
