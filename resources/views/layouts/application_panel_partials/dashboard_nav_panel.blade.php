@@ -12,21 +12,39 @@
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right icons right_mobi_nav">
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                    <li class="dropdown" id="markasread" onclick="MarkNotificationAsRead()">
+                        <a href="{{ route('markAsRead') }}"  class="dropdown-toggle" data-toggle="dropdown" role="button"
                            aria-haspopup="true" aria-expanded="false">
                             <i class="fa fa-bell-o" aria-hidden="true"></i>
-                            <span class="badge">5</span>
+                            <span class="badge">{{ count(auth()->user()->unreadNotifications) }}</span>
                         </a>
                         <ul class="dropdown-menu media-list animated fadeInDown dash_nav clearfix">
-                            <li class="dropdown-header">Notifications (5)</li>
+                            <li class="dropdown-header">Notifications {{ count(auth()->user()->unreadNotifications) }}</li>
+                            @foreach(auth()->user()->unreadNotifications as $notificaiton)
+                                <li class="media">
+                                    <div class="media-body">
+                                    @if($notificaiton->type == 'App\Notifications\ListingApproved' && $notificaiton->data['listing']['status'] == 1)
+                                    {{ $notificaiton->data['user']['name'] }} has Approved your listing {{ $notificaiton->data['listing']['title'] }} 
+                                    @endif
+                                    @if($notificaiton->type == 'App\Notifications\ListingDisApproved' && $notificaiton->data['listing']['status'] != 1)
+                                    {{ $notificaiton->data['user']['name'] }} has Declined your listing {{ $notificaiton->data['listing']['title'] }} 
+                                    @endif
+                                    @if($notificaiton->type == 'App\Notifications\FeaturedApproved' && $notificaiton->data['listing']['featured'] == 1)
+                                    {{ $notificaiton->data['user']['name'] }} has featured your listing {{ $notificaiton->data['listing']['title'] }}
+                                    @endif
+                                    @if($notificaiton->type == 'App\Notifications\FeaturedDisapproved' && $notificaiton->data['listing']['featured'] != 1)
+                                    {{ $notificaiton->data['user']['name'] }} has unfeatured your listing {{ $notificaiton->data['listing']['title'] }}
+                                    @endif
+                                    </div>
+                                </li>
+                            @endforeach
                             <li class="media">
                                 <a href="#">
                                     <div class="media-left">
                                         <i class="fa fa-times media-object bg-red" aria-hidden="true"></i>
                                     </div>
                                     <div class="media-body">
-                                        <h6 class="media-heading">Server Error Reports</h6>
+                                        <h6 class="media-heading"></h6>
                                         <div class="text-muted f-s-11">3 minutes ago</div>
                                     </div>
                                 </a>

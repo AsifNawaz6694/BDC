@@ -7,6 +7,7 @@
                     </div>
                     <!-- Table -->
                     <table class="table">
+                      
                         <tr>
                             <td>
                                 <label>Full Name <span>*</span></label>

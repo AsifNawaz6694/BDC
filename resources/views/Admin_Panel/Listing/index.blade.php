@@ -54,14 +54,7 @@
 									</td>
 									<td>
 										{{$value->funding}}
-									</td>
-									<td>
-										@if($value->document && !empty($value->document))
-										<a href="{{route('download-file',['file_name'=>$value->id])}}" class="btn btn-sm btn-primary" >Download</a>
-										@else
-										{{ 'No Document Uploaded'}}
-										@endif
-									</td>
+									</td>									
 									<td>
 										@if($value->status == '1')
 										<a href="{{route('disapprove-status',['id'=>$value->id])}}" class="btn btn-sm btn-primary" >Approve</a>
@@ -76,6 +69,13 @@
 										<a href="{{route('approve-featured',['id'=>$value->id])}}" class="btn btn-sm btn-danger" >Not Featured</a>
 										@endif
 									</td>	
+									<td>
+										@if($value->document && !empty($value->document))
+										<a href="{{route('download-file',['file_name'=>$value->id])}}" class="btn btn-sm btn-primary" >Download</a>
+										@else
+										{{ 'No Document Uploaded'}}
+										@endif
+									</td>
 									<td>
 										<a href="{{ route('listing.edit',[ 'listing' => $value->id ]) }}" class="btn btn-sm btn-primary" >Edit</a>
 									</td>

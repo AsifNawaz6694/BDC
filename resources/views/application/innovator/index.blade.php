@@ -49,12 +49,7 @@
                         <h4 class="float-right text-right"><a href="#">View All</a></h4>
                         <div class="list_border clearfix"></div>
                         <div class="row">
-                            <?php
-                            $color = array('green_box', 'red_box', 'blue_box', 'orange_box', 'green_box', 'red_box', 'blue_box', 'orange_box', 'green_box', 'red_box', 'blue_box', 'orange_box');
-                            for ($a = 1; $a <= 3; $a++) {
-                                ?>
-                            @include('layouts.application_panel_partials.listingviewBox_panel')
-                            <?php } ?>
+                            
                             @each('layouts.application_panel_partials.listingviewBox_panel', $listings, 'listings', 'layouts.application_panel_partials.no_listingviewBox_panel')
 
                         </div>
@@ -139,7 +134,7 @@
                         </div>
                         <!-- List group -->
                         <ul class="list-group">
-                            <?php for ($a = 1; $a <= 1; $a++) { ?>
+                           
                             <?php for ($a = 1; $a <= 3; $a++) { ?>
                                 <li class="list-group-item">
                                     <div class="media">

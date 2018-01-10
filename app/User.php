@@ -4,12 +4,14 @@ namespace App;
 use Validator;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-
+use App\Notifications\ListingApproved;
 class User extends Authenticatable
 {
     use Notifiable;
     
-    
+   
+   
+
     /**
      * The attributes that are mass assignable.
      *
@@ -59,9 +61,7 @@ class User extends Authenticatable
         return $this->belongsTo('App\Roles', 'roles');
     }
 
-    public function listings(){
-
-        
+    public function listings(){       
 
         return $this->hasMany('App\Listing', 'user_id');
 
