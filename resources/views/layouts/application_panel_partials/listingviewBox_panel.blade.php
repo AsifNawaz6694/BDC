@@ -5,8 +5,8 @@
                                     <div class="Funding_box Funding_box_small {{ $listings->category->color_code }}_box">
                                         <h5>
 
-                                            <a href="#">{{ $listings->title }}</a>
-                                            @if($listings->innovator->id === Auth::user()->id)
+                                            <a href="#">{{ $listings->title }}</a>  
+                                            @if($listings->innovator->id == Auth::user()->id)
                                                 <small><a href="{{ route('edit_listing_page', ['id' => $listings->id]) }}">edit</a></small>
                                             @endif
                                         </h5>
@@ -18,12 +18,6 @@
                                         <div class="funding_description">
                                             <h2>Problem it solves:</h2>
                                             <p>
-                                                Dignissimos ducimus qui blandit pruiis praesentium
-                                                voluptatum
-                                                deleniti atque
-                                                corrupti
-                                                quos
-                                                dolores et quastert
                                                 {{ $listings->description }}
                                             </p>
                                         </div>

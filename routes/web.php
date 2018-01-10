@@ -109,6 +109,9 @@ Route::group(['prefix'=>'funder', 'middleware' => 'is-funder'], function(){
 
 	//Funder funding details
 	Route::get('/fund_details', 'Funder\FunderController@fund_details')->name('funder_fund_details');	
+
+	Route::post('/submit_request_listing', 'Funder\FunderController@request_listing_submit')->name('request_listing_submit');	
+
 });
 
 

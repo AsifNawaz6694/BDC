@@ -14,6 +14,7 @@ use App\service;
 use App\Category;
 use App\Listing;
 use App\Notifications\ListingApproved;
+use App\Notifications\FunderListingApproved;
 use App\Notifications\ListingDisApproved;
 use App\Notifications\FeaturedApproved;
 use App\Notifications\FeaturedDisApproved;
