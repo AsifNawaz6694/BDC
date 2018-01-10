@@ -5,6 +5,7 @@
         "This file is @generated automatically"
     ],
     "content-hash": "d651466fb8498fc6b4938e08d05ab575",
+
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -3591,6 +3592,7 @@
     "stability-flags": {
         "netshell/paypal": 20
     },
+
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

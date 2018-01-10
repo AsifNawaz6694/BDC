@@ -16,7 +16,6 @@
                         <div class="list_border clearfix"></div>
                         <div class="row masonry_listing">
                             @each('layouts.application_panel_partials.listingviewBox_panel', $listings, 'listing', 'layouts.application_panel_partials.no_listingviewBox_panel')
-                            {{--@include('layouts.application_panel_partials.listingviewBox_panel')--}}
                         </div>
                     </div>
                 </div>

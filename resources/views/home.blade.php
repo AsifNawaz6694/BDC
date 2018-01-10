@@ -16,29 +16,27 @@
                 </div>
             </div>
             <div class="row">
+
                 <div id="owl-demo" class="owl-carousel owl-theme">
-                    @for ($a = 1; $a <= 6; $a++)
+                    @foreach ($featured_listings as $featured_listing)
                         <div class="item">
                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                <div class="Funding_box {{{ $a == 1 ? 'red_box' : 'green_box' }}}">
-                                    <h5><a href="#">perspiciatis unde omnis</a></h5>
+                                <div class="Funding_box {{ $featured_listing->category->color_code }}_box">
+                                    <h5><a href="#">{{$featured_listing->title}}</a></h5>
                                     <h6>exercitationem ullam</h6>
                                     <div class="button_groups">
-                                        <a class="btn btn-default Badge_tag">p</a>
-                                        <a class="btn btn-default fund_Price">Funding needs: $21,000</a>
+                                        <a class="btn btn-default Badge_tag">{{ $featured_listing->category->symbol }}</a>
+                                        <a class="btn btn-default fund_Price">Funding needs: {{$featured_listing->funding}}</a>
                                     </div>
                                     <div class="funding_description">
                                         <h2>Problem it solves:</h2>
                                         <p>
-                                            Dignissimos ducimus qui blandit pruiis praesentium voluptatum deleniti atque
-                                            corrupti
-                                            quos
-                                            dolores et quastert
+                                            {{ str_limit($featured_listing->description, $limit = 150, $end = '...') }}
                                         </p>
                                     </div>
                                     <div class="Funding_box_footer clearfix">
                                         <span class="ready_img">
-                                            <img src="{{ asset('app/images/ready_img.png') }}" class="img-responsive"/>
+                                            <img src="{{ asset('panel_assets/images/ready_img.png') }}" class="img-responsive"/>
                                         </span>
                                         <span class="Fund_contact">
                                             <a href="#" class="btn btn-default">Contact</a>
@@ -47,7 +45,7 @@
                                 </div>
                             </div>
                         </div><!--./End Item Box-->
-                    @endfor
+                    @endforeach
                 </div><!--./End main Owl Slider Box-->
             </div>
         </div>
@@ -65,9 +63,9 @@
                 <?php
                 $color = array('green_box', 'red_box', 'blue_box', 'orange_box', 'green_box', 'red_box', 'blue_box', 'orange_box', 'green_box', 'red_box', 'blue_box', 'orange_box');
                 ?>
-                @for ($a = 0; $a <= 11; $a++)
+                @foreach ($listings as $listing)
                     @include('partials/idea-box')
-                @endfor
+                @endforeach
             </div>
         </div>
     </div>

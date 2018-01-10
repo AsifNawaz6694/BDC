@@ -25,14 +25,22 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $listings = Listing::all();
+        $featured_listings = Listing::where('featured', 1)->get();
+        //dd($listings);
+        //dd($featured_listings);
+
+        return view('home')->with('featured_listings', $featured_listings)->with('listings', $listings);
     }
 
     public function publicPages($slug)
     {
+
         $listings = Listing::all();
+        $featured_listings = Listing::where('featured', 1)->get();
         //dd($listings);
-        return view($slug);
+        dd($featured_listings);
+        return view($slug, compact('listings', '`feature'));
     }
 
     public function email(){

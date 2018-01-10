@@ -50,6 +50,7 @@
                         <div class="list_border clearfix"></div>
                         <div class="row">
 
+
                             @each('layouts.application_panel_partials.listingviewBox_panel', $listings, 'listing', 'layouts.application_panel_partials.no_listingviewBox_panel')
 
                         </div>
@@ -67,24 +68,18 @@
                     </div>
                     <!-- List group -->
                     <ul class="list-group">
-                        <?php for ($a = 1; $a <= 3; $a++) { ?>
+                        @foreach ($transactions as $tr)
+                            <?php $description = json_decode($tr->description); ?>
                         <li class="list-group-item">
                             <div class="media">
                                 <div class="media-body">
                                     <h4 class="media-heading">
-                                        <a href="#">Neque porro quisquam est qui dolorem ipsum...</a>
+                                        <a href="#">{{ $tr->service->description }} - ${{ $tr->service->cost }}</a>
                                     </h4>
-                                    <p>
-                                        Sed ut perspiciatis unde omnis iste natus...
-                                    </p>
-                                </div>
-                                <div class="media-right media-middle">
-                                                <span class="media-object">
-                                                    <i class="fa fa-clock-o" aria-hidden="true"></i> 3 min ago</span>
                                 </div>
                             </div>
                         </li>
-                        <?php } ?>
+                        @endforeach
                     </ul>
                 </div>
             </div>

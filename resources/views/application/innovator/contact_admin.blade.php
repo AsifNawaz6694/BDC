@@ -7,7 +7,20 @@
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <div class="dashboard_box">
+             @if(Session::has('err_message'))
+                       <div class="alert alert-danger alert-dismissable">
+                          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                          <strong>Error!</strong> {{ Session::get('err_message') }}
+                      </div>
+                    @endif 
+                    @if(Session::has('success_msg'))
+                       <div class="alert alert-success alert-dismissable">
+                          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                         {{ Session::get('success_msg') }}
+                      </div>
+                    @endif 
             <div class="panel panel-default clearfix">
+                   
                 <!-- Default panel contents -->
                 <div class="panel-body border_line_bottom">
                     <h4 class="float-left text-left">Feel free to ask anything</h4>
@@ -15,14 +28,14 @@
                 <!-- Form -->
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 r-m-p">
                     <div class="Form_main">
-                        <form>
+                        <form action="{{route('send_email')}}" method="post" enctype="multipart/form-data">
                             <div class="form-group">
                                 <label>Subject</label>
-                                <input type="text" class="form-control">
+                                <input type="text" name="description_subject" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="fileEdit" class="form-control file_input_bar">
-                                    <i class="fa-2x fa fa-paperclip" aria-hidden="true"></i>
+                                    <i class="fa-2x fa fa-paperclip" name="file" aria-hidden="true"></i>
                                     <span class="file_text">
                                     choose File
                                     </span>
@@ -33,9 +46,10 @@
                             </div>
                             <div class="form-group">
                                 <label>Your Message</label>
-                                <textarea class="form-control" rows="10"></textarea>
+                                <textarea name="description_message" class="form-control" rows="10"></textarea>
                             </div>
                             <div class="form-group">
+                                <input type="hidden" name="_token" value="{{Session::token()}}">
                                 <button type="submit" class="btn btn-default" id="msg_btn">Save changes
                                 </button>
                             </div>

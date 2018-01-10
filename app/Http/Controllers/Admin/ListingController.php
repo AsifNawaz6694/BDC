@@ -13,6 +13,11 @@ use App\User;
 use App\service;
 use App\Category;
 use App\Listing;
+use App\Notifications\ListingApproved;
+use App\Notifications\ListingDisApproved;
+use App\Notifications\FeaturedApproved;
+use App\Notifications\FeaturedDisApproved;
+
 
 class ListingController extends Controller
 {
@@ -38,20 +43,39 @@ class ListingController extends Controller
          DB::table('listings')
             ->where('id', $id)
             ->update(['status' => 0]);
+        $listing = Listing::find($id);
+        $notify_data['listing'] =  $listing;
+        $notify_data['user'] =  Auth::user();
+        // dd($listing->innovator);
+        $listing->innovator->notify(new ListingDisApproved($notify_data));
+        
             return redirect()->back();
     }
     public function approve_status($id)
     { 
+        
+        // Auth::user()->notify(new ListingApproved($listing));
          DB::table('listings')
             ->where('id', $id)
             ->update(['status' => 1]);
-            return redirect()->back();
+        $listing = Listing::find($id);
+        $notify_data['listing'] =  $listing;
+        $notify_data['user'] =  Auth::user();
+        // dd($listing->innovator);
+        $listing->innovator->notify(new ListingApproved($notify_data));
+     
+        return redirect()->back();
     }
     public function disapprove_featured($id)
     {
          DB::table('listings')
             ->where('id', $id)
             ->update(['featured' => 0]);
+        $listing = Listing::find($id);
+        $notify_data['listing'] =  $listing;
+        $notify_data['user'] =  Auth::user();        
+        $listing->innovator->notify(new FeaturedDisApproved($notify_data));
+   
             return redirect()->back();
     }
     public function approve_featured($id)
@@ -59,6 +83,11 @@ class ListingController extends Controller
          DB::table('listings')
             ->where('id', $id)
             ->update(['featured' => 1]);
+        $listing = Listing::find($id);
+        $notify_data['listing'] =  $listing;
+        $notify_data['user'] =  Auth::user();        
+        $listing->innovator->notify(new FeaturedApproved($notify_data));
+    
             return redirect()->back();
     }
 

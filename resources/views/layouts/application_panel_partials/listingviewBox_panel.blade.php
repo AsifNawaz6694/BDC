@@ -1,5 +1,3 @@
-
-
 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 listing_item">
     <div class="Funding_box Funding_box_small {{ $listing->category->color_code }}_box">
         <h5>

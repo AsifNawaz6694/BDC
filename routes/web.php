@@ -152,7 +152,17 @@ Route::group(['prefix'=>'innovator', 'middleware' => 'is-innovator'], function()
 	Route::get('/request_services', 'Innovator\InnovatorController@request_services_page')->name('request_services_page');
 
 	//Transactions page
-	Route::get('/transactions', 'Innovator\InnovatorController@transaction_page')->name('transaction_page');	
+	Route::get('/transactions', 'Innovator\InnovatorController@transaction_page')->name('transaction_page');
+
+
+	//contact Admin
+
+	Route::post('mail','Innovator\InnovatorController@send')->name('send_email');
+
+
+	Route::get('/markAsRead', 'Innovator\InnovatorController@markAsRead')->name('markAsRead');
+	Route::post('/markAsSingleRead', 'Innovator\InnovatorController@markAsSingleRead')->name('markAsSingleRead');
+
 
 });
 

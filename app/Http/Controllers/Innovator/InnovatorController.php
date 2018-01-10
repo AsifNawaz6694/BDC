@@ -7,7 +7,19 @@ use App\RequestServices;
 use App\Transaction;
 use Illuminate\Http\Request;
 use App\Listing;
+use App\Notification;
 use Auth;
+use Mail;
+use App\Mail\Welcome;
+use App\Notifications\Innovator\ListingApproved;
+use App\Notifications\Innovator\ListingDisApproved;
+use App\Notifications\Innovator\FeaturedApproved;
+use App\Notifications\Innovator\FeaturedDisApproved;
+use Carbon\Carbon;
+use Session;
+
+
+use Illuminate\Support\Facades\Input;
 
 class InnovatorController extends Controller
 {   
@@ -20,9 +32,13 @@ class InnovatorController extends Controller
     //Innovator Index page
     public function index(){
 
+
         $listings = Listing::where('user_id', Auth::user()->id)->orderBy('id', 'desc')->take(3)->get();
         $services = RequestServices::where('user_id', Auth::user()->id)->orderBy('id', 'desc')->take(3)->get();
-    	return view('application.innovator.index', compact('listings', 'services'));
+
+        $transactions = Transaction::where('user_id', Auth::user()->id)->orderBy('id', 'desc')->take(3)->get();
+
+    	return view('application.innovator.index', compact('listings', 'services', 'transactions'));
 
     }
 
@@ -33,24 +49,17 @@ class InnovatorController extends Controller
 
 
 
-    //Innovator nitifications page
-
-    //Innovator notifications page
-
-
-    //Innovator notifications page
-
     public function notifications_index(){
 
-    	return view('application.innovator.notification');
+        $notifications = Notification::where('notifiable_id', Auth::user()->id)->get();
+    	return view('application.innovator.notification',['notifications'=>$notifications]);
+
     }
 
     //Innovator listings
     public function listings(){
 
         $listings = Listing::where('user_id', Auth::user()->id)->orderBy('id', 'desc')->get();
-
-
         return view('application.innovator.listing', compact('listings'));
 
     }
@@ -119,4 +128,36 @@ class InnovatorController extends Controller
             return \Response()->json(['error' => "Failed to create new listing.", 'code' => 202]);
         }
     }
+
+    public function send(Request $request){
+        //dd();
+        $detail = $request->input();
+        $user = Auth::user();
+
+          if(Input::hasFile('addImg')){
+            $file = Input::file('addImg');
+            //$tmpFilePath = '/profiles/';
+            // $tmpFileName = time() . '-' . $file->getClientOriginalName();
+            // $file = $file->move(public_path() .$tmpFilePath, $tmpFileName);
+            // $path = $tmpFilePath . $tmpFileName;
+            // $user->profile = $path;
+          }       
+
+        \Mail::to('asifnawaz.aimviz@gmail.com')->send(new Welcome($detail, $file));
+        Session::flash('success_msg','You have successfully Email Admin');
+        return redirect()->back();
+    }
+
+    public function markAsRead(){
+        $user = Auth::user();
+        $user->unreadNotifications()->update(['read_at' => Carbon::now()]);
+        return redirect()->back();
+    }
+     public function markAsSingleRead(Request $request){        
+        $noti = Notification::where('id', $request->id)->update([
+            'read_at' => Carbon::now()
+        ]);    
+        return redirect()->back();
+    }
+
 }
