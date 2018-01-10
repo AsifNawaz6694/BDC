@@ -27,8 +27,10 @@ class Category extends Model
         // return the result
         return $v;
     }
+
      public function listings(){
         return $this->hasMany('App\Listing');
         
     }
+
 }

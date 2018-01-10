@@ -24,7 +24,6 @@ class listing extends Model
     public function innovator(){
         return $this->belongsTo(User::class, 'user_id');
     }
-    
 
 }
 
