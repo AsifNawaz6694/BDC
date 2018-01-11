@@ -43,11 +43,23 @@ Route::get('/profile','Admin\AdminProfileController@index')->name('admin_profile
 	// DisApprove/Approve Listing Status
 	Route::get('/approve_status/{id}/',["as" => "approve-status", "uses" => "Admin\ListingController@approve_status"]);
 	Route::get('/disapprove_status/{id}/',["as" => "disapprove-status", "uses" => "Admin\ListingController@disapprove_status"]);
+	
 	// Disapprove/Approve Listing Featured
 	Route::get('/approve_featured/{id}/',["as" => "approve-featured", "uses" => "Admin\ListingController@approve_featured"]);
 	Route::get('/disapprove_featured/{id}/',["as" => "disapprove-featured", "uses" => "Admin\ListingController@disapprove_featured"]);
-
+	//download file
 	 Route::get('/download_file/{file_name}/',["as" => "download-file", "uses" => "Admin\ListingController@admin_download"]);
+	
+	//Funder Request for listing
+
+	Route::get('/funder_request_listing','Admin\ListingController@Funder_Request');
+	Route::delete('/funder-request-delete/{id}',['as'=> 'delete-funder-request','uses' => 'Admin\ListingController@destroy_funder_request']);
+	// DisApprove/Approve Listing Status
+	
+	Route::get('/funder_approve_status/{id}/',["as" => "funder_approve-status", "uses" => "Admin\ListingController@funder_approve_status"]);
+	Route::get('/funder_disapprove_status/{id}/',["as" => "funder_disapprove-status", "uses" => "Admin\ListingController@funder_disapprove_status"]);
+	Route::get('/request_detail_view/{id}',["as"=>"request-detail-view","uses"=>"Admin\ListingController@request_detail_view"]);
+
 // <------------------------------Listing's Controller Routes Ended-------------------------------------------->
 
 //Admin Panel Routes Ended
@@ -173,6 +185,7 @@ Route::group(['prefix'=>'innovator', 'middleware' => 'is-innovator'], function()
 // Public Pages
 Route::get('/', 'HomeController@index')->name('/');
 Route::get('/{slug}', 'HomeController@publicPages')->name('publicPages');
+Route::get('/email/email', 'HomeController@email')->name('email');
 Route::post('/registration', 'Auth\RegisterController@create')->name('registration');
 // Auth Routes
 Auth::routes();
@@ -182,6 +195,10 @@ Route::group(['prefix' => 'ajax', 'middleware' => 'auth'], function(){
     Route::post('profile_picture', 'GeneralController@profile_picture')->name('ajaxProfilePicture');
     Route::post('profile_update', 'GeneralController@profile_update')->name('ajaxProfileUpdate');
     Route::post('password_update', 'GeneralController@password_update')->name('ajaxPasswordUpdate');
-
 });
+
+
+Route::get('/paypal/checkout/{id}', 'PaymentController@checkout')->name('checkout');
+Route::get('/paypal/paypalReturn', 'PaymentController@getDone')->name('getDone');
+Route::get('/paypal/paypalCancel', 'PaymentController@getCancel')->name('getCancel');
 

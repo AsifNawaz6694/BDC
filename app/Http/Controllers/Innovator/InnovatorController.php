@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Innovator;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ListingRequest;
+use App\RequestServices;
+use App\Transaction;
 use Illuminate\Http\Request;
 use App\Listing;
 use App\Notification;
@@ -31,8 +33,13 @@ class InnovatorController extends Controller
     public function index(){
 
 
-        $listings = Listing::where('user_id', Auth::user()->id)->orderBy('id', 'desc')->take(3)->get();       
-    	return view('application.innovator.index', compact('listings'));
+        $listings = Listing::where('user_id', Auth::user()->id)->orderBy('id', 'desc')->take(3)->get();
+        $services = RequestServices::where('user_id', Auth::user()->id)->orderBy('id', 'desc')->take(3)->get();
+
+        $transactions = Transaction::where('user_id', Auth::user()->id)->orderBy('id', 'desc')->take(3)->get();
+
+    	return view('application.innovator.index', compact('listings', 'services', 'transactions'));
+
     }
 
     //Innovator Profile page
@@ -42,24 +49,17 @@ class InnovatorController extends Controller
 
 
 
-    //Innovator nitifications page
-
-    //Innovator notifications page
-
-
-    //Innovator notifications page
-
     public function notifications_index(){
 
-        $notifications = Notification::all();
+        $notifications = Notification::where('notifiable_id', Auth::user()->id)->get();
     	return view('application.innovator.notification',['notifications'=>$notifications]);
+
     }
 
     //Innovator listings
     public function listings(){
 
         $listings = Listing::where('user_id', Auth::user()->id)->orderBy('id', 'desc')->get();
-
         return view('application.innovator.listing', compact('listings'));
 
     }
@@ -83,12 +83,14 @@ class InnovatorController extends Controller
 
     //Innovator Request services page
     public function request_services_page(){
-        return view('application.innovator.request_services');       
+        $services = RequestServices::where('user_id', Auth::user()->id)->orderBy('id', 'desc')->get();
+        return view('application.innovator.request_services', compact('services'));
     }  
 
     //Innovator Transactions page.
     public function transaction_page(){
-        return view('application.innovator.transactions');       
+        $transaction = Transaction::where('user_id', Auth::user()->id)->orderBy('id', 'desc')->get();
+        return view('application.innovator.transactions', compact('transaction'));
     }
 
 

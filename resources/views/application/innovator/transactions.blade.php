@@ -25,30 +25,18 @@
                                     </tr>
                                     </thead>
                                     <tbody>
+                                    @foreach($transaction as $tr)
+                                        <?php $description = json_decode($tr->description); ?>
+
                                     <tr>
-                                        <td data-label="Transaction ID">KKBJ-071116-1</td>
-                                        <td data-label="Details">Neque porro quisquam estlium</td>
-                                        <td data-label="Amount">$89.60</td>
-                                        <td data-label="Date">12 09 2017</td>
-                                        <td data-label="Status"><span><i class="fa fa-check" aria-hidden="true"></i> PAID</span>
+                                        <td data-label="Transaction ID">PAY-{{ $tr->id }}</td>
+                                        <td data-label="Details">{{ $tr->service->description }}</td>
+                                        <td data-label="Amount">${{ $tr->service->cost }}</td>
+                                        <td data-label="Date">{{ date("j-n-Y", strtotime($tr->created_at)) }}</td>
+                                        <td data-label="Status">{{ $tr->request_service->status == 1 ? 'Complete' : 'Pending' }}
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td data-label="Transaction ID">KKBJ-071116-1</td>
-                                        <td data-label="Details">Neque porro quisquam estlium</td>
-                                        <td data-label="Amount">$89.60</td>
-                                        <td data-label="Date">12 09 2017</td>
-                                        <td data-label="Status"><span><i class="fa fa-check" aria-hidden="true"></i> PAID</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td data-label="Transaction ID">KKBJ-071116-1</td>
-                                        <td data-label="Details">Neque porro quisquam estlium</td>
-                                        <td data-label="Amount">$89.60</td>
-                                        <td data-label="Date">12 09 2017</td>
-                                        <td data-label="Status"><span><i class="fa fa-check" aria-hidden="true"></i> PAID</span>
-                                        </td>
-                                    </tr>
+                                    @endforeach
                                     </tbody>
                                 </table>
                             </div>

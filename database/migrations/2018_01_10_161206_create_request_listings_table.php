@@ -19,6 +19,7 @@ class CreateRequestListingsTable extends Migration
             $table->string('subject');
             $table->integer('user_id')->unsigned();
             $table->integer('listing_id')->unsigned();
+            $table->boolean('request_status')->default(0);
             $table->foreign('listing_id')->references('id')->on('listings');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();

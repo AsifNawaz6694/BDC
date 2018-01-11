@@ -17,4 +17,7 @@ class Request_listing extends Model
     public function requests(){
     	return $this->belongsTo(Listing::class, 'listing_id');
     }
+    public function user(){
+        return $this->belongsTo('App\User', 'user_id');
+    }
 }

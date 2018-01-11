@@ -63,3 +63,11 @@ Change Quick Sidebar Width
   font-weight: bold;
   vertical-align: middle !important;
  }
+
+
+ /*//Asif Css*/
+.img-responsive.img-thumbnail.userPic {
+    width: 140px;
+    height: 150px;
+}
+
