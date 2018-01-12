@@ -22,4 +22,7 @@ class RequestServices extends Model
     public function transaction(){
         return $this->belongsTo(Transaction::class, 'transaction_id');
     }
+     public function user(){
+        return $this->belongsTo('App\User', 'user_id');
+    }
 }

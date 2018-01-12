@@ -35,8 +35,9 @@
                                         </p>
                                     </div>
                                     <div class="Funding_box_footer clearfix">
+                                        
                                         <span class="ready_img">
-                                            <img src="{{ asset('panel_assets/images/ready_img.png') }}" class="img-responsive"/>
+                                            <img src="{{ asset('panel_assets/images/ready_img.png') }}" class="grayscale"/>
                                         </span>
                                         <span class="Fund_contact">
                                             <a href="#" class="btn btn-default">Contact</a>

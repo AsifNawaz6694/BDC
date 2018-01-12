@@ -9,7 +9,7 @@
 						<i class="fa fa-angle-right"></i>
 					</li>
 					<li>
-						<a href="#">Funder Request</a>						
+						<a href="#">Innovator Request</a>						
 					</li>				
 				</ul>				
 			</div>
@@ -27,22 +27,22 @@
 								<div class="portlet box blue">
 									<div class="portlet-title">
 										<div class="caption">
-											<i class="fa fa-user"></i>About Funder
+											<i class="fa fa-user"></i>About Innovator
 										</div>										
-									</div>
+									</div>									
 									<div class="portlet-body form">
 										<!-- BEGIN FORM-->
 										<form class="form-horizontal" role="form">
 											<div class="form-body">
 												<div class="col-md-12">
 													<div class="col-md-6">
-														<h2 class="margin-bottom-20"> Funder Name - {{$value->user->name}} </h2>
+														<h2 class="margin-bottom-20"> Innovator Name - {{$value->user->name}} </h2>
 													</div>
 													<div class="col-md-6">
 														<img src="{{ URL::asset('/storage/' . $value->user->profile->image ) }}" class="img-responsive img-thumbnail userPic">
 													</div>
 												</div>
-												<h3 class="form-section">Funder Info</h3>
+												<h3 class="form-section">Innovator Info</h3>
 												<!--/row-->
 												<div class="row">
 													<!--/span-->
@@ -94,24 +94,24 @@
 													</div>
 													<!--/span-->
 												</div>												
-												<h3 class="form-section">Listing Details</h3>
+												<h3 class="form-section">Service Details</h3>
 												<div class="row">
 													<div class="col-md-6">
 														<div class="form-group">
-															<label class="control-label col-md-3">Title:</label>
+															<label class="control-label col-md-3">Service:</label>
 															<div class="col-md-9">
 																<p class="form-control-static">
-																	 {{$value->requests->title}}
+																	 {{$value->service->service}}
 																</p>
 															</div>
 														</div>
 													</div>
 													<div class="col-md-6">
 														<div class="form-group">
-															<label class="control-label col-md-3">Category:</label>
+															<label class="control-label col-md-3">Cost:</label>
 															<div class="col-md-9">
 																<p class="form-control-static">
-																	 {{$value->requests->category->name}}
+																	  {{$value->service->cost}}
 																</p>
 															</div>
 														</div>
@@ -120,80 +120,28 @@
 												<div class="row">
 														<div class="col-md-6">
 														<div class="form-group">
-															<label class="control-label col-md-3">Service:</label>
-															<div class="col-md-9">
-																<p class="form-control-static">
-																	 {{$value->requests->service->service}}
-																</p>
-															</div>
-														</div>
-													</div>
-													<!--/span-->
-													<div class="col-md-6">
-														<div class="form-group">
-															<label class="control-label col-md-3">Funding:</label>
-															<div class="col-md-9">
-																<p class="form-control-static">
-																	  {{$value->requests->funding}}
-																</p>
-															</div>
-														</div>
-													</div>
-													<!--/span-->
-												</div>
-												<!--/row-->
-												<div class="row">
-													<div class="col-md-6">
-														<div class="form-group">
-															<label class="control-label col-md-3">Listing Status:</label>
-															<div class="col-md-9">
-																<p class="form-control-static">
-																	 @if($value->requests->status == 1)
-																	 Approved
-																	 @else
-																	 DisApproved
-																	 @endif
-																</p>
-															</div>
-														</div>
-													</div>
-													<!--/span-->
-													<div class="col-md-6">
-														<div class="form-group">
-															<label class="control-label col-md-3">Listing Featured:</label>
-															<div class="col-md-9">
-																<p class="form-control-static">
-																	@if($value->requests->featured == 1)
-																	 Approved
-																	 @else
-																	 DisApproved
-																	 @endif
-																</p>
-															</div>
-														</div>
-													</div>
-													<!--/span-->
-												</div>
-												<div class="row">
-													<div class="col-md-6">
-														<div class="form-group">
 															<label class="control-label col-md-3">Description:</label>
 															<div class="col-md-9">
 																<p class="form-control-static">
-																	 {{$value->requests->description}}
+																	   {{$value->service->description}}
 																</p>
 															</div>
 														</div>
-													</div>													
+													</div>
+													<!--/span-->
+													
+													<!--/span-->
 												</div>
-												<h3 class="form-section">Request Listing Details</h3>
+												<!--/row-->											
+												
+												<h3 class="form-section">Request Service Details</h3>
 												<div class="row">
 													<div class="col-md-6">
 														<div class="form-group">
-															<label class="control-label col-md-3">Subject:</label>
+															<label class="control-label col-md-3">Transaction:</label>
 															<div class="col-md-9">
 																<p class="form-control-static">
-																	 {{$value->subject}}
+																	{{$value->transaction->type}}
 																</p>
 															</div>
 														</div>
@@ -204,11 +152,11 @@
 															<label class="control-label col-md-3">Request Status:</label>
 															<div class="col-md-9">
 																<p class="form-control-static">
-																	 @if($value->request_status == 1)
-																	 Approved
-																	 @else
-																	 DisApproved
-																	 @endif
+																@if($value->status == '1')
+																Approved
+																@else
+																DisApproved
+																@endif
 																</p>
 															</div>
 														</div>
@@ -218,14 +166,83 @@
 												<div class="row">
 													<div class="col-md-6">
 														<div class="form-group">
-															<label class="control-label col-md-3">Message:</label>
+															<label class="control-label col-md-3">Created At:</label>
 															<div class="col-md-9">
 																<p class="form-control-static">
-																	{{$value->message}}
+																	{{$value->created_at}}
 																</p>
 															</div>
 														</div>
 													</div>											
+												</div>
+												<h3 class="form-section">Transactions Details</h3>
+												<?php $string = json_decode($value->transaction->description) ?>
+												<div class="row">
+													<div class="col-md-6">
+														<div class="form-group">
+															<label class="control-label col-md-3">ID:</label>
+															<div class="col-md-9">
+																<p class="form-control-static">
+																	{{ $string->id }}
+																</p>
+															</div>
+														</div>
+													</div>
+													<div class="col-md-6">
+														<div class="form-group">
+															<label class="control-label col-md-3">Status:</label>
+															<div class="col-md-9">
+																<p class="form-control-static">
+																	 {{ $string->state }}
+																</p>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="row">
+													<div class="col-md-6">
+														<div class="form-group">
+															<label class="control-label col-md-3">Total Amount</label>
+															<div class="col-md-9">
+																<p class="form-control-static">
+																	{{ $string->transactions[0]->amount->total}}
+																</p>
+															</div>
+														</div>
+													</div>
+													<div class="col-md-6">
+														<div class="form-group">
+															<label class="control-label col-md-3">Currency:</label>
+															<div class="col-md-9">
+																<p class="form-control-static">
+																	 {{ $string->transactions[0]->amount->currency}}
+																</p>
+															</div>
+														</div>
+													</div>
+												</div>
+												<h4 class="form-section">Payer's Info</h4>
+												<div class="row">
+													<div class="col-md-6">
+														<div class="form-group">
+															<label class="control-label col-md-3">Email:</label>
+															<div class="col-md-9">
+																<p class="form-control-static">
+																	 {{$string->payer->payer_info->email}}
+																</p>
+															</div>
+														</div>
+													</div>
+													<div class="col-md-6">
+														<div class="form-group">
+															<label class="control-label col-md-3">Full Name:</label>
+															<div class="col-md-9">
+																<p class="form-control-static">
+																	 {{$string->payer->payer_info->first_name}} {{$string->payer->payer_info->last_name}}
+																</p>
+															</div>
+														</div>
+													</div>
 												</div>
 											</div>											
 										</form>

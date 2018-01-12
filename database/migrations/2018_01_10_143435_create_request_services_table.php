@@ -16,8 +16,8 @@ class CreateRequestServicesTable extends Migration
         Schema::create('request_services', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
-            $table->integer('service_id')->unsigned();
-            $table->integer('status')->nullable();
+            $table->integer('service_id')->unsigned();            ;
+            $table->boolean('status')->default(0);
             $table->timestamps();
         });
     }

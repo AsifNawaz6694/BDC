@@ -1,25 +1,24 @@
 <?php
-
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
-use Session;
-use Auth;
-use DB;
-use App\User;
-use App\service;
-use App\Category;
-use App\Listing;
-use App\Request_listing;
 use App\Notifications\ListingApproved;
 use App\Notifications\FunderListingApproved;
 use App\Notifications\ListingDisApproved;
 use App\Notifications\FeaturedApproved;
 use App\Notifications\FeaturedDisApproved;
-
+use App\RequestServices;
+use App\Request_listing;
+use App\service;
+use App\Category;
+use App\Listing;
+use App\User;
+use Session;
+use Auth;
+use DB;
 
 class ListingController extends Controller
 {
@@ -42,58 +41,50 @@ class ListingController extends Controller
 
     public function disapprove_status($id)
     {
-         DB::table('listings')
+        DB::table('listings')
             ->where('id', $id)
             ->update(['status' => 0]);
         $listing = Listing::find($id);
         $notify_data['listing'] =  $listing;
-        $notify_data['user'] =  Auth::user();
-        // dd($listing->innovator);
-        $listing->innovator->notify(new ListingDisApproved($notify_data));
-        
+        $notify_data['user'] =  Auth::user();       
+        $listing->innovator->notify(new ListingDisApproved($notify_data));        
             return redirect()->back();
     }
     public function approve_status($id)
-    {         
-        // Auth::user()->notify(new ListingApproved($listing));
-         DB::table('listings')
+    {   
+        DB::table('listings')
             ->where('id', $id)
             ->update(['status' => 1]);
         $listing = Listing::find($id);
         $notify_data['listing'] =  $listing;
-        $notify_data['user'] =  Auth::user();
-        // dd($listing->innovator);
-        $listing->innovator->notify(new ListingApproved($notify_data));
-     
+        $notify_data['user'] =  Auth::user();        
+        $listing->innovator->notify(new ListingApproved($notify_data));     
         return redirect()->back();
     }
     public function disapprove_featured($id)
     {
-         DB::table('listings')
+        DB::table('listings')
             ->where('id', $id)
             ->update(['featured' => 0]);
         $listing = Listing::find($id);
         $notify_data['listing'] =  $listing;
         $notify_data['user'] =  Auth::user();        
-        $listing->innovator->notify(new FeaturedDisApproved($notify_data));
-   
-            return redirect()->back();
+        $listing->innovator->notify(new FeaturedDisApproved($notify_data));   
+        return redirect()->back();
     }
     public function approve_featured($id)
     { 
-         DB::table('listings')
+        DB::table('listings')
             ->where('id', $id)
             ->update(['featured' => 1]);
         $listing = Listing::find($id);
         $notify_data['listing'] =  $listing;
         $notify_data['user'] =  Auth::user();        
-        $listing->innovator->notify(new FeaturedApproved($notify_data));
-    
-            return redirect()->back();
+        $listing->innovator->notify(new FeaturedApproved($notify_data));    
+        return redirect()->back();
     }
 
     public function admin_download($file_name) {
-
         $file = Listing::find($file_name);
         $path = str_replace('/', '\\', $file->document);
         $file_path = storage_path('app\public\\'.$path);
@@ -108,7 +99,7 @@ class ListingController extends Controller
     public function Funder_Request()
     {
         $args['request_listing'] = Request_listing::all();
-        return view('Admin_Panel.listing.request_listing')->with($args);   
+        return view('Admin_Panel.listing.Funder.request_listing')->with($args);   
     }
 
     public function destroy_funder_request($id)
@@ -121,14 +112,14 @@ class ListingController extends Controller
 
     public function funder_disapprove_status($id)
     {
-         DB::table('request_listings')
+        DB::table('request_listings')
             ->where('id', $id)
             ->update(['request_status' => 0]);
              return redirect()->back();
     }
     public function funder_approve_status($id)
     {      
-         DB::table('request_listings')
+        DB::table('request_listings')
             ->where('id', $id)
             ->update(['request_status' => 1]);          
         return redirect()->back();
@@ -137,8 +128,48 @@ class ListingController extends Controller
     public function request_detail_view($id)
     {
         $args['value'] = Request_listing::find($id);        
-        return view('Admin_Panel.Listing.request_view')->with($args);
+        return view('Admin_Panel.Listing.Funder.request_view')->with($args);
     }
+
+
+    //Innovator Requests Functions
+
+    public function innovator_Request()
+    {
+        $args['request_services'] = RequestServices::all();
+        return view('Admin_Panel.listing.Innovator.request_services')->with($args);   
+    }
+
+    public function destroy_innovator_request($id)
+    {
+        $Funder_Request = RequestServices::find($id);
+        $Funder_Request->delete();
+        Session::flash('success_msg','The Request Listing Was Successfully Deleted');
+        return back();
+    }
+
+    public function innovator_disapprove_status($id)
+    {
+        DB::table('request_services')
+            ->where('id', $id)
+            ->update(['status' => 0]);
+             return redirect()->back();
+    }
+    public function innovator_approve_status($id)
+    {      
+        DB::table('request_services')
+            ->where('id', $id)
+            ->update(['status' => 1]);          
+        return redirect()->back();
+    }
+
+    public function innovator_request_detail_view($id)
+    {
+        $args['value'] = RequestServices::find($id);        
+        return view('Admin_Panel.Listing.Innovator.request_view')->with($args);
+    }
+
+
     public function create()
     {
         //

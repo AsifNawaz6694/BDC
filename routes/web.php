@@ -54,11 +54,20 @@ Route::get('/profile','Admin\AdminProfileController@index')->name('admin_profile
 
 	Route::get('/funder_request_listing','Admin\ListingController@Funder_Request');
 	Route::delete('/funder-request-delete/{id}',['as'=> 'delete-funder-request','uses' => 'Admin\ListingController@destroy_funder_request']);
-	// DisApprove/Approve Listing Status
-	
-	Route::get('/funder_approve_status/{id}/',["as" => "funder_approve-status", "uses" => "Admin\ListingController@funder_approve_status"]);
-	Route::get('/funder_disapprove_status/{id}/',["as" => "funder_disapprove-status", "uses" => "Admin\ListingController@funder_disapprove_status"]);
+	// DisApprove/Approve Listing Status	
+	Route::get('/funder_approve_status/{id}/',["as" => "funder-approve-status", "uses" => "Admin\ListingController@funder_approve_status"]);
+	Route::get('/funder_disapprove_status/{id}/',["as" => "funder-disapprove-status", "uses" => "Admin\ListingController@funder_disapprove_status"]);
 	Route::get('/request_detail_view/{id}',["as"=>"request-detail-view","uses"=>"Admin\ListingController@request_detail_view"]);
+
+	
+	//Innovator Request for listing
+
+	Route::get('/innovator_request_service','Admin\ListingController@innovator_Request');
+	Route::delete('/innovator-request-delete/{id}',['as'=> 'delete-innovator-request','uses' => 'Admin\ListingController@destroy_innovator_request']);
+	// DisApprove/Approve Listing Status	
+	Route::get('/innovator_approve_status/{id}/',["as" => "innovator-approve-status", "uses" => "Admin\ListingController@innovator_approve_status"]);
+	Route::get('/innovator_disapprove_status/{id}/',["as" => "innovator-disapprove-status", "uses" => "Admin\ListingController@innovator_disapprove_status"]);
+	Route::get('/innovator_request_detail_view/{id}',["as"=>"innovator-request-detail-view","uses"=>"Admin\ListingController@innovator_request_detail_view"]);
 
 // <------------------------------Listing's Controller Routes Ended-------------------------------------------->
 

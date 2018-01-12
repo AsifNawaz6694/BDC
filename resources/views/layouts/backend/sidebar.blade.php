@@ -67,6 +67,21 @@
                             Request Listing</a>
                         </li>
                     </ul>                    
+                </li> 
+                <li class="start">
+                    <a href="javascript:;">
+                    <i class="icon-home"></i>
+                    <span class="title">Innovator</span>
+                    <span class="selected"></span>
+                    <span class="arrow open"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="active">
+                            <a href="{{url('admin/innovator_request_service')}}">
+                            <i class="icon-bar-chart"></i>
+                            Request Service</a>
+                        </li>
+                    </ul>                    
                 </li>                              
             </ul>
             <!-- END SIDEBAR MENU -->

@@ -9,6 +9,12 @@
     <title>{{ env('app.name', 'BDC') }}</title>
     <!-- Bootstrap -->
     <link href="{{ asset('app/css/bootstrap.min.css') }}" rel="stylesheet">
+
+    <link href="{{ asset('gray-gh-pages\jquery-gray\css\gray.css') }}" rel="stylesheet">
+    <link href="{{ asset('gray-gh-pages\jquery-gray\css\gray.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('gray-gh-pages\jquery-gray\css\main.css') }}" rel="stylesheet">
+    <link href="{{ asset('gray-gh-pages\jquery-gray\css\normalize.css') }}" rel="stylesheet">
+
     <!-- FontAwesome -->
     <link href="{{ asset('app/css/font-awesome.min.css') }}" rel="stylesheet">
     <!-- Animate -->
@@ -26,6 +32,7 @@
     <link href="{{ asset('app/css/style.css') }}" rel="stylesheet">
     <!-- Responsive -->
     <link href="{{ asset('app/css/responsive.css') }}" rel="stylesheet">
+
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -202,6 +209,9 @@
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="{{ asset('app/js/jquery-3.1.1.min.js') }}"></script>
+<script src="{{ asset('gray-gh-pages\jquery-gray\js\jquery.gray.js') }}"></script>
+<script src="{{ asset('gray-gh-pages\jquery-gray\js\jquery.gray.min.js') }}"></script>
+
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <!-- Bootstrap -->
 <script src="{{ asset('app/js/bootstrap.min.js') }}"></script>

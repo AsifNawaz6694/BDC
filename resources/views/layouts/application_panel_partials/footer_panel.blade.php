@@ -34,10 +34,12 @@
 <script src="{{ asset('panel_assets/js/owl.carousel.min.js') }}"></script>
 <!-- Wow-min-js -->
 <script src="{{ asset('panel_assets/js/wow.min.js') }}"></script>
+<script src="{{ asset('panel_assets/js/jquery.gray.min.js') }}"></script>
 
 <!-- masonry-min-js -->
-<script src="{{ asset('app/js/masonry.pkgd.min.js') }}"></script>
-<script src="{{ asset('app/js/main.js') }}"></script>
+<script src="{{ asset('panel_assets/js/masonry.pkgd.min.js') }}"></script>
+<script src="{{ asset('panel_assets/js/main.js') }}"></script>
+
 
 <!-- Custom-js -->
 <script src="{{ asset('panel_assets/js/custom.js') }}"></script>
