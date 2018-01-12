@@ -184,8 +184,7 @@ Route::group(['prefix'=>'innovator', 'middleware' => 'is-innovator'], function()
 	Route::post('mail','Innovator\InnovatorController@send')->name('send_email');
 
 
-	Route::get('/markAsRead', 'Innovator\InnovatorController@markAsRead')->name('markAsRead');
-	Route::post('/markAsSingleRead', 'Innovator\InnovatorController@markAsSingleRead')->name('markAsSingleRead');
+
 
 
 });
@@ -194,10 +193,12 @@ Route::group(['prefix'=>'innovator', 'middleware' => 'is-innovator'], function()
 // Public Pages
 Route::get('/', 'HomeController@index')->name('/');
 Route::get('/{slug}', 'HomeController@publicPages')->name('publicPages');
-Route::get('/email/email', 'HomeController@email')->name('email');
-Route::post('/registration', 'Auth\RegisterController@create')->name('registration');
+
+
 // Auth Routes
 Auth::routes();
+
+
 
 //Ajax routes for logged in users
 Route::group(['prefix' => 'ajax', 'middleware' => 'auth'], function(){
@@ -207,7 +208,18 @@ Route::group(['prefix' => 'ajax', 'middleware' => 'auth'], function(){
 });
 
 
-Route::get('/paypal/checkout/{id}', 'PaymentController@checkout')->name('checkout');
-Route::get('/paypal/paypalReturn', 'PaymentController@getDone')->name('getDone');
-Route::get('/paypal/paypalCancel', 'PaymentController@getCancel')->name('getCancel');
+
+//paypal payment routes use only by innovator
+Route::group(['prefix' => 'paypal', 'middleware' => 'auth'], function(){
+
+    Route::get('/checkout/{id}', 'PaymentController@checkout')->name('checkout');
+    Route::get('/paypalReturn', 'PaymentController@getDone')->name('getDone');
+    Route::get('/paypalCancel', 'PaymentController@getCancel')->name('getCancel');
+});
+
+//common routes for all user types
+Route::group(['prefix' => 'general','middleware' => 'auth'], function(){
+    Route::get('/markAsRead', 'GeneralController@markAsRead')->name('markAsRead');
+    Route::post('/markAsSingleRead', 'GeneralController@markAsSingleRead')->name('markAsSingleRead');
+});
 

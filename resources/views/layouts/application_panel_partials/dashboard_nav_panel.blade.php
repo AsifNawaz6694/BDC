@@ -13,8 +13,8 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right icons right_mobi_nav">
                     <li class="dropdown" id="markasread" onclick="MarkNotificationAsRead()">
-                        <a href="{{ route('markAsRead') }}"  class="dropdown-toggle" data-toggle="dropdown" role="button"
-                           aria-haspopup="true" aria-expanded="false">
+                        <a href="#"  class="dropdown-toggle" data-toggle="dropdown" role="button"
+                           aria-haspopup="true" aria-expanded="false" data-route="{{ route('markAsRead') }}">
                             <i class="fa fa-bell-o" aria-hidden="true"></i>
                             <span class="badge">{{ count(auth()->user()->unreadNotifications) }}</span>
                         </a>
@@ -32,13 +32,13 @@
                                     @if($notificaiton->type == 'App\Notifications\FeaturedApproved' && $notificaiton->data['listing']['featured'] == 1)
                                     {{ $notificaiton->data['user']['name'] }} has featured your listing {{ $notificaiton->data['listing']['title'] }}
                                     @endif
-                                    @if($notificaiton->type == 'App\Notifications\FeaturedDisapproved' && $notificaiton->data['listing']['featured'] != 1)
+                                    @if($notificaiton->type == 'App\Notifications\FeaturedDisApproved' && $notificaiton->data['listing']['featured'] != 1)
                                     {{ $notificaiton->data['user']['name'] }} has unfeatured your listing {{ $notificaiton->data['listing']['title'] }}
                                     @endif
                                     </div>
                                 </li>
                             @endforeach
-                            <li class="media">
+                            {{--<li class="media">
                                 <a href="#">
                                     <div class="media-left">
                                         <i class="fa fa-times media-object bg-red" aria-hidden="true"></i>
@@ -82,9 +82,14 @@
                                         <div class="text-muted f-s-11">3 minutes ago</div>
                                     </div>
                                 </a>
-                            </li>
+                            </li>--}}
                             <li class="dropdown-footer text-center">
-                                <a href="javascript:;">View more</a>
+                                @if(Auth::user()->role->id == 3)
+                                    <a href="{{ route('innovator_notifications_index') }}">View more</a>
+                                @endif
+                                    @if(Auth::user()->role->id == 2)
+                                        <a href="{{ route('funder_notifications_index') }}">View more</a>
+                                    @endif
                             </li>
                         </ul>
                     </li>
