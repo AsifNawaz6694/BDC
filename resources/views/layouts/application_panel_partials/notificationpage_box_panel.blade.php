@@ -10,12 +10,14 @@
                         <h4 class="float-right text-right"><a href="#">Mark all as read</a></h4>
                     </div>
                     <!-- List group -->
+                    {{--{{ dd(auth()->user()->notifications) }}--}}
                       @foreach(auth()->user()->notifications as $notificaiton)
                     <ul class="list-group">                      
                             <li class="list-group-item notification_list">
                                 <div class="media">
                                     <div class="media-body">                                       
                                             <h4 class="media-heading">
+
                                                    @if($notificaiton->type == 'App\Notifications\ListingApproved' && $notificaiton->data['listing']['status'] == 1)
                                                       <a href="#">{{ $notificaiton->data['user']['name'] }} has Approved your listing {{ $notificaiton->data['listing']['title'] }} </a>
                                                     @endif
@@ -25,7 +27,7 @@
                                                     @if($notificaiton->type == 'App\Notifications\FeaturedApproved' && $notificaiton->data['listing']['featured'] == 1)
                                                       <a href="#">{{ $notificaiton->data['user']['name'] }} has featured your listing {{ $notificaiton->data['listing']['title'] }} </a>
                                                     @endif
-                                                    @if($notificaiton->type == 'App\Notifications\FeaturedDisapproved' && $notificaiton->data['listing']['featured'] != 1)
+                                                    @if($notificaiton->type == 'App\Notifications\FeaturedDisApproved' && $notificaiton->data['listing']['featured'] != 1)
                                                       <a href="#">{{ $notificaiton->data['user']['name'] }} has unfeatured your listing {{ $notificaiton->data['listing']['title'] }} </a>
                                                    @endif
                                             </h4>

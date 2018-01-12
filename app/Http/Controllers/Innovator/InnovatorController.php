@@ -148,16 +148,6 @@ class InnovatorController extends Controller
         return redirect()->back();
     }
 
-    public function markAsRead(){
-        $user = Auth::user();
-        $user->unreadNotifications()->update(['read_at' => Carbon::now()]);
-        return redirect()->back();
-    }
-     public function markAsSingleRead(Request $request){        
-        $noti = Notification::where('id', $request->id)->update([
-            'read_at' => Carbon::now()
-        ]);    
-        return redirect()->back();
-    }
+
 
 }

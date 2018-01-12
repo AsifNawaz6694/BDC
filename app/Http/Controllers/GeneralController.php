@@ -7,7 +7,9 @@ use Illuminate\Http\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Input;
+use Carbon\carbon;
 use App\Profile;
+use App\Notification;
 use App\User;
 use Auth;
 
@@ -80,5 +82,17 @@ class GeneralController extends Controller
         else{
             return \Response()->json(['error' => 'Old password is incorrect, please enter valid password', 'code' => 401]);
         }
+    }
+
+    public function markAsRead(){
+        $user = Auth::user();
+        $user->unreadNotifications()->update(['read_at' => Carbon::now()]);
+        return true;
+    }
+    public function markAsSingleRead(Request $request){
+        $noti = Notification::where('id', $request->id)->update([
+            'read_at' => Carbon::now()
+        ]);
+        return redirect()->back();
     }
 }

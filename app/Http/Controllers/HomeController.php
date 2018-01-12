@@ -27,8 +27,6 @@ class HomeController extends Controller
     {
         $listings = Listing::all();
         $featured_listings = Listing::where('featured', 1)->get();
-        //dd($listings);
-        //dd($featured_listings);
 
         return view('home')->with('featured_listings', $featured_listings)->with('listings', $listings);
     }
@@ -36,22 +34,14 @@ class HomeController extends Controller
     public function publicPages($slug)
     {
 
+
         $listings = Listing::all();
         $featured_listings = Listing::where('featured', 1)->get();
-        //dd($listings);
-        dd($featured_listings);
-        return view($slug, compact('listings', '`feature'));
-    }
+        if(view()->exists($slug)){
+            return view($slug, compact('listings', 'featured_listings'));
+        }
+        return view('error.404');
 
-    public function email(){
-        $mail = Mail::send('mailbody', ['subject' => 'checking email',  'description_message' => 'this is description'], function ($m)  {
-            $m->from('asiif23@gmail.com', 'New Contact Message.');
-            $m->to('asifnawaz.aimviz@gmail.com', 'name')->subject('New Contact Message');
-        });
-        dd($mail);
-        Session::flash('success_msg',"Thank You For Contacting , I Will Contact You Shortly !");
-        return view('application.innovator.index');
     }
-
 
 }

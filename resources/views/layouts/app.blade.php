@@ -74,6 +74,7 @@
                     @endif
 
                 @else
+                    <li><a href="{{ route('login') }}">signin</a></li>
                     <li><a href="{{ route('register') }}">signup</a></li>
                 @endif
             </ul>

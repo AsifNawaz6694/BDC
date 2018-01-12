@@ -189,6 +189,23 @@ $(document).ready(function () {
     });
 
 
+    //mark as read notifications
+    $('#markasread a').click(function (e) {
+       e.preventDefault();
+       $.ajax({
+           type: 'get',
+           url: $(this).attr('data-route'),
+           success: function(response){
+               console.log(response);
+           },
+           error: function(response){
+               console.log(response);
+           }
+
+       });
+    });
+
+
 });
 
 
