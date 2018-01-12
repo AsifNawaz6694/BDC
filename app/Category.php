@@ -29,8 +29,7 @@ class Category extends Model
     }
 
      public function listings(){
-        return $this->hasMany('App\Listing');
-        
+        return $this->hasMany('App\Listing');        
     }
 
 }

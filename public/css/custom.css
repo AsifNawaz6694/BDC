@@ -1783,6 +1783,7 @@ p.inner-paragraph {
     margin: 0 auto;
 }
 
+
 .form-control {
     
     border-radius: 0px;
@@ -1863,6 +1864,11 @@ hr {
     margin-bottom: 20px;
     border: 0;
     border-top: 1px solid #e1e1e1;
+}
+/*//Asif Css*/
+img.img-responsive.img-thumbnail.userPic {
+    width: 140px;
+    height: 150px;
 }
 
 @media only screen and (max-width: 640px) and (min-width: 320px){

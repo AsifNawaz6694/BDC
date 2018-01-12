@@ -32,32 +32,6 @@
                     </form>
                     <!-- END RESPONSIVE QUICK SEARCH FORM -->
                 </li>
-               <!--  <li class="start active open">
-                    <a href="javascript:;">
-                    <i class="icon-home"></i>
-                    <span class="title">Dashboard</span>
-                    <span class="selected"></span>
-                    <span class="arrow open"></span>
-                    </a>
-                    <ul class="sub-menu">
-                        <li class="active">
-                            <a href="">
-                            <i class="icon-bar-chart"></i>
-                            Default Dashboard</a>
-                        </li>
-                        <li>
-                            <a href="">
-                            <i class="icon-bulb"></i>
-                            New Dashboard #1</a>
-                        </li>
-                        <li>
-                            <a href="">
-                            <i class="icon-graph"></i>
-                            New Dashboard #2</a>
-                        </li>
-                    </ul>                    
-                </li> -->
-
                 <li class="start active open">
                     <li>
                         <a href="{{url('admin/category')}}">
@@ -78,7 +52,22 @@
                         <i class="fa fa-list"></i>
                         <span class="title">Listings</span></a>
                     </li>                                      
-                </li>                
+                </li>
+                <li class="start">
+                    <a href="javascript:;">
+                    <i class="icon-home"></i>
+                    <span class="title">Funder</span>
+                    <span class="selected"></span>
+                    <span class="arrow open"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="active">
+                            <a href="{{url('admin/funder_request_listing')}}">
+                            <i class="icon-bar-chart"></i>
+                            Request Listing</a>
+                        </li>
+                    </ul>                    
+                </li>                              
             </ul>
             <!-- END SIDEBAR MENU -->
         </div>

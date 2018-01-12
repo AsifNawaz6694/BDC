@@ -11,10 +11,10 @@ use App\Notification;
 use Auth;
 use Mail;
 use App\Mail\Welcome;
-use App\Notifications\Innovator\ListingApproved;
-use App\Notifications\Innovator\ListingDisApproved;
-use App\Notifications\Innovator\FeaturedApproved;
-use App\Notifications\Innovator\FeaturedDisApproved;
+use App\Notifications\ListingApproved;
+use App\Notifications\ListingDisApproved;
+use App\Notifications\FeaturedApproved;
+use App\Notifications\FeaturedDisApproved;
 use Carbon\Carbon;
 use Session;
 

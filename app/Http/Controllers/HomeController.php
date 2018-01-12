@@ -15,7 +15,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        //$this->middleware('auth');
+       
     }
 
     /**
@@ -37,11 +37,13 @@ class HomeController extends Controller
 
         $listings = Listing::all();
         $featured_listings = Listing::where('featured', 1)->get();
+
         if(view()->exists($slug)){
             return view($slug, compact('listings', 'featured_listings'));
         }
         return view('error.404');
 
     }
+
 
 }

@@ -43,11 +43,23 @@ Route::get('/profile','Admin\AdminProfileController@index')->name('admin_profile
 	// DisApprove/Approve Listing Status
 	Route::get('/approve_status/{id}/',["as" => "approve-status", "uses" => "Admin\ListingController@approve_status"]);
 	Route::get('/disapprove_status/{id}/',["as" => "disapprove-status", "uses" => "Admin\ListingController@disapprove_status"]);
+	
 	// Disapprove/Approve Listing Featured
 	Route::get('/approve_featured/{id}/',["as" => "approve-featured", "uses" => "Admin\ListingController@approve_featured"]);
 	Route::get('/disapprove_featured/{id}/',["as" => "disapprove-featured", "uses" => "Admin\ListingController@disapprove_featured"]);
-
+	//download file
 	 Route::get('/download_file/{file_name}/',["as" => "download-file", "uses" => "Admin\ListingController@admin_download"]);
+	
+	//Funder Request for listing
+
+	Route::get('/funder_request_listing','Admin\ListingController@Funder_Request');
+	Route::delete('/funder-request-delete/{id}',['as'=> 'delete-funder-request','uses' => 'Admin\ListingController@destroy_funder_request']);
+	// DisApprove/Approve Listing Status
+	
+	Route::get('/funder_approve_status/{id}/',["as" => "funder_approve-status", "uses" => "Admin\ListingController@funder_approve_status"]);
+	Route::get('/funder_disapprove_status/{id}/',["as" => "funder_disapprove-status", "uses" => "Admin\ListingController@funder_disapprove_status"]);
+	Route::get('/request_detail_view/{id}',["as"=>"request-detail-view","uses"=>"Admin\ListingController@request_detail_view"]);
+
 // <------------------------------Listing's Controller Routes Ended-------------------------------------------->
 
 //Admin Panel Routes Ended
@@ -109,6 +121,9 @@ Route::group(['prefix'=>'funder', 'middleware' => 'is-funder'], function(){
 
 	//Funder funding details
 	Route::get('/fund_details', 'Funder\FunderController@fund_details')->name('funder_fund_details');	
+
+	Route::post('/submit_request_listing', 'Funder\FunderController@request_listing_submit')->name('request_listing_submit');	
+
 });
 
 

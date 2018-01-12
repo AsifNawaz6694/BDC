@@ -13,7 +13,9 @@ use App\User;
 use App\service;
 use App\Category;
 use App\Listing;
+use App\Request_listing;
 use App\Notifications\ListingApproved;
+use App\Notifications\FunderListingApproved;
 use App\Notifications\ListingDisApproved;
 use App\Notifications\FeaturedApproved;
 use App\Notifications\FeaturedDisApproved;
@@ -52,8 +54,7 @@ class ListingController extends Controller
             return redirect()->back();
     }
     public function approve_status($id)
-    { 
-        
+    {         
         // Auth::user()->notify(new ListingApproved($listing));
          DB::table('listings')
             ->where('id', $id)
@@ -95,11 +96,8 @@ class ListingController extends Controller
 
         $file = Listing::find($file_name);
         $path = str_replace('/', '\\', $file->document);
-        $file_path = storage_path('app\public\\'.$path) ;
-     
-
+        $file_path = storage_path('app\public\\'.$path);
         return response()->download($file_path);
-
       }
 
     /**
@@ -107,6 +105,40 @@ class ListingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function Funder_Request()
+    {
+        $args['request_listing'] = Request_listing::all();
+        return view('Admin_Panel.listing.request_listing')->with($args);   
+    }
+
+    public function destroy_funder_request($id)
+    {
+        $Funder_Request = Request_listing::find($id);
+        $Funder_Request->delete();
+        Session::flash('success_msg','The Request Listing Was Successfully Deleted');
+        return back();
+    }
+
+    public function funder_disapprove_status($id)
+    {
+         DB::table('request_listings')
+            ->where('id', $id)
+            ->update(['request_status' => 0]);
+             return redirect()->back();
+    }
+    public function funder_approve_status($id)
+    {      
+         DB::table('request_listings')
+            ->where('id', $id)
+            ->update(['request_status' => 1]);          
+        return redirect()->back();
+    }
+
+    public function request_detail_view($id)
+    {
+        $args['value'] = Request_listing::find($id);        
+        return view('Admin_Panel.Listing.request_view')->with($args);
+    }
     public function create()
     {
         //
