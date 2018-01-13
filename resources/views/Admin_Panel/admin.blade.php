@@ -2,7 +2,55 @@
 @section('content')
 
     <div class="page-content">
-        <div class="row">               
+        <div class="row">
+                <div class="col-md-6">                   
+                    <div class="portlet box yellow">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <i class="fa fa-user"></i>Funders
+                            </div>                                        
+                        </div>
+                        <div class="portlet-body">
+                            <table class="table table-bordered table-striped table-hover">
+                                <thead>
+                                <tr>                                
+                                    <th>
+                                        Funders
+                                    </th>  
+                                     <th>
+                                        Email
+                                    </th>    
+                                    <th>
+                                        Phone
+                                    </th>
+                                    <th>
+                                        Gender
+                                    </th>    
+                                                                                                
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($Funders as $key => $value)
+                                    <tr>   
+                                        <td>
+                                             {{$value->name }}
+                                        </td> 
+                                        <td>
+                                             {{$value->email }}
+                                        </td>  
+                                         <td>
+                                        {{$value->profile->phone}}
+                                        </td>                           
+                                        <td>
+                                        {{$value->profile->gender}}
+                                        </td>                              
+                                    </tr>
+                                @endforeach                     
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>                   
+                </div>
                 <div class="col-md-6">
                     <!-- BEGIN BORDERED TABLE PORTLET-->
                     <div class="portlet box yellow">
@@ -26,10 +74,7 @@
                                 </th>
                                 <th>
                                     Gender
-                                </th>    
-                                <th>
-                                    Birthdate
-                                </th>                                                                                          
+                                </th>
                             </tr>
                             </thead>
                             <tbody>
@@ -46,65 +91,7 @@
                                     </td>                           
                                     <td>
                                     {{$value->profile->gender}}
-                                    </td>                            
-                                    <td>
-                                    {{$value->profile->birth_date}}
-                                    </td>                                                                               
-                                </tr>
-                            @endforeach                     
-                            </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <!-- END BORDERED TABLE PORTLET-->
-                </div>
-                 <div class="col-md-6">
-                    <!-- BEGIN BORDERED TABLE PORTLET-->
-                    <div class="portlet box yellow">
-                        <div class="portlet-title">
-                            <div class="caption">
-                                <i class="fa fa-user"></i>Funders
-                            </div>                                        
-                        </div>
-                        <div class="portlet-body">
-                            <table class="table table-bordered table-striped table-hover">
-                            <thead>
-                            <tr>                                
-                                <th>
-                                    Funders
-                                </th>  
-                                 <th>
-                                    Email
-                                </th>    
-                                <th>
-                                    Phone
-                                </th>
-                                <th>
-                                    Gender
-                                </th>    
-                                <th>
-                                    Birthdate
-                                </th>                                                             
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($Funders as $key => $value)
-                                <tr>   
-                                    <td>
-                                         {{$value->name }}
-                                    </td> 
-                                    <td>
-                                         {{$value->email }}
-                                    </td>  
-                                     <td>
-                                    {{$value->profile->phone}}
-                                    </td>                           
-                                    <td>
-                                    {{$value->profile->gender}}
-                                    </td>                            
-                                    <td>
-                                    {{$value->profile->birth_date}}
-                                    </td>                                      
+                                    </td>                                                                          
                                 </tr>
                             @endforeach                     
                             </tbody>

@@ -7,7 +7,7 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Carbon\Carbon;
-class FunderListingApproved extends Notification
+class InnovatorRequestServiceDisApproved extends Notification
 {
     use Queueable;
 

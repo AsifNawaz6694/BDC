@@ -5,8 +5,11 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
+use App\Notifications\InnovatorRequestServiceApproved;
+use App\Notifications\InnovatorRequestServiceDisApproved;
+use App\Notifications\FunderRequestListingDisApproved;
+use App\Notifications\FunderRequestListingApproved;
 use App\Notifications\ListingApproved;
-use App\Notifications\FunderListingApproved;
 use App\Notifications\ListingDisApproved;
 use App\Notifications\FeaturedApproved;
 use App\Notifications\FeaturedDisApproved;
@@ -96,28 +99,38 @@ class ListingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
     public function Funder_Request()
     {
         $args['request_listing'] = Request_listing::all();
         return view('Admin_Panel.listing.Funder.request_listing')->with($args);   
     }
-
- 
-
     public function funder_disapprove_status($id)
     {
         DB::table('request_listings')
             ->where('id', $id)
             ->update(['request_status' => 0]);
+             $listing = Request_listing::find($id);
+        $notify_data['listing'] =  $listing;        
+        $notify_data['user'] =  Auth::user();       
+        $listing->user->notify(new FunderRequestListingDisApproved($notify_data));
              return redirect()->back();
     }
     public function funder_approve_status($id)
     {      
         DB::table('request_listings')
             ->where('id', $id)
-            ->update(['request_status' => 1]);          
+            ->update(['request_status' => 1]);    
+             $listing = Request_listing::find($id);
+        $notify_data['listing'] =  $listing;
+        $notify_data['user'] =  Auth::user();        
+        $listing->user->notify(new FunderRequestListingApproved($notify_data));        
         return redirect()->back();
     }
+
+
+
 
     public function request_detail_view($id)
     {
@@ -139,13 +152,21 @@ class ListingController extends Controller
         DB::table('request_services')
             ->where('id', $id)
             ->update(['status' => 0]);
+        $listing = RequestServices::find($id);
+        $notify_data['listing'] =  $listing;
+        $notify_data['user'] =  Auth::user();        
+        $listing->user->notify(new InnovatorRequestServiceDisApproved($notify_data));    
              return redirect()->back();
     }
     public function innovator_approve_status($id)
     {      
         DB::table('request_services')
             ->where('id', $id)
-            ->update(['status' => 1]);          
+            ->update(['status' => 1]);    
+             $listing = RequestServices::find($id);
+        $notify_data['listing'] =  $listing;
+        $notify_data['user'] =  Auth::user();        
+        $listing->user->notify(new InnovatorRequestServiceApproved($notify_data));          
         return redirect()->back();
     }
 
