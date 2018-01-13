@@ -851,3 +851,12 @@ ul.footer-links li a{
 .footer-links li:last-child:after{
     content: "";
 }
+
+
+.img-responsive.sheld_img.grayscale {
+    width: 30px;
+}
+
+img.img-responsive.sheld_img2 {
+    width: 30px;
+}

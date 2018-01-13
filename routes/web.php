@@ -16,7 +16,7 @@
 
 Route::group(['prefix'=>'admin','middleware' => 'is-admin']	,function(){
 
-Route::get('/bahar_nikal','Admin\AdminPagesController@admin_logout')->name('chal_nikal');
+Route::get('/admin_logout','Admin\AdminPagesController@admin_logout')->name('clock_out');
 	//Admin Panel Routes Started
 Route::get('/admin', 'Admin\AdminPagesController@Backend')->name('adminBackend');
 //Admin Profile Route
@@ -32,6 +32,9 @@ Route::get('/profile','Admin\AdminProfileController@index')->name('admin_profile
 
 // <-------------------------------User's Controller Routes Started-------------------------------------------->
 	Route::resource('/users','Admin\UsersController');	
+	Route::get('/approve_user_status/{id}/',["as" => "approve-user-status", "uses" => "Admin\UsersController@approve_user_status"]);
+	Route::get('/disapprove_user_status/{id}/',["as" => "disapprove-user-status", "uses" => "Admin\UsersController@disapprove_user_status"]);
+	Route::get('/user_detail/{id}',["as"=>"view-user-detail","uses"=>"Admin\UsersController@view_user_details"]);
 // <-----------------------------------User's Controller Routes Ended------------------------------------------>
 
 // <-------------------------------Category's Controller Routes Started---------------------------------------->
@@ -53,7 +56,7 @@ Route::get('/profile','Admin\AdminProfileController@index')->name('admin_profile
 	//Funder Request for listing
 
 	Route::get('/funder_request_listing','Admin\ListingController@Funder_Request');
-	Route::delete('/funder-request-delete/{id}',['as'=> 'delete-funder-request','uses' => 'Admin\ListingController@destroy_funder_request']);
+
 	// DisApprove/Approve Listing Status	
 	Route::get('/funder_approve_status/{id}/',["as" => "funder-approve-status", "uses" => "Admin\ListingController@funder_approve_status"]);
 	Route::get('/funder_disapprove_status/{id}/',["as" => "funder-disapprove-status", "uses" => "Admin\ListingController@funder_disapprove_status"]);
@@ -63,7 +66,6 @@ Route::get('/profile','Admin\AdminProfileController@index')->name('admin_profile
 	//Innovator Request for listing
 
 	Route::get('/innovator_request_service','Admin\ListingController@innovator_Request');
-	Route::delete('/innovator-request-delete/{id}',['as'=> 'delete-innovator-request','uses' => 'Admin\ListingController@destroy_innovator_request']);
 	// DisApprove/Approve Listing Status	
 	Route::get('/innovator_approve_status/{id}/',["as" => "innovator-approve-status", "uses" => "Admin\ListingController@innovator_approve_status"]);
 	Route::get('/innovator_disapprove_status/{id}/',["as" => "innovator-disapprove-status", "uses" => "Admin\ListingController@innovator_disapprove_status"]);

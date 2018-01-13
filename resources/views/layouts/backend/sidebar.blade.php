@@ -23,29 +23,24 @@
                         <a href="javascript:;" class="remove">
                         <i class="icon-close"></i>
                         </a>
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search...">
-                            <span class="input-group-btn">
-                            <a href="javascript:;" class="btn submit"><i class="icon-magnifier"></i></a>
-                            </span>
-                        </div>
+                      
                     </form>
                     <!-- END RESPONSIVE QUICK SEARCH FORM -->
                 </li>
-                <li class="start active open">
-                    <li>
-                        <a href="{{url('admin/category')}}">
-                        <i class="fa fa-bars"></i>
-                        <span class="title">Categories</span></a>
-                    </li>                                      
-                </li>
-                <li class="start active open">                   
+                 <li class="start active open">                   
                     <li>                    
                         <a href="{{url('admin/users')}}">
                         <i class="fa fa-user"></i>
                         <span class="title">Users</span></a>
                     </li>                                      
                 </li> 
+                <li class="start active open">
+                    <li>
+                        <a href="{{url('admin/category')}}">
+                        <i class="fa fa-bars"></i>
+                        <span class="title">Categories</span></a>
+                    </li>                                      
+                </li>               
                  <li class="start active open">                   
                     <li>                                            
                         <a href="{{url('admin/listing')}}">

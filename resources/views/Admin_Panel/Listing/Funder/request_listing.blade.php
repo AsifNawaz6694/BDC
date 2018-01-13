@@ -33,7 +33,7 @@
 								<th>Listing Title</th>								
 								<th>Status</th>		
 								<th>View Details</th>
-								<th>Delete</th>								
+															
 							</tr>
 							</thead>
 							<tbody>
@@ -59,13 +59,7 @@
 									<td>
 										<a href="{{route('request-detail-view',['id'=>$value->id])}}" title="Click To View Details" class="btn btn-sm btn-primary" >View</a>
 									</td>										
-									<td>
-										<form action="{{ route('delete-funder-request', ['id' => $value->id]) }}" method="POST" onsubmit="return confirm('Do you really want to delete?');">
-											{{ method_field('DELETE') }}
-											{{ csrf_field() }}
-											<button type="submit" title="Click To Delete" class="btn btn-sm btn-danger">Delete</button>
-										</form>										
-									</td>								
+																	
 								</tr>
 							@endforeach						
 							</tbody>

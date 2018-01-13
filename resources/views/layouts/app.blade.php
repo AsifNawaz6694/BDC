@@ -10,10 +10,7 @@
     <!-- Bootstrap -->
     <link href="{{ asset('app/css/bootstrap.min.css') }}" rel="stylesheet">
 
-    <link href="{{ asset('gray-gh-pages\jquery-gray\css\gray.css') }}" rel="stylesheet">
-    <link href="{{ asset('gray-gh-pages\jquery-gray\css\gray.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('gray-gh-pages\jquery-gray\css\main.css') }}" rel="stylesheet">
-    <link href="{{ asset('gray-gh-pages\jquery-gray\css\normalize.css') }}" rel="stylesheet">
+
 
     <!-- FontAwesome -->
     <link href="{{ asset('app/css/font-awesome.min.css') }}" rel="stylesheet">
@@ -32,6 +29,7 @@
     <link href="{{ asset('app/css/style.css') }}" rel="stylesheet">
     <!-- Responsive -->
     <link href="{{ asset('app/css/responsive.css') }}" rel="stylesheet">
+    <link href="{{ asset('app/css/gray.min.css') }}" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -235,6 +233,6 @@
 <script src="{{ asset('js/custom1.js') }}"></script>
 
 <script src="{{ asset('app/js/custom.js') }}"></script>
-
+<script src="{{ asset('app/js/jquery.gray.min.js') }}"></script>
 </body>
 </html>

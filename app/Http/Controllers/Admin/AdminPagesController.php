@@ -2,6 +2,7 @@
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\User;
 use Auth;
 class AdminPagesController extends Controller
 {
@@ -12,7 +13,9 @@ class AdminPagesController extends Controller
     */
     public function Backend()
     {
-      return view('Admin_Panel/admin');
+    $args['Innovators'] = User::where('users.roles','3')->orderBy('users.id','DESC')->take(5)->get();
+    $args['Funders'] = User::where('users.roles','2')->orderBy('users.id','DESC')->take(5)->get();
+    return view('Admin_Panel.admin')->with($args);
     }
     public function admin_logout(Request $request) {     
       Auth::logout();
@@ -20,6 +23,7 @@ class AdminPagesController extends Controller
     }
     public function index()
     {
+ 
     }
 
     /**

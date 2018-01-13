@@ -102,13 +102,7 @@ class ListingController extends Controller
         return view('Admin_Panel.listing.Funder.request_listing')->with($args);   
     }
 
-    public function destroy_funder_request($id)
-    {
-        $Funder_Request = Request_listing::find($id);
-        $Funder_Request->delete();
-        Session::flash('success_msg','The Request Listing Was Successfully Deleted');
-        return back();
-    }
+ 
 
     public function funder_disapprove_status($id)
     {
@@ -138,14 +132,6 @@ class ListingController extends Controller
     {
         $args['request_services'] = RequestServices::all();
         return view('Admin_Panel.listing.Innovator.request_services')->with($args);   
-    }
-
-    public function destroy_innovator_request($id)
-    {
-        $Funder_Request = RequestServices::find($id);
-        $Funder_Request->delete();
-        Session::flash('success_msg','The Request Listing Was Successfully Deleted');
-        return back();
     }
 
     public function innovator_disapprove_status($id)
