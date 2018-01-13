@@ -163,8 +163,11 @@ Route::group(['prefix'=>'innovator', 'middleware' => 'is-innovator'], function()
 	//Innovator Contact Admin page
 	Route::get('/contact_admin', 'Innovator\InnovatorController@contact_admin_page')->name('contact_admin_page');
 
-	//Innovator request services page
-	Route::get('/request_services', 'Innovator\InnovatorController@request_services_page')->name('request_services_page');
+	//Innovator request services post
+	Route::post('/request_services', 'Innovator\InnovatorController@request_services_post')->name('request_services_post');
+
+    //Innovator request services page
+    Route::get('/request_services', 'Innovator\InnovatorController@request_services_page')->name('request_services_page');
 
 	//Transactions page
 	Route::get('/transactions', 'Innovator\InnovatorController@transaction_page')->name('transaction_page');
@@ -206,6 +209,7 @@ Route::group(['prefix' => 'paypal', 'middleware' => 'auth'], function(){
     Route::get('/checkout/{id}', 'PaymentController@checkout')->name('checkout');
     Route::get('/paypalReturn', 'PaymentController@getDone')->name('getDone');
     Route::get('/paypalCancel', 'PaymentController@getCancel')->name('getCancel');
+    Route::get('/pending_payment/{id}', 'PaymentController@pending_payment')->name('pending_payment');
 });
 
 //common routes for all user types

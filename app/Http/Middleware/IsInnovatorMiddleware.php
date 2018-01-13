@@ -16,7 +16,7 @@ class IsInnovatorMiddleware
     public function handle($request, Closure $next)
     {
         if(!Auth::check() || Auth::user()->roles != '3'){
-            return redirect()->route('/');
+            return redirect()->route('login');
         }
         return $next($request);
     }

@@ -37,7 +37,6 @@
 
 <!-- masonry-min-js -->
 <script src="{{ asset('app/js/masonry.pkgd.min.js') }}"></script>
-<script src="{{ asset('app/js/main.js') }}"></script>
 
 <!-- Custom-js -->
 <script src="{{ asset('panel_assets/js/custom.js') }}"></script>
