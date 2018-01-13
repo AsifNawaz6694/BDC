@@ -7,12 +7,14 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Carbon\Carbon;
-class FunderListingApproved extends Notification
+class InnovatorRequestServiceDisApproved extends Notification
 {
     use Queueable;
 
     protected $listing;
+    protected $service;
     protected $user;
+    protected $request;
 
     /**
      * Create a new notification instance.
@@ -21,7 +23,7 @@ class FunderListingApproved extends Notification
      */
     public function __construct($listing)
     {
-        $this->listing = $listing['listing'];
+        $this->request = $listing['request'];
         $this->user = $listing['user'];
 
     }
@@ -55,7 +57,7 @@ class FunderListingApproved extends Notification
     public function toDatabase($notifiable)
     {      
         return [
-            'listing' => $this->listing,
+             'request' => $this->request,
             'user' =>  $this->user
         ];
 

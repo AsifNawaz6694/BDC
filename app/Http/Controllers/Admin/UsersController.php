@@ -28,7 +28,7 @@ class UsersController extends Controller
     {
         $args = array();
         $args['users'] = User::leftJoin('roles','roles.id','=','users.roles')
-                        ->select('users.name','users.id','users.email','roles.role_name')
+                        ->select('users.name','users.status','users.id','users.email','roles.role_name')
                         ->get();     
         return view('Admin_Panel.Users.index')->with($args);
     }
@@ -74,9 +74,13 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function view_user_details($id)
     {
-        //
+        $admin_profile = Profile::where('user_id',$id)->first();
+
+
+     
+        return view('Admin_Panel.Users.user_profile',['admin_profile'=>$admin_profile]);
     }
 
     /**
@@ -87,15 +91,15 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        $args=array();
-        $user = User::find($id);      
-        $args['roles'] = Roles::all()->pluck('role_name', 'id');  
-        if($user){
-            $args['user']=$user;
-            return View('Admin_Panel.Users.edit')->with($args);
-        }
-        Session::flash('error_msg','Sorry no user found');
-        return redirect()->back();
+        // $args=array();
+        // $user = User::find($id);      
+        // $args['roles'] = Roles::all()->pluck('role_name', 'id');  
+        // if($user){
+        //     $args['user']=$user;
+        //     return View('Admin_Panel.Users.edit')->with($args);
+        // }
+        // Session::flash('error_msg','Sorry no user found');
+        // return redirect()->back();
     }
 
     /**
@@ -136,10 +140,25 @@ class UsersController extends Controller
     public function destroy($id)
     {        
         // dd($id);
-        $user_delete = User::destroy($id);
-        $user_profile_delete = Profile::where('profile.userid','=',$id)->delete();      
-        Session::flash('success_msg','The User Was successfully Deleted');
-        return back();
+        // $user_delete = User::destroy($id);
+        // $user_profile_delete = Profile::where('profile.userid','=',$id)->delete();      
+        // Session::flash('success_msg','The User Was successfully Deleted');
+        // return back();
+    }
+
+    public function disapprove_user_status($id)
+    {
+        DB::table('users')
+            ->where('id', $id)
+            ->update(['status' => 0]);            
+            return redirect()->back();
+    }
+    public function approve_user_status($id)
+    {   
+        DB::table('users')
+            ->where('id', $id)
+            ->update(['status' => 1]);          
+        return redirect()->back();
     }
 
 }

@@ -2,24 +2,28 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
-use Session;
-use Auth;
-use DB;
-use App\User;
-use App\service;
-use App\Category;
-use App\Listing;
-use App\Request_listing;
+use App\Notifications\InnovatorRequestServiceApproved;
+use App\Notifications\InnovatorRequestServiceDisApproved;
+use App\Notifications\FunderRequestListingDisApproved;
+use App\Notifications\FunderRequestListingApproved;
 use App\Notifications\ListingApproved;
-use App\Notifications\FunderListingApproved;
 use App\Notifications\ListingDisApproved;
 use App\Notifications\FeaturedApproved;
 use App\Notifications\FeaturedDisApproved;
-
+use App\RequestServices;
+use App\Request_listing;
+use App\service;
+use App\Category;
+use App\Listing;
+use App\Notification;
+use App\User;
+use Session;
+use Auth;
+use DB;
 
 class ListingController extends Controller
 {
@@ -27,10 +31,9 @@ class ListingController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
-     */
-
+    */
       public function __construct()
-    {  
+    {
        ini_set('memory_limit', '-1');
     }
 
@@ -42,103 +45,144 @@ class ListingController extends Controller
 
     public function disapprove_status($id)
     {
-         DB::table('listings')
+        DB::table('listings')
             ->where('id', $id)
             ->update(['status' => 0]);
         $listing = Listing::find($id);
         $notify_data['listing'] =  $listing;
-        $notify_data['user'] =  Auth::user();
-        // dd($listing->innovator);
-        $listing->innovator->notify(new ListingDisApproved($notify_data));
-        
-            return redirect()->back();
+        $notify_data['user'] =  Auth::user();       
+        $listing->innovator->notify(new ListingDisApproved($notify_data));        
+        return redirect()->back();
     }
     public function approve_status($id)
-    {         
-        // Auth::user()->notify(new ListingApproved($listing));
-         DB::table('listings')
+    {   
+        DB::table('listings')
             ->where('id', $id)
             ->update(['status' => 1]);
         $listing = Listing::find($id);
         $notify_data['listing'] =  $listing;
-        $notify_data['user'] =  Auth::user();
-        // dd($listing->innovator);
-        $listing->innovator->notify(new ListingApproved($notify_data));
-     
+        $notify_data['user'] =  Auth::user();        
+        $listing->innovator->notify(new ListingApproved($notify_data));     
         return redirect()->back();
     }
     public function disapprove_featured($id)
     {
-         DB::table('listings')
+        DB::table('listings')
             ->where('id', $id)
             ->update(['featured' => 0]);
         $listing = Listing::find($id);
         $notify_data['listing'] =  $listing;
         $notify_data['user'] =  Auth::user();        
-        $listing->innovator->notify(new FeaturedDisApproved($notify_data));
-   
-            return redirect()->back();
+        $listing->innovator->notify(new FeaturedDisApproved($notify_data));   
+        return redirect()->back();
     }
     public function approve_featured($id)
     { 
-         DB::table('listings')
+        DB::table('listings')
             ->where('id', $id)
             ->update(['featured' => 1]);
         $listing = Listing::find($id);
         $notify_data['listing'] =  $listing;
         $notify_data['user'] =  Auth::user();        
-        $listing->innovator->notify(new FeaturedApproved($notify_data));
-    
-            return redirect()->back();
+        $listing->innovator->notify(new FeaturedApproved($notify_data));    
+        return redirect()->back();
     }
 
-    public function admin_download($file_name) {
-
+    public function admin_download($file_name){
         $file = Listing::find($file_name);
         $path = str_replace('/', '\\', $file->document);
         $file_path = storage_path('app\public\\'.$path);
         return response()->download($file_path);
-      }
+    }
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
+
+
     public function Funder_Request()
     {
         $args['request_listing'] = Request_listing::all();
-        return view('Admin_Panel.listing.request_listing')->with($args);   
+        return view('Admin_Panel.listing.Funder.request_listing')->with($args);   
     }
-
-    public function destroy_funder_request($id)
-    {
-        $Funder_Request = Request_listing::find($id);
-        $Funder_Request->delete();
-        Session::flash('success_msg','The Request Listing Was Successfully Deleted');
-        return back();
-    }
-
     public function funder_disapprove_status($id)
     {
-         DB::table('request_listings')
+        DB::table('request_listings')
             ->where('id', $id)
             ->update(['request_status' => 0]);
-             return redirect()->back();
+             $listing = Request_listing::find($id);
+        $notify_data['listing'] =  $listing;        
+        $notify_data['user'] =  Auth::user();       
+        $listing->user->notify(new FunderRequestListingDisApproved($notify_data));
+        return redirect()->back();
     }
     public function funder_approve_status($id)
     {      
-         DB::table('request_listings')
+        DB::table('request_listings')
             ->where('id', $id)
-            ->update(['request_status' => 1]);          
+            ->update(['request_status' => 1]);    
+             $listing = Request_listing::find($id);
+        $notify_data['listing'] =  $listing;
+        $notify_data['user'] =  Auth::user();        
+        $listing->user->notify(new FunderRequestListingApproved($notify_data));        
         return redirect()->back();
     }
+
+
+
 
     public function request_detail_view($id)
     {
         $args['value'] = Request_listing::find($id);        
-        return view('Admin_Panel.Listing.request_view')->with($args);
+        return view('Admin_Panel.Listing.Funder.request_view')->with($args);
     }
+
+
+    //Innovator Requests Functions
+
+    public function innovator_Request()
+    {
+        $args['request_services'] = RequestServices::all();
+        return view('Admin_Panel.listing.Innovator.request_services')->with($args);   
+    }
+
+    public function innovator_disapprove_status($id)
+    {
+        DB::table('request_services')
+            ->where('id', $id)
+            ->update(['status' => 0]);
+        $listing = RequestServices::find($id);
+        $notify_data['request'] =  $listing;
+        $notify_data['user'] =  Auth::user();   
+        $notify_data['service'] = $notify_data['request']->service;  
+        $notify_data['listing'] = $notify_data['request']->listing;         
+        $listing->user->notify(new InnovatorRequestServiceDisApproved($notify_data));    
+        return redirect()->back();
+    }
+    public function innovator_approve_status($id)
+    {      
+        DB::table('request_services')
+            ->where('id', $id)
+            ->update(['status' => 1]);
+        $listing = RequestServices::find($id);
+        $notify_data['request'] =  $listing;
+        $notify_data['user'] =  Auth::user();   
+        $notify_data['service'] = $notify_data['request']->service;  
+        $notify_data['listing'] = $notify_data['request']->listing;
+        $listing->user->notify(new InnovatorRequestServiceApproved($notify_data));          
+        return redirect()->back();
+    }
+
+    public function innovator_request_detail_view($id)
+    {
+        $args['value'] = RequestServices::find($id);   
+        
+        return view('Admin_Panel.Listing.Innovator.request_view')->with($args);
+    }
+
+
     public function create()
     {
         //

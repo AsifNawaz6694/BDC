@@ -1,5 +1,6 @@
 @extends('layouts.index')
 @section('content')
+<div class="page-content">
 			<div class="page-bar">
 				<ul class="page-breadcrumb">
 					<li>
@@ -123,8 +124,7 @@
 												<form id="form1" method="post" action="{{route('admin-update-image',['id'=>$admin_profile->user->id])}}" enctype="multipart/form-data" >
 													<div class="form-group">
 														<div class="fileinput fileinput-new" data-provides="fileinput">
-															<div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;">
-															</div>
+															
 															<div>			
 																	<input type="hidden" name="_token" value="{{ csrf_token()}}"/>						
 																	<label class="fileContainer" for="file">
@@ -144,6 +144,7 @@
 											</div>
 											<div id="tab_3-3" class="tab-pane">
 												<form action="{{route('update-password')}}">
+													{{ csrf_field() }}
 													<div class="form-group">
 														<label class="control-label">Current Password</label>
 														<input type="password" name="old_password" class="form-control"/>
@@ -162,7 +163,7 @@
 														<a href="" class="btn default">
 														Cancel </a>
 													</div>
-													{{ csrf_token() }}
+													
 												</form>
 											</div>
 											
@@ -175,6 +176,7 @@
 					</div>
 					<!--END TABS-->
 				</div>
+			</div>
 			</div>
  <script>
     document.getElementById("file1").onchange = function() {

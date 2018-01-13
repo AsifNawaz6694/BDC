@@ -13,9 +13,26 @@
             </p>
         </div>
         <div class="Funding_box_footer clearfix">
-                        <span class="ready_img">
-                            <img src="{{ asset('panel_assets/images/ready_img.png') }}" class="img-responsive"/>
-                        </span>
+                       <span class="ready_img">           
+
+                                            <label>
+                                                <img src="{{ asset('panel_assets/images/r_img.png') }}" class="img-responsive sheld_img2 {{{ $listing->service_id > 1 ? '' : 'grayscale' }}}"/>
+                                            </label> 
+                                             <label>
+                                                <img src="{{ asset('panel_assets/images/image-e.png') }}" class="img-responsive sheld_img2 {{{ $listing->service_id > 2 ? '' : 'grayscale' }}}"/>
+                                            </label>
+                                            <label>
+                                                <img src="{{ asset('panel_assets/images/image-a.png') }}" class="img-responsive sheld_img2 {{{ $listing->service_id > 3 ? '' : 'grayscale' }}}"/>
+                                            </label> 
+                                           
+                                            <label>
+                                                <img src="{{ asset('panel_assets/images/image-d.png') }}" class="img-responsive sheld_img2 {{{ $listing->service_id > 4 ? '' : 'grayscale' }}}"/>
+                                            </label> 
+                                            <label>
+                                                <img src="{{ asset('panel_assets/images/image-y.png') }}" class="img-responsive sheld_img2 {{{ $listing->service_id > 5 ? '' : 'grayscale' }}}"/>
+                                            </label>  
+
+                                        </span>
             <span class="Fund_contact">
                             <a href="{{ route('funder_request_listing') }}" class="btn btn-default">Contact</a>
                         </span>

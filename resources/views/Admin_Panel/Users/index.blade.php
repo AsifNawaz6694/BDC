@@ -27,13 +27,19 @@
 								</th>
 								<th>
 									 Role
-								</th>		
+								</th>	
 								<th>
+									 Status
+								</th>
+								<th>
+									 View Details
+								</th>		
+							<!-- 	<th>
 									 Edit
 								</th>								
 								<th>
 									 Delete
-								</th>								
+								</th>	 -->							
 							</tr>
 							</thead>
 							<tbody>
@@ -47,8 +53,18 @@
 									</td>
 									<td>
 										 {{$value->role_name}}
-									</td>	
+									</td>
 									<td>
+										@if($value->status == '1')
+										<a href="{{route('disapprove-user-status',['id'=>$value->id])}}" class="btn btn-sm btn-primary" >Approve</a>
+										@else
+										<a href="{{route('approve-user-status',['id'=>$value->id])}}" class="btn btn-sm btn-danger" >DisApprove</a>
+										@endif
+									</td>	
+									<td>									
+										<a href="{{route('view-user-detail',['id'=>$value->id])}}" class="btn btn-sm btn-primary" >View</a>
+									</td>	
+									<!-- <td>
 										<a href="{{ route('users.edit',[ 'user' => $value->id ]) }}" class="btn btn-sm btn-primary" >Edit</a>
 									</td>
 									<td>
@@ -57,7 +73,7 @@
 											{{ csrf_field() }}
 											<button type="submit" class="btn btn-sm btn-danger">Delete</button>
 										</form>										
-									</td>								
+									</td>	 -->							
 								</tr>
 							@endforeach						
 							</tbody>
