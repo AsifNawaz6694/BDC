@@ -12,7 +12,9 @@ class InnovatorRequestServiceDisApproved extends Notification
     use Queueable;
 
     protected $listing;
+    protected $service;
     protected $user;
+    protected $request;
 
     /**
      * Create a new notification instance.
@@ -21,7 +23,7 @@ class InnovatorRequestServiceDisApproved extends Notification
      */
     public function __construct($listing)
     {
-        $this->listing = $listing['listing'];
+        $this->request = $listing['request'];
         $this->user = $listing['user'];
 
     }
@@ -55,7 +57,7 @@ class InnovatorRequestServiceDisApproved extends Notification
     public function toDatabase($notifiable)
     {      
         return [
-            'listing' => $this->listing,
+             'request' => $this->request,
             'user' =>  $this->user
         ];
 

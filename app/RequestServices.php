@@ -25,4 +25,8 @@ class RequestServices extends Model
      public function user(){
         return $this->belongsTo('App\User', 'user_id');
     }
+
+    public function listing(){
+        return $this->belongsTo(Listing::class, 'listing_id');
+    }
 }
