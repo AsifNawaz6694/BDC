@@ -57,7 +57,7 @@
                                         </span>
                                         
                                         <span class="Fund_contact">
-                                            <a href="#" class="btn btn-default">Contact</a>
+                                            <a href="{{ route('funder_request_listing') }}" class="btn btn-default">Contact</a>
                                         </span>
                                     </div>
                                 </div>
@@ -78,9 +78,6 @@
                 </div>
             </div>
             <div class="row">
-                <?php
-                $color = array('green_box', 'red_box', 'blue_box', 'orange_box', 'green_box', 'red_box', 'blue_box', 'orange_box', 'green_box', 'red_box', 'blue_box', 'orange_box');
-                ?>
                 @foreach ($listings as $listing)
                     @include('partials/idea-box')
                 @endforeach

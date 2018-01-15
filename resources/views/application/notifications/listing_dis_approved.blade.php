@@ -1,0 +1,1 @@
+<a href="#">{{ $notificaiton->data['user']['name'] }} has Declined your listing {{ $notificaiton->data['listing']['title'] }} </a>

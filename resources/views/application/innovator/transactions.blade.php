@@ -30,7 +30,7 @@
 
                                     <tr>
                                         <td data-label="Transaction ID">PAY-{{ $tr->id }}</td>
-                                        <td data-label="Details">{{ $tr->service->description }}</td>
+                                        <td data-label="Details">{{ $tr->service->service }}</td>
                                         <td data-label="Amount">${{ $tr->service->cost }}</td>
                                         <td data-label="Date">{{ date("j-n-Y", strtotime($tr->created_at)) }}</td>
                                         <td data-label="Status">{{ $tr->request_service->status == 1 ? 'Complete' : 'Pending' }}

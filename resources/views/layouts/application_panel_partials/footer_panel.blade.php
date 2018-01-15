@@ -41,6 +41,7 @@
 <script src="{{ asset('panel_assets/js/main.js') }}"></script>
 
 
+
 <!-- Custom-js -->
 <script src="{{ asset('panel_assets/js/custom.js') }}"></script>
 </body>

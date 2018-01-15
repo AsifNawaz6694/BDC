@@ -5,14 +5,8 @@
             <div class="dashboard_box">
                 <div class="panel panel-default panel-min">
                     <!-- Default panel contents -->
-                    <div class="panel-body">
-                        <h4 class="float-left text-left">Transaction details</h4>
-                        <h4 class="float-right text-right"><a href="#">Mark all as read</a></h4>
-                    </div>
-                    <!-- List group -->
-                    {{--{{ dd(auth()->user()->notifications) }}--}}
                       @foreach(auth()->user()->notifications as $notificaiton)
-                    <ul class="list-group">                      
+                        <ul class="list-group">
                             <li class="list-group-item notification_list">
                                 <div class="media">
                                     <div class="media-body">                                       
@@ -34,7 +28,7 @@
                                     </div>
                                     <div class="media-right media-middle">
                                                 <span class="media-object">
-                                                    <i class="fa fa-clock-o" aria-hidden="true"></i> 3 min ago
+                                                    <i class="fa fa-clock-o" aria-hidden="true"></i> {{ $notificaiton->created_at }}
                                         
                                                     <form action="{{route('markAsSingleRead')}}" method="post">
                                                         <input type="hidden" name="id" value="{{$notificaiton->id}}">

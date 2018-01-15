@@ -1,0 +1,1 @@
+<a href="#">{{ $notificaiton->data['user']['name'] }} has approved your listing request {{ $notificaiton->data['listing']['listing_id'] }} </a>

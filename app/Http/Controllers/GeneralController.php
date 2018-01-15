@@ -85,9 +85,10 @@ class GeneralController extends Controller
     }
 
     public function markAsRead(){
+
         $user = Auth::user();
         $user->unreadNotifications()->update(['read_at' => Carbon::now()]);
-        return true;
+        return 'COMPLETE';
     }
     public function markAsSingleRead(Request $request){
         $noti = Notification::where('id', $request->id)->update([

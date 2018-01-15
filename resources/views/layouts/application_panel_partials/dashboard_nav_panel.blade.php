@@ -12,7 +12,7 @@
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right icons right_mobi_nav">
-                    <li class="dropdown" id="markasread" onclick="MarkNotificationAsRead()">
+                    <li class="dropdown" id="markasread">
                         <a href="#"  class="dropdown-toggle" data-toggle="dropdown" role="button"
                            aria-haspopup="true" aria-expanded="false" data-route="{{ route('markAsRead') }}">
                             <i class="fa fa-bell-o" aria-hidden="true"></i>
@@ -20,7 +20,7 @@
                         </a>
                         <ul class="dropdown-menu media-list animated fadeInDown dash_nav clearfix">
                             <li class="dropdown-header">Notifications {{ count(auth()->user()->unreadNotifications) }}</li>
-                            @foreach(auth()->user()->unreadNotifications as $notificaiton)
+                            @foreach(auth()->user()->Notifications->take(5) as $notificaiton)
                                 <li class="media">
                                     <div class="media-body">
                                     @if($notificaiton->type == 'App\Notifications\ListingApproved' && $notificaiton->data['listing']['status'] == 1)

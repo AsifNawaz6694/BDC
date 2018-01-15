@@ -17,7 +17,7 @@ class IsAdminMiddleware
     {
 
         if(!Auth::check() || Auth::user()->roles != '1'){
-            return redirect()->route('/');
+            return redirect()->route('login');
         }
         return $next($request);
     }

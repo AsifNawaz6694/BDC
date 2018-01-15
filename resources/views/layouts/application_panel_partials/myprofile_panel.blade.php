@@ -22,7 +22,7 @@
                             </div>
                             <div class="form-group">
                                 <label>DOB </label>
-                                <input type="date" class="form-control" name="birth_date">
+                                <input type="date" class="form-control" name="birth_date" value="{{Auth::user()->profile->birth_date}}">
                             </div>
                             <div class="form-group">
                                 <label>I am a </label>

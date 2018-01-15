@@ -1,0 +1,1 @@
+<a href="#">{{ $notificaiton->data['user']['name'] }} has unfeatured your listing {{ $notificaiton->data['listing']['title'] }} </a>

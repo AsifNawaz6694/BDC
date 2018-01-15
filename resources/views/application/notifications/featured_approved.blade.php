@@ -1,0 +1,1 @@
+<a href="#">{{ $notificaiton->data['user']['name'] }} has featured your listing {{ $notificaiton->data['listing']['title'] }} </a>

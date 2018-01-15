@@ -8,7 +8,7 @@ class RequestServices extends Model
 {
     //
     protected $fillable = [
-        'user_id', 'service_id'
+        'user_id', 'service_id', 'listing_id'
     ];
 
     protected $hidden = [
@@ -22,6 +22,7 @@ class RequestServices extends Model
     public function transaction(){
         return $this->belongsTo(Transaction::class, 'transaction_id');
     }
+
      public function user(){
         return $this->belongsTo('App\User', 'user_id');
     }

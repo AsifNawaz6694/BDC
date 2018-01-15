@@ -190,7 +190,7 @@ $(document).ready(function () {
 
 
     //mark as read notifications
-    $('#markasread a').click(function (e) {
+    $('#markasread > a').click(function (e) {
        e.preventDefault();
        $.ajax({
            type: 'get',
@@ -203,6 +203,19 @@ $(document).ready(function () {
            }
 
        });
+    });
+
+
+    //Mark single notification unread
+    $('.singleRead').click(function(){
+        $(this).parent('form').trigger('submit');
+    });
+
+
+    //push service id in modal box
+    $('#get_ready_table a').click(function(){
+        $('#my_listings input#service_id').val($(this).data('service'));
+        console.log($(this).data('service'));
     });
 
 

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Innovator;
+use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ListingRequest;
 use App\RequestServices;
@@ -137,16 +138,26 @@ class InnovatorController extends Controller
 
           if(Input::hasFile('addImg')){
             $file = Input::file('addImg');
-            //$tmpFilePath = '/profiles/';
-            // $tmpFileName = time() . '-' . $file->getClientOriginalName();
-            // $file = $file->move(public_path() .$tmpFilePath, $tmpFileName);
-            // $path = $tmpFilePath . $tmpFileName;
-            // $user->profile = $path;
           }       
 
         \Mail::to('asifnawaz.aimviz@gmail.com')->send(new Welcome($detail, $file));
         Session::flash('success_msg','You have successfully Email Admin');
         return redirect()->back();
+    }
+
+
+    public function request_services_post(Request $request){
+        $validator = Validator::make($request->all(), [
+            'service_id' => 'required|numeric',
+            'listing_id' => 'required|numeric',
+        ]);
+        $services = RequestServices::create([
+            'user_id' => Auth::user()->id,
+            'service_id' => $request->service_id,
+            'listing_id' => $request->my_listings
+        ]);
+        session()->put('request_services', $services->id);
+        return redirect()->route('checkout', ['id' => $request->service_id]);
     }
 
 
