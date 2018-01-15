@@ -61,6 +61,8 @@ Route::get('/profile','Admin\AdminProfileController@index')->name('admin_profile
 	Route::get('/funder_approve_status/{id}/',["as" => "funder-approve-status", "uses" => "Admin\ListingController@funder_approve_status"]);
 	Route::get('/funder_disapprove_status/{id}/',["as" => "funder-disapprove-status", "uses" => "Admin\ListingController@funder_disapprove_status"]);
 	Route::get('/request_detail_view/{id}',["as"=>"request-detail-view","uses"=>"Admin\ListingController@request_detail_view"]);
+	Route::get('/listing_questionnaire/{id}',["as"=>"listing-questions","uses"=>"Admin\ListingController@create_questionnaire"]);
+	Route::post('/listing_questionnaire_store/{id}',["as"=>"questions-store","uses"=>"Admin\ListingController@store_questionnaire"]);
 
 	
 	//Innovator Request for listing
