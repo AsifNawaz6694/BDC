@@ -14,95 +14,94 @@
 // Admin Routes
 
 
-Route::group(['prefix'=>'admin','middleware' => 'is-admin']	,function(){
+Route::group(['prefix' => 'admin', 'middleware' => 'is-admin'], function () {
 
-Route::get('/admin_logout','Admin\AdminPagesController@admin_logout')->name('clock_out');
-	//Admin Panel Routes Started
-Route::get('/admin', 'Admin\AdminPagesController@Backend')->name('adminBackend');
-//Admin Profile Route
-Route::get('/profile','Admin\AdminProfileController@index')->name('admin_profile');
-//Admin Logout Route
-	
+    Route::get('/admin_logout', 'Admin\AdminPagesController@admin_logout')->name('clock_out');
+    //Admin Panel Routes Started
+    Route::get('/admin', 'Admin\AdminPagesController@Backend')->name('adminBackend');
+    //Admin Profile Route
+    Route::get('/profile', 'Admin\AdminProfileController@index')->name('admin_profile');
+    //Admin Logout Route
 
-	// Update Admin Profile Image
-	Route::any('/updateInfo/{id}/',["as" => "admin-update-info", "uses" => "Admin\AdminProfileController@update"]);
-	Route::any('/updatePassword/',["as" => "update-password", "uses" => "Admin\AdminProfileController@Updatepasword"]);
-	Route::post('/updateImage/{id}/',["as" => "admin-update-image", "uses" => "Admin\AdminProfileController@ChangeProfileImage"]);
+
+    // Update Admin Profile Image
+    Route::any('/updateInfo/{id}/', ["as" => "admin-update-info", "uses" => "Admin\AdminProfileController@update"]);
+    Route::any('/updatePassword/', ["as" => "update-password", "uses" => "Admin\AdminProfileController@Updatepasword"]);
+    Route::post('/updateImage/{id}/', ["as" => "admin-update-image", "uses" => "Admin\AdminProfileController@ChangeProfileImage"]);
 // <------------------------------Profile's Controller Routes Ended-------------------------------------------->
 
 // <-------------------------------User's Controller Routes Started-------------------------------------------->
-	Route::resource('/users','Admin\UsersController');	
-	Route::get('/approve_user_status/{id}/',["as" => "approve-user-status", "uses" => "Admin\UsersController@approve_user_status"]);
-	Route::get('/disapprove_user_status/{id}/',["as" => "disapprove-user-status", "uses" => "Admin\UsersController@disapprove_user_status"]);
-	Route::get('/user_detail/{id}',["as"=>"view-user-detail","uses"=>"Admin\UsersController@view_user_details"]);
+    Route::resource('/users', 'Admin\UsersController');
+    Route::get('/approve_user_status/{id}/', ["as" => "approve-user-status", "uses" => "Admin\UsersController@approve_user_status"]);
+    Route::get('/disapprove_user_status/{id}/', ["as" => "disapprove-user-status", "uses" => "Admin\UsersController@disapprove_user_status"]);
+    Route::get('/user_detail/{id}', ["as" => "view-user-detail", "uses" => "Admin\UsersController@view_user_details"]);
 // <-----------------------------------User's Controller Routes Ended------------------------------------------>
 
 // <-------------------------------Category's Controller Routes Started---------------------------------------->
-	Route::resource('/category','Admin\CategoryController');	
+    Route::resource('/category', 'Admin\CategoryController');
 // <------------------------------Category's Controller Routes Ended------------------------------------------->
 
 // <------------------------------Listing's Controller Routes Started------------------------------------------>
-	Route::resource('/listing','Admin\ListingController');
-	// DisApprove/Approve Listing Status
-	Route::get('/approve_status/{id}/',["as" => "approve-status", "uses" => "Admin\ListingController@approve_status"]);
-	Route::get('/disapprove_status/{id}/',["as" => "disapprove-status", "uses" => "Admin\ListingController@disapprove_status"]);
-	
-	// Disapprove/Approve Listing Featured
-	Route::get('/approve_featured/{id}/',["as" => "approve-featured", "uses" => "Admin\ListingController@approve_featured"]);
-	Route::get('/disapprove_featured/{id}/',["as" => "disapprove-featured", "uses" => "Admin\ListingController@disapprove_featured"]);
-	//download file
-	 Route::get('/download_file/{file_name}/',["as" => "download-file", "uses" => "Admin\ListingController@admin_download"]);
-	
-	//Funder Request for listing
+    Route::resource('/listing', 'Admin\ListingController');
+    // DisApprove/Approve Listing Status
+    Route::get('/approve_status/{id}/', ["as" => "approve-status", "uses" => "Admin\ListingController@approve_status"]);
+    Route::get('/disapprove_status/{id}/', ["as" => "disapprove-status", "uses" => "Admin\ListingController@disapprove_status"]);
 
-	Route::get('/funder_request_listing','Admin\ListingController@Funder_Request');
+    // Disapprove/Approve Listing Featured
+    Route::get('/approve_featured/{id}/', ["as" => "approve-featured", "uses" => "Admin\ListingController@approve_featured"]);
+    Route::get('/disapprove_featured/{id}/', ["as" => "disapprove-featured", "uses" => "Admin\ListingController@disapprove_featured"]);
+    //download file
+    Route::get('/download_file/{file_name}/', ["as" => "download-file", "uses" => "Admin\ListingController@admin_download"]);
 
-	// DisApprove/Approve Listing Status	
-	Route::get('/funder_approve_status/{id}/',["as" => "funder-approve-status", "uses" => "Admin\ListingController@funder_approve_status"]);
-	Route::get('/funder_disapprove_status/{id}/',["as" => "funder-disapprove-status", "uses" => "Admin\ListingController@funder_disapprove_status"]);
-	Route::get('/request_detail_view/{id}',["as"=>"request-detail-view","uses"=>"Admin\ListingController@request_detail_view"]);
+    //Funder Request for listing
 
-	
-	//Innovator Request for listing
+    Route::get('/funder_request_listing', 'Admin\ListingController@Funder_Request');
 
-	Route::get('/innovator_request_service','Admin\ListingController@innovator_Request');
-	// DisApprove/Approve Listing Status	
-	Route::get('/innovator_approve_status/{id}/',["as" => "innovator-approve-status", "uses" => "Admin\ListingController@innovator_approve_status"]);
-	Route::get('/innovator_disapprove_status/{id}/',["as" => "innovator-disapprove-status", "uses" => "Admin\ListingController@innovator_disapprove_status"]);
-	Route::get('/innovator_request_detail_view/{id}',["as"=>"innovator-request-detail-view","uses"=>"Admin\ListingController@innovator_request_detail_view"]);
+    // DisApprove/Approve Listing Status
+    Route::get('/funder_approve_status/{id}/', ["as" => "funder-approve-status", "uses" => "Admin\ListingController@funder_approve_status"]);
+    Route::get('/funder_disapprove_status/{id}/', ["as" => "funder-disapprove-status", "uses" => "Admin\ListingController@funder_disapprove_status"]);
+    Route::get('/request_detail_view/{id}', ["as" => "request-detail-view", "uses" => "Admin\ListingController@request_detail_view"]);
+
+
+    //Innovator Request for listing
+
+    Route::get('/innovator_request_service', 'Admin\ListingController@innovator_Request');
+    // DisApprove/Approve Listing Status
+    Route::get('/innovator_approve_status/{id}/', ["as" => "innovator-approve-status", "uses" => "Admin\ListingController@innovator_approve_status"]);
+    Route::get('/innovator_disapprove_status/{id}/', ["as" => "innovator-disapprove-status", "uses" => "Admin\ListingController@innovator_disapprove_status"]);
+    Route::get('/innovator_request_detail_view/{id}', ["as" => "innovator-request-detail-view", "uses" => "Admin\ListingController@innovator_request_detail_view"]);
 
 // <------------------------------Listing's Controller Routes Ended-------------------------------------------->
 
 //Admin Panel Routes Ended
 
     Route::get('/admin', 'Admin\AdminPagesController@Backend')->name('adminBackend');
-    Route::get('/logout', function (){
+    Route::get('/logout', function () {
         return view('Admin_panel\logout');
     });
 
 
-	// Profile Controller 
-	Route::get('/profile','Admin\AdminProfileController@index')->name('admin_profile');
-	// Update Admin Profile Image
-	Route::any('/updateInfo/{id}/',["as" => "admin-update-info", "uses" => "Admin\AdminProfileController@update"]);
-	// Route::any('/updatePassword/',["as" => "update-password", "uses" => "Admin\AdminProfileController@Updatepasword"]);
-	Route::post('/updateImage/{id}/',["as" => "admin-update-image", "uses" => "Admin\AdminProfileController@ChangeProfileImage"]);
+    // Profile Controller
+    Route::get('/profile', 'Admin\AdminProfileController@index')->name('admin_profile');
+    // Update Admin Profile Image
+    Route::any('/updateInfo/{id}/', ["as" => "admin-update-info", "uses" => "Admin\AdminProfileController@update"]);
+    // Route::any('/updatePassword/',["as" => "update-password", "uses" => "Admin\AdminProfileController@Updatepasword"]);
+    Route::post('/updateImage/{id}/', ["as" => "admin-update-image", "uses" => "Admin\AdminProfileController@ChangeProfileImage"]);
 
 
-	// Users Cotroller full resource
-	Route::resource('/users','Admin\UsersController');
+    // Users Cotroller full resource
+    Route::resource('/users', 'Admin\UsersController');
 
-	// Category Controller Full resource 
-	Route::resource('/category','Admin\CategoryController');
-
+    // Category Controller Full resource
+    Route::resource('/category', 'Admin\CategoryController');
 
 
 // <-------------------------------User's Controller Routes Started--------------------------------------------->
-	Route::resource('/users','Admin\UsersController');	
+    Route::resource('/users', 'Admin\UsersController');
 // <-----------------------------------User's Controller Routes Ended-------------------------------------------->
 
 // <-------------------------------Category's Controller Routes Started------------------------------------------>
-	Route::resource('/category','Admin\CategoryController');	
+    Route::resource('/category', 'Admin\CategoryController');
 // <------------------------------Category's Controller Routes Ended--------------------------------------------->
 
 
@@ -111,91 +110,82 @@ Route::get('/profile','Admin\AdminProfileController@index')->name('admin_profile
 
 /* Funder Routes */
 
+Route::group(['prefix' => 'funder', 'middleware' => 'is-funder'], function () {
 
-Route::group(['prefix'=>'funder', 'middleware' => 'is-funder'], function(){
+    //Funder Home page
+    Route::get('/', 'Funder\FunderController@index')->name('funder_home');
 
-	//Funder Home page
-	Route::get('/', 'Funder\FunderController@index')->name('funder_home');
+    //Funder profile page
+    Route::get('/profile', 'Funder\FunderController@profile_index')->name('funder_profile');
 
-	//Funder profile page
-	Route::get('/profile', 'Funder\FunderController@profile_index')->name('funder_profile');
+    //Funder Notifications Page
+    Route::get('/notifications', 'Funder\FunderController@notifications_index')->name('funder_notifications_index');
 
-	//Funder Notifications Page
-	Route::get('/notifications', 'Funder\FunderController@notifications_index')->name('funder_notifications_index');
-
-	//Funder listing views
-	Route::get('/view_listings', 'Funder\FunderController@view_listings')->name('funder_view_listings');
+    //Funder listing views
+    Route::get('/view_listings', 'Funder\FunderController@view_listings')->name('funder_view_listings');
 
 
-	//Funder requested listings
-	Route::get('/request_listing', 'Funder\FunderController@request_listing')->name('funder_request_listing');
+    //Funder requested listings
+    Route::get('/request_listing', 'Funder\FunderController@request_listing')->name('funder_request_listing');
 
-	//Funder funding details
-	Route::get('/fund_details', 'Funder\FunderController@fund_details')->name('funder_fund_details');	
+    //Funder funding details
+    Route::get('/fund_details', 'Funder\FunderController@fund_details')->name('funder_fund_details');
 
-	Route::post('/submit_request_listing', 'Funder\FunderController@request_listing_submit')->name('request_listing_submit');	
+    //Funder Submit request for listing
+    Route::post('/submit_request_listing', 'Funder\FunderController@request_listing_submit')->name('request_listing_submit');
 
 });
 
 
-
-
-
-
-
 /* Innovator Routes */
 
-Route::group(['prefix'=>'innovator', 'middleware' => 'is-innovator'], function(){
+Route::group(['prefix' => 'innovator', 'middleware' => 'is-innovator'], function () {
 
-	//Innovator home page
-	Route::get('/', 'Innovator\InnovatorController@index')->name('innovator_home');
+    //Innovator home page
+    Route::get('/', 'Innovator\InnovatorController@index')->name('innovator_home');
 
-	//Innovator profile page
-	Route::get('/profile', 'Innovator\InnovatorController@profile_index')->name('innovator_profile');
+    //Innovator profile page
+    Route::get('/profile', 'Innovator\InnovatorController@profile_index')->name('innovator_profile');
 
-	//Innovator Notifications Page
-	Route::get('/notifications', 'Innovator\InnovatorController@notifications_index')->name('innovator_notifications_index');
+    //Innovator Notifications Page
+    Route::get('/notifications', 'Innovator\InnovatorController@notifications_index')->name('innovator_notifications_index');
 
-	//Innovator listing view
-	Route::get('/listings', 'Innovator\InnovatorController@listings')->name('innovator_listings');
+    //Innovator listing view
+    Route::get('/listings', 'Innovator\InnovatorController@listings')->name('innovator_listings');
 
-	//Innovator submit listing page
-	Route::get('/submit_listing', 'Innovator\InnovatorController@submit_listing_page')->name('submit_listing_page');
+    //Innovator submit listing page
+    Route::get('/submit_listing', 'Innovator\InnovatorController@submit_listing_page')->name('submit_listing_page');
 
     //Innovator edit listing page
     Route::get('/edit_listing/{id}', 'Innovator\InnovatorController@edit_listing_page')->name('edit_listing_page');
 
-	//Innovator submit listing form post
-	Route::post('/submit_listing', 'Innovator\InnovatorController@submit_listing_post')->name('submit_listing_post');
+    //Innovator submit listing form post
+    Route::post('/submit_listing', 'Innovator\InnovatorController@submit_listing_post')->name('submit_listing_post');
 
     //Innovator submit listing form post
     Route::post('/edit_listing', 'Innovator\InnovatorController@edit_listing_post')->name('edit_listing_post');
 
-	//Innovator Contact Admin page
-	Route::get('/contact_admin', 'Innovator\InnovatorController@contact_admin_page')->name('contact_admin_page');
+    //Innovator Contact Admin page
+    Route::get('/contact_admin', 'Innovator\InnovatorController@contact_admin_page')->name('contact_admin_page');
 
-	//Innovator request services post
-	Route::post('/request_services', 'Innovator\InnovatorController@request_services_post')->name('request_services_post');
+    //Innovator request services post
+    Route::post('/request_services', 'Innovator\InnovatorController@request_services_post')->name('request_services_post');
 
     //Innovator request services page
     Route::get('/request_services', 'Innovator\InnovatorController@request_services_page')->name('request_services_page');
 
-	//Transactions page
-	Route::get('/transactions', 'Innovator\InnovatorController@transaction_page')->name('transaction_page');
+    //Transactions page
+    Route::get('/transactions', 'Innovator\InnovatorController@transaction_page')->name('transaction_page');
 
-
-	//contact Admin
-
-	Route::post('mail','Innovator\InnovatorController@send')->name('send_email');
-
-
-
+    //contact Admin
+    Route::post('mail', 'Innovator\InnovatorController@send')->name('send_email');
 
 
 });
 
 
 // Public Pages
+Route::get('/dashboard', 'HomeController@user_dashboard')->middleware('auth');
 Route::get('/', 'HomeController@index')->name('/');
 Route::get('/{slug}', 'HomeController@publicPages')->name('publicPages');
 
@@ -204,18 +194,16 @@ Route::get('/{slug}', 'HomeController@publicPages')->name('publicPages');
 Auth::routes();
 
 
-
 //Ajax routes for logged in users
-Route::group(['prefix' => 'ajax', 'middleware' => 'auth'], function(){
+Route::group(['prefix' => 'ajax', 'middleware' => 'auth'], function () {
     Route::post('profile_picture', 'GeneralController@profile_picture')->name('ajaxProfilePicture');
     Route::post('profile_update', 'GeneralController@profile_update')->name('ajaxProfileUpdate');
     Route::post('password_update', 'GeneralController@password_update')->name('ajaxPasswordUpdate');
 });
 
 
-
 //paypal payment routes use only by innovator
-Route::group(['prefix' => 'paypal', 'middleware' => 'auth'], function(){
+Route::group(['prefix' => 'paypal', 'middleware' => 'auth'], function () {
 
     Route::get('/checkout/{id}', 'PaymentController@checkout')->name('checkout');
     Route::get('/paypalReturn', 'PaymentController@getDone')->name('getDone');
@@ -224,7 +212,7 @@ Route::group(['prefix' => 'paypal', 'middleware' => 'auth'], function(){
 });
 
 //common routes for all user types
-Route::group(['prefix' => 'general','middleware' => 'auth'], function(){
+Route::group(['prefix' => 'general', 'middleware' => 'auth'], function () {
     Route::get('/markAsRead', 'GeneralController@markAsRead')->name('markAsRead');
     Route::post('/markAsSingleRead', 'GeneralController@markAsSingleRead')->name('markAsSingleRead');
 });

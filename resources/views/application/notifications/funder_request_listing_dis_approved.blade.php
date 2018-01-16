@@ -1,7 +1,1 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: Irfan.m
- * Date: 1/13/2018
- * Time: 3:55 PM
- */
+<a href="#">{{ $notificaiton->data['user']['name'] }} has declined your request to view "{{ $notificaiton->data['listing']['title'] }}"</a>

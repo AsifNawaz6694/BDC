@@ -1,1 +1,1 @@
-<a href="#">{{ $notificaiton->data['user']['name'] }} has approved your listing request {{ $notificaiton->data['listing']['listing_id'] }} </a>
+<a href="#">{{ $notificaiton->data['user']['name'] }} has approved your request "{{ $notificaiton->data['request']['service']['description'] }}" on "{{ $notificaiton->data['request']['listing']['title'] }}"</a>
