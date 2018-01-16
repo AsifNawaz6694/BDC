@@ -43,30 +43,32 @@ Route::group(['prefix' => 'admin', 'middleware' => 'is-admin'], function () {
 
 // <------------------------------Listing's Controller Routes Started------------------------------------------>
     Route::resource('/listing', 'Admin\ListingController');
-    // DisApprove/Approve Listing Status
+// DisApprove/Approve Listing Status
     Route::get('/approve_status/{id}/', ["as" => "approve-status", "uses" => "Admin\ListingController@approve_status"]);
     Route::get('/disapprove_status/{id}/', ["as" => "disapprove-status", "uses" => "Admin\ListingController@disapprove_status"]);
 
-    // Disapprove/Approve Listing Featured
+// Disapprove/Approve Listing Featured
     Route::get('/approve_featured/{id}/', ["as" => "approve-featured", "uses" => "Admin\ListingController@approve_featured"]);
     Route::get('/disapprove_featured/{id}/', ["as" => "disapprove-featured", "uses" => "Admin\ListingController@disapprove_featured"]);
-    //download file
+//download file
     Route::get('/download_file/{file_name}/', ["as" => "download-file", "uses" => "Admin\ListingController@admin_download"]);
 
-    //Funder Request for listing
+//Funder Request for listing
 
     Route::get('/funder_request_listing', 'Admin\ListingController@Funder_Request');
 
-    // DisApprove/Approve Listing Status
+// DisApprove/Approve Listing Status
     Route::get('/funder_approve_status/{id}/', ["as" => "funder-approve-status", "uses" => "Admin\ListingController@funder_approve_status"]);
     Route::get('/funder_disapprove_status/{id}/', ["as" => "funder-disapprove-status", "uses" => "Admin\ListingController@funder_disapprove_status"]);
     Route::get('/request_detail_view/{id}', ["as" => "request-detail-view", "uses" => "Admin\ListingController@request_detail_view"]);
+    Route::get('/listing_questionnaire/{id}', ["as" => "listing-questions", "uses" => "Admin\ListingController@create_questionnaire"]);
+    Route::post('/listing_questionnaire_store/{id}', ["as" => "questions-store", "uses" => "Admin\ListingController@store_questionnaire"]);
 
 
-    //Innovator Request for listing
+//Innovator Request for listing
 
     Route::get('/innovator_request_service', 'Admin\ListingController@innovator_Request');
-    // DisApprove/Approve Listing Status
+// DisApprove/Approve Listing Status
     Route::get('/innovator_approve_status/{id}/', ["as" => "innovator-approve-status", "uses" => "Admin\ListingController@innovator_approve_status"]);
     Route::get('/innovator_disapprove_status/{id}/', ["as" => "innovator-disapprove-status", "uses" => "Admin\ListingController@innovator_disapprove_status"]);
     Route::get('/innovator_request_detail_view/{id}', ["as" => "innovator-request-detail-view", "uses" => "Admin\ListingController@innovator_request_detail_view"]);

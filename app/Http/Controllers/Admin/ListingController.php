@@ -20,6 +20,8 @@ use App\service;
 use App\Category;
 use App\Listing;
 use App\Notification;
+use App\Question;
+use App\Section;
 use App\User;
 use Session;
 use Auth;
@@ -182,6 +184,45 @@ class ListingController extends Controller
         return view('Admin_Panel.Listing.Innovator.request_view')->with($args);
     }
 
+
+    public function create_questionnaire($id)
+    {
+        $listing = listing::find($id);         
+        $args['section'] = Section::all()->pluck('section_name', 'id');  
+        if($listing){
+        $args['listing']=$listing;
+        return view('Admin_Panel.Listing.Profile.profile')->with($args);
+        }        
+       
+    }
+    public function store_questionnaire(Request $request , $id)
+    {
+
+        $c = new Question;  
+       // dd(Input::get('question'));
+
+        for($i=0; $i<count(Input::get('question')); $i++){
+                $c = Question::create([
+                    'section_id' =>Input::get('section_id'),
+                    'listing_id' =>Input::get('listing_id'),
+                    'question' => Input::get('question')[$i]
+                     ]); 
+
+        }
+
+        // foreach(Input::get('question') as $q) {
+
+        // $c = Question::create([
+        //     'section_id' =>Input::get('section_id'),
+        //     'listing_id' =>Input::get('listing_id'),
+        //     'question' => $q
+
+        //      ]);                
+        // }               
+        Session::flash('success','The Questionnaire Was Successfully Added!');
+        return redirect('admin/listing');     
+       
+    }
 
     public function create()
     {

@@ -61,9 +61,7 @@ class UsersController extends Controller
         $user->roles = Input::get('roles');        
         $user->password = bcrypt(Input::get('password'));        
         $user->save();
-
         $abc = event(new  UserProfile($user));
-
         Session::flash('success_msg','The User Was Successfully Added!');
         return redirect('admin/users');
     }

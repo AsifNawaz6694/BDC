@@ -11,6 +11,7 @@ use App\Listing;
 use App\Notification;
 use Auth;
 use Mail;
+use App\Events\listingProfile;
 use App\Mail\Welcome;
 use App\Notifications\ListingApproved;
 use App\Notifications\ListingDisApproved;
@@ -104,11 +105,11 @@ class InnovatorController extends Controller
             'category_id' => $request->product,
             'title' => $request->title,
             'funding' => $request->funding,
-
             'description' => $request->description,
             'status' => 0,
 
         ]);
+        $abcd = event(new  listingProfile($listing));
         if($request->hasFile('file')){
             $path = $request->file('file')->store('public/files');
             $update = Listing::where('id', $listing->id)->update([

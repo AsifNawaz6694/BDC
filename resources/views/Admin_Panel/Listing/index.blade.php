@@ -22,8 +22,7 @@
 						<div class="portlet-title">
 							<div class="caption">
 								<i class="fa fa-user"></i>Listings
-							</div>	
-										
+							</div>										
 						</div>
 						<div class="portlet-body">
 							<table class="table table-bordered table-hover" id="all_users">
@@ -38,6 +37,7 @@
 								<th>Download</th>								
 								<th>Edit</th>								
 								<th>Delete</th>								
+								<th>Profile</th>								
 							</tr>
 							</thead>
 							<tbody>
@@ -85,6 +85,9 @@
 											{{ csrf_field() }}
 											<button type="submit" class="btn btn-sm btn-danger">Delete</button>
 										</form>										
+									</td>
+									<td>
+										<a href="{{ route('listing-questions',[ 'listing' => $value->id ]) }}" class="btn btn-sm btn-primary">Profile</a>
 									</td>								
 								</tr>
 							@endforeach						
@@ -96,7 +99,6 @@
 				</div>
 			</div>
 			<!-- END PAGE CONTENT-->
-		</div>
-	
+		</div>	
 	<!-- END CONTENT -->
 @endsection()

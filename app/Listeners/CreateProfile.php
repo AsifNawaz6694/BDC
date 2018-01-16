@@ -28,7 +28,5 @@ class CreateProfile
             'user_id' => $event->user->id,
             'user_name' => $event->user->email,
         ]); 
-
-        
     }
 }
