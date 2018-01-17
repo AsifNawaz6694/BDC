@@ -41,7 +41,6 @@ return [
     | stay compatible with the Mailgun e-mail application by default.
     |
     */
-
     'port' => env('MAIL_PORT', 587),
 
     /*
@@ -55,7 +54,10 @@ return [
     |
     */
 
-   'from' => ['address' => 'example@example.com', 'name' => 'App Name'],
+  'from' => [
+        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
+        'name' => env('MAIL_FROM_NAME', 'Example'),
+    ],
 
     /*
     |--------------------------------------------------------------------------

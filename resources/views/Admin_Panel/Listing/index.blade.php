@@ -37,7 +37,7 @@
 								<th>Download</th>								
 								<th>Edit</th>								
 								<th>Delete</th>								
-								<th>Profile</th>								
+								<th>Questions</th>								
 							</tr>
 							</thead>
 							<tbody>
@@ -57,21 +57,21 @@
 									</td>									
 									<td>
 										@if($value->status == '1')
-										<a href="{{route('disapprove-status',['id'=>$value->id])}}" class="btn btn-sm btn-primary" >Approve</a>
+										<a href="{{route('disapprove-status',['id'=>$value->id])}}" title="Click To DisApprove" class="btn btn-sm btn-primary" >Approve</a>
 										@else
-										<a href="{{route('approve-status',['id'=>$value->id])}}" class="btn btn-sm btn-danger" >DisApprove</a>
+										<a href="{{route('approve-status',['id'=>$value->id])}}" title="Click To Approve" class="btn btn-sm btn-danger" >DisApprove</a>
 										@endif
 									</td>	
 									<td>
 										@if($value->featured == '1')
-										<a href="{{route('disapprove-featured',['id'=>$value->id])}}" class="btn btn-sm btn-primary" >Featured</a>
+										<a href="{{route('disapprove-featured',['id'=>$value->id])}}" title="Click To UnFeatured" class="btn btn-sm btn-primary" >Featured</a>
 										@else
-										<a href="{{route('approve-featured',['id'=>$value->id])}}" class="btn btn-sm btn-danger" >Not Featured</a>
+										<a href="{{route('approve-featured',['id'=>$value->id])}}" title="Click To Featured" class="btn btn-sm btn-danger" >Not Featured</a>
 										@endif
 									</td>	
 									<td>
 										@if($value->document && !empty($value->document))
-										<a href="{{route('download-file',['file_name'=>$value->id])}}" class="btn btn-sm btn-primary" >Download</a>
+										<a href="{{route('download-file',['file_name'=>$value->id])}}" class="btn btn-sm btn-primary" title="Click To Download">Download</a>
 										@else
 										{{ 'No Document Uploaded'}}
 										@endif
@@ -87,7 +87,7 @@
 										</form>										
 									</td>
 									<td>
-										<a href="{{ route('listing-questions',[ 'listing' => $value->id ]) }}" class="btn btn-sm btn-primary">Profile</a>
+										<a href="{{ route('listing-questions',[ 'listing' => $value->id ]) }}" class="btn btn-sm btn-primary">Create</a>
 									</td>								
 								</tr>
 							@endforeach						

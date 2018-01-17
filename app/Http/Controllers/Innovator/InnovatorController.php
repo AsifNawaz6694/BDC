@@ -131,20 +131,57 @@ class InnovatorController extends Controller
         }
     }
 
+   
+
     public function send(Request $request){
-        //dd();
-        $detail = $request->input();
-        $user = Auth::user();
+      
+      ini_set('max_execution_time', 300);
+      
+      $request->input('description_subject');
+      $request->input('description_message'); 
+      $request->file('addImg');      
+   
+      //Display File Name
+      echo 'File Name: '.$request->file('addImg')->getClientOriginalName();
+      echo '<br>';
+   
+      //Display File Extension
+      echo 'File Extension: '.$request->file('addImg')->getClientOriginalExtension();
+      echo '<br>';
+   
+      //Display File Size
+      echo 'File Size: '.$request->file('addImg')->getSize();
+      echo '<br>';
+   
+      //Display File Mime Type
+      echo 'File Mime Type: '.$request->file('addImg')->getMimeType();
+   
+      //Move Uploaded File
+      $destinationPath = 'public/email/';
 
-          if(Input::hasFile('addImg')){
-            $file = Input::file('addImg');
-          }       
 
-        \Mail::to('asifnawaz.aimviz@gmail.com')->send(new Welcome($detail, $file));
-        Session::flash('success_msg','You have successfully Email Admin');
+    $path = $request->file('addImg')->store('public/email');
+
+    //$path = realpath($request->file('addImg')->store('public/email'););
+ 
+     $request->file('addImg')->move($destinationPath,$request->file('addImg')->getClientOriginalName());
+
+      $sender_email = 'Customer@gmail.com';        
+        Mail::send('email.welcome',[
+          'request' => $request->all(),
+          'path' => $path,          
+        ],        
+        function($m) use ($sender_email,$destinationPath){
+            $m->from($sender_email);
+            $m->to('asifnawaz.aimviz@gmail.com', 'BDC');
+            $m->cc('asifnawaz.aimviz@gmail.com', 'BDC');
+            $m->subject('Testing Email');
+            // $filename = asset('public/storage/'. $destinationPath);
+            // $m->attach($filename);
+        });
+        Session::flash('success_msg','You Have successfully Contacted Admin ');
         return redirect()->back();
-    }
-
+      }
 
     public function request_services_post(Request $request){
         $validator = Validator::make($request->all(), [
@@ -159,7 +196,4 @@ class InnovatorController extends Controller
         session()->put('request_services', $services->id);
         return redirect()->route('checkout', ['id' => $request->service_id]);
     }
-
-
-
 }

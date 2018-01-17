@@ -20,6 +20,7 @@ class Welcome extends Mailable
      */
     public function __construct($detail, $file)
     {
+        exit();
         $this->detail = $detail;
         $this->file = $file;
     }
@@ -31,7 +32,8 @@ class Welcome extends Mailable
      */
     public function build()
     {
-        return $this->view('email.welcome')->with($this->detail)->attachData($this->file->getRealPath(), 'name.pdf', [
+        exit;
+        return $this->view('email.welcome')->with($this->detail)->attach('/assets/admin/', 'name.pdf', [
                         'mime' => 'application/pdf',
                     ]);;
     }
