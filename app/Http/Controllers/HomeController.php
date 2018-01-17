@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Listing;
 use Mail;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -28,7 +29,7 @@ class HomeController extends Controller
         $listings = Listing::all();
         $featured_listings = Listing::where('featured', 1)->get();
 
-        return view('home')->with('featured_listings', $featured_listings)->with('listings', $listings);
+        return view('index')->with('featured_listings', $featured_listings)->with('listings', $listings);
     }
 
     public function publicPages($slug)
@@ -43,6 +44,22 @@ class HomeController extends Controller
         }
         return view('error.404');
 
+    }
+
+
+    public function user_dashboard(){
+        if(Auth::user()->roles == 1){
+            return redirect()->route('adminBackend');
+        }
+        elseif(Auth::user()->roles == 2){
+            return redirect()->route('funder_home');
+        }
+        elseif(Auth::user()->roles == 3){
+            return redirect()->route('innovator_home');
+        }
+        else{
+            return redirect()->route('/');
+        }
     }
 
 

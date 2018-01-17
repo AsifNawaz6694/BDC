@@ -1,2 +1,1 @@
-<a href="#">{{ $notificaiton->data['user']['name'] }} has declined your
-    listing request {{ $notificaiton->data['listing']['listing_id'] }} </a>
+<a href="#">{{ $notificaiton->data['user']['name'] }} has declined your our request "{{ $notificaiton->data['request']['service']['description'] }}" on "{{ $notificaiton->data['request']['listing']['title'] }}"</a>
